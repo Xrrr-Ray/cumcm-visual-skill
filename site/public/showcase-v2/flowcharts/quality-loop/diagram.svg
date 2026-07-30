@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="paper-visual" data-visual-type="feedback-loop" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="visual-title visual-subtitle">
+  <style>
+    :root{--bg:#f7f9fc;--surface:#ffffff;--ink:#162033;--muted:#5d6a7d;--accent:#2457a7;--accent-soft:#eaf1fb;--border:#9aabc2;--group-fill:#f2f6fb;--flow:#334155;--pass:#25845f;--reject:#c4513a;--feedback:#286bb5}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",Arial,sans-serif;color:var(--ink)}
+    .slide{width:100vw;height:100vh;overflow:hidden}.paper-visual{width:100vw;height:100vh;display:block;background:var(--bg)}
+    .visual-title{font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC",serif;font-size:46px;font-weight:700;fill:var(--ink);letter-spacing:.5px}.visual-subtitle{font-size:24px;fill:var(--muted)}
+    .title-rule{stroke:var(--accent);stroke-width:6}
+    .visual-group rect{fill:var(--group-fill);stroke:var(--border);stroke-width:1.5}.visual-group text{font-size:27px;font-weight:700;fill:var(--ink)}.group-index{fill:var(--accent);font-size:22px;letter-spacing:1px}
+    .node-shape{fill:var(--surface);stroke:var(--border);stroke-width:2}.visual-node:focus .node-shape,.visual-node:hover .node-shape{stroke:var(--accent);stroke-width:3}.node-title{font-size:32px;font-weight:700;fill:var(--ink)}.node-detail{font-size:28px;fill:var(--muted)}.node-tag{font-size:20px;font-weight:700;fill:var(--accent)}
+    .node-decision .node-shape{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2.5}.node-pill .node-shape{fill:var(--accent);stroke:var(--accent)}.node-pill .node-title,.node-pill .node-detail{fill:#fff}
+    .visual-edge path{fill:none;stroke:var(--flow);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.edge-pass path{stroke:var(--pass);stroke-width:3.5}.edge-reject path{stroke:var(--reject);stroke-width:3.5}.edge-feedback path{stroke:var(--feedback);stroke-width:3.5;stroke-dasharray:11 8}.edge-label-wrap rect{fill:var(--bg);stroke:none}.edge-label{font-size:28px;font-weight:700;fill:var(--ink)}
+    .author-tools{display:none;position:fixed;right:16px;top:16px;bottom:16px;z-index:5;width:300px;overflow:auto;padding:16px;border:1px solid #cbd5e1;border-radius:14px;background:#fffffff2;color:#334155;font:14px/1.45 "Microsoft YaHei",sans-serif;box-shadow:0 10px 30px #0f172a2b;backdrop-filter:blur(10px)}
+    .is-authoring .author-tools{display:block}.is-authoring .slide{position:fixed;left:0;top:0;width:calc(100vw - 332px);height:100vh}.is-authoring .paper-visual{width:100%;height:100%}.is-authoring .visual-node{cursor:grab}.is-authoring .visual-node:active{cursor:grabbing}.is-authoring .visual-node.editor-selected .node-shape{stroke:var(--accent);stroke-width:4}
+    .author-tools h2{margin:0 0 4px;font-size:18px;color:#172033}.author-tools p{margin:0 0 12px;color:#64748b}.editor-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}.editor-actions button,.editor-export button,.author-tools>[data-action=close]{border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#24324a;padding:8px 6px;font:600 12px/1.2 sans-serif;cursor:pointer}.editor-actions button:hover,.editor-export button:hover,.author-tools>[data-action=close]:hover{border-color:var(--accent);color:var(--accent)}.editor-fields{display:grid;gap:9px}.editor-fields label{display:grid;gap:4px;font-weight:700;color:#334155}.editor-fields input,.editor-fields textarea{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#172033;font:14px/1.4 sans-serif}.editor-fields textarea{min-height:66px;resize:vertical}.editor-fields input:disabled,.editor-fields textarea:disabled{background:#f1f5f9;color:#94a3b8}.editor-divider{height:1px;margin:14px 0;background:#e2e8f0}.editor-export{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.editor-status{min-height:20px;margin-top:10px!important;font-size:12px}.editor-kbd{display:inline-block;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:5px;padding:0 5px;background:#f8fafc;font:12px/1.6 monospace;color:#334155}
+    
+    .author-tools{width:360px}
+    .is-authoring .slide{width:calc(100vw - 392px)}
+    .editor-object-type{display:inline-flex;align-items:center;border-radius:999px;padding:2px 8px;background:#eaf1fb;color:#2457a7;font-weight:700}
+    .editor-object-panel[hidden]{display:none}.editor-object-panel h3{margin:0 0 10px;font-size:15px;color:#172033}
+    .editor-color-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.editor-color-grid label{font-size:12px}
+    .editor-color-grid input[type=color]{height:34px;padding:3px}
+    .editor-two-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .editor-fields select{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#172033;font:14px/1.4 sans-serif}
+    .editor-inline-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .editor-inline-actions button{border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#24324a;padding:8px 6px;font:600 12px/1.2 sans-serif;cursor:pointer}
+    .editor-inline-actions button:hover{border-color:var(--accent);color:var(--accent)}
+    .editor-snap-toggle{display:flex!important;grid-template-columns:auto 1fr!important;align-items:center;gap:8px!important;padding:9px 10px;border:1px solid #bfdbfe;border-radius:9px;background:#eff6ff;color:#1e40af!important}.editor-snap-toggle input{width:16px!important;height:16px;margin:0}
+    .editor-overlay{display:none;pointer-events:none}.is-authoring .editor-overlay{display:block}
+    .editor-snap-guide{stroke:#0ea5e9;stroke-width:2;stroke-dasharray:7 5;vector-effect:non-scaling-stroke;opacity:.95}
+    .editor-selection-outline{fill:none;stroke:#f97316;stroke-width:3;stroke-dasharray:10 7;vector-effect:non-scaling-stroke}
+    .editor-resize-handle,.editor-route-handle,.editor-endpoint-handle{pointer-events:all;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}
+    .editor-resize-handle{fill:#f97316;cursor:nwse-resize}.editor-route-handle{fill:#2563eb;cursor:move}.editor-endpoint-handle{fill:#16a34a;cursor:crosshair}
+    .is-authoring .visual-group{cursor:move}.is-authoring .visual-edge path{cursor:pointer;pointer-events:stroke}
+    .is-authoring .visual-group.editor-selected>rect{stroke:#f97316!important;stroke-width:3!important}
+    .is-authoring .visual-edge.editor-selected>path{filter:drop-shadow(0 0 3px #f97316);stroke-width:max(4px,var(--edge-width,3px))}
+  
+    @media print{html,body{width:100%;height:100%;print-color-adjust:exact;-webkit-print-color-adjust:exact}.author-tools,.editor-overlay{display:none!important}}
+  </style>
+  <defs>
+    <marker id="arrow-flow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--flow)"></path></marker>
+<marker id="arrow-pass" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--pass)"></path></marker>
+<marker id="arrow-reject" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--reject)"></path></marker>
+<marker id="arrow-feedback" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--feedback)"></path></marker>
+    <marker id="arrow-triangle" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11 Z" fill="context-stroke"></path></marker>
+    <marker id="arrow-dot" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto"><circle cx="6" cy="6" r="4.5" fill="context-stroke"></circle></marker>
+    <marker id="arrow-diamond" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,6 L6,1 L11,6 L6,11 Z" fill="context-stroke"></path></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="var(--bg)"></rect>
+  <line class="title-rule" x1="72" y1="66" x2="72" y2="148"></line>
+  <text id="visual-title" class="visual-title" x="102" y="103">产品批次质量检测与闭环处置流程</text>
+  <text id="visual-subtitle" class="visual-subtitle" x="104" y="139">质量检测、分级处置与规则迭代</text>
+  <g class="groups-layer"><g class="visual-group" data-group-id="G1" data-x="45" data-y="190" data-width="1055" data-height="720">
+    <rect x="45" y="190" width="1055" height="720" rx="18"></rect>
+    <text class="group-label" x="67" y="227"><tspan class="group-index">01</tspan><tspan class="group-name" dx="13">检测判定</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G2" data-x="1125" data-y="190" data-width="465" data-height="720">
+    <rect x="1125" y="190" width="465" height="720" rx="18"></rect>
+    <text class="group-label" x="1147" y="227"><tspan class="group-index">02</tspan><tspan class="group-name" dx="13">处置决策</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G3" data-x="1615" data-y="190" data-width="260" data-height="720">
+    <rect x="1615" y="190" width="260" height="720" rx="18"></rect>
+    <text class="group-label" x="1637" y="227"><tspan class="group-index">03</tspan><tspan class="group-name" dx="13">反馈更新</tspan></text>
+  </g></g>
+  <g class="edges-layer"><g class="visual-edge edge-flow" data-edge-wrapper="E01">
+    <path d="M265.0,362.5 L315.0,362.5" data-edge-id="E01" data-edge-from="N1" data-edge-to="N2" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="auto" data-end-anchor="auto" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E02">
+    <path d="M535.0,362.5 L585.0,362.5" data-edge-id="E02" data-edge-from="N2" data-edge-to="N3" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="auto" data-end-anchor="auto" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E03">
+    <path d="M720.0,270.0 L720.0,225.0 L1110.0,225.0 L1110.0,347.0 L1160.0,347.2" data-edge-id="E03" data-edge-from="N3" data-edge-to="N6" data-edge-kind="pass" data-edge-route="[[720,225],[1110,225],[1110,347]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="合格" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="913" y="202" width="84" height="42" rx="8"></rect><text class="edge-label" x="955" y="233" text-anchor="middle" data-edge-label-for="E03">合格</text></g>
+  </g>
+<g class="visual-edge edge-reject" data-edge-wrapper="E04">
+    <path d="M855.0,365.2 L845.0,365.0 L845.0,527.0 L870.0,527.1" data-edge-id="E04" data-edge-from="N3" data-edge-to="N4" data-edge-kind="reject" data-edge-route="[[845,365],[845,527]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="不合格" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="765" y="467" width="90" height="42" rx="8"></rect><text class="edge-label" x="810" y="498" text-anchor="middle" data-edge-label-for="E04">不合格</text></g>
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E05">
+    <path d="M972.1,600.0 L972.0,625.0 L925.0,625.0 L925.0,660.0" data-edge-id="E05" data-edge-from="N4" data-edge-to="N5" data-edge-kind="flow" data-edge-route="[[972,625],[925,625]]" data-start-anchor="auto" data-end-anchor="auto" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E06">
+    <path d="M1060.0,755.0 L1110.0,755.0 L1110.0,347.0 L1160.0,347.2" data-edge-id="E06" data-edge-from="N5" data-edge-to="N6" data-edge-kind="pass" data-edge-route="[[1110,755],[1110,347]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="合格" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="1078" y="427" width="84" height="42" rx="8"></rect><text class="edge-label" x="1120" y="458" text-anchor="middle" data-edge-label-for="E06">合格</text></g>
+  </g>
+<g class="visual-edge edge-reject" data-edge-wrapper="E07">
+    <path d="M1060.0,729.5 L1110.0,720.0 L1110.0,602.0 L1160.0,602.2" data-edge-id="E07" data-edge-from="N5" data-edge-to="N7" data-edge-kind="reject" data-edge-route="[[1110,720],[1110,602]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="可返工" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="1070" y="627" width="90" height="42" rx="8"></rect><text class="edge-label" x="1115" y="658" text-anchor="middle" data-edge-label-for="E07">可返工</text></g>
+  </g>
+<g class="visual-edge edge-reject" data-edge-wrapper="E08">
+    <path d="M925.0,850.0 L925.0,880.0 L1110.0,880.0 L1110.0,812.0 L1160.0,812.2" data-edge-id="E08" data-edge-from="N5" data-edge-to="N9" data-edge-kind="reject" data-edge-route="[[925,880],[1110,880],[1110,812]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="不可返工" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="970" y="857" width="120" height="42" rx="8"></rect><text class="edge-label" x="1030" y="888" text-anchor="middle" data-edge-label-for="E08">不可返工</text></g>
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E09">
+    <path d="M1365.0,602.5 L1390.0,602.5" data-edge-id="E09" data-edge-from="N7" data-edge-to="N8" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="auto" data-end-anchor="auto" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-feedback" data-edge-wrapper="E10">
+    <path d="M1477.8,540.0 L1478.0,485.0 L1478.0,168.0 L760.0,168.0 L760.0,755.0 L790.0,755.0" data-edge-id="E10" data-edge-from="N8" data-edge-to="N5" data-edge-kind="feedback" data-edge-route="[[1478,485],[1478,168],[760,168],[760,755]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="返工后复检" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="1210" y="145" width="150" height="42" rx="8"></rect><text class="edge-label" x="1285" y="176" text-anchor="middle" data-edge-label-for="E10">返工后复检</text></g>
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E11">
+    <path d="M1365.0,347.3 L1545.0,347.0 L1545.0,555.0 L1645.0,572.5" data-edge-id="E11" data-edge-from="N6" data-edge-to="N10" data-edge-kind="flow" data-edge-route="[[1545,347],[1545,555]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="结果归档" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="1485" y="422" width="120" height="42" rx="8"></rect><text class="edge-label" x="1545" y="453" text-anchor="middle" data-edge-label-for="E11">结果归档</text></g>
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E12">
+    <path d="M1365.0,812.3 L1545.0,812.0 L1545.0,625.0 L1645.0,607.5" data-edge-id="E12" data-edge-from="N9" data-edge-to="N10" data-edge-kind="flow" data-edge-route="[[1545,812],[1545,625]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="缺陷归档" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="1485" y="707" width="120" height="42" rx="8"></rect><text class="edge-label" x="1545" y="738" text-anchor="middle" data-edge-label-for="E12">缺陷归档</text></g>
+  </g>
+<g class="visual-edge edge-feedback" data-edge-wrapper="E13">
+    <path d="M1745.0,670.0 L1745.0,990.0 L425.0,990.0 L425.0,465.0 L425.0,425.0" data-edge-id="E13" data-edge-from="N10" data-edge-to="N2" data-edge-kind="feedback" data-edge-route="[[1745,990],[425,990],[425,465]]" data-start-anchor="auto" data-end-anchor="auto" data-edge-label="阈值更新" marker-end="url(#arrow-triangle)"></path>
+    <g class="edge-label-wrap"><rect x="970" y="967" width="120" height="42" rx="8"></rect><text class="edge-label" x="1030" y="998" text-anchor="middle" data-edge-label-for="E13">阈值更新</text></g>
+  </g></g>
+  <g class="nodes-layer"><g class="visual-node node-process" data-node-id="N1" data-group="G1" data-x="85" data-y="300" data-original-x="85" data-original-y="300" data-width="180" data-height="125" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>待检批次；新到货产品</desc><rect class="node-shape" x="85" y="300" width="180" height="125" rx="14"></rect>
+    <text class="node-tag" x="247" y="325" text-anchor="end"></text>
+    <text class="node-title" x="175" y="350.5" text-anchor="middle" data-node-title="待检批次"><tspan x="175" dy="0">待检批次</tspan></text>
+    <text class="node-detail" x="175" y="399.5" text-anchor="middle" data-node-detail="新到货产品"><tspan x="175" dy="0">新到货产品</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N2" data-group="G1" data-x="315" data-y="300" data-original-x="315" data-original-y="300" data-width="220" data-height="125" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>初次抽检；按基础比例取样</desc><rect class="node-shape" x="315" y="300" width="220" height="125" rx="14"></rect>
+    <text class="node-tag" x="517" y="325" text-anchor="end"></text>
+    <text class="node-title" x="425" y="350.5" text-anchor="middle" data-node-title="初次抽检"><tspan x="425" dy="0">初次抽检</tspan></text>
+    <text class="node-detail" x="425" y="399.5" text-anchor="middle" data-node-detail="按基础比例取样"><tspan x="425" dy="0">按基础比例取样</tspan></text>
+  </g>
+<g class="visual-node node-decision" data-node-id="N3" data-group="G1" data-x="585" data-y="270" data-original-x="585" data-original-y="270" data-width="270" data-height="185" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>初检判定；是否达到放行阈值</desc><polygon class="node-shape decision" points="720,270 855,362.5 720,455 585,362.5"></polygon>
+    <text class="node-tag" x="837" y="295" text-anchor="end"></text>
+    <text class="node-title" x="720" y="350.5" text-anchor="middle" data-node-title="初检判定"><tspan x="720" dy="0">初检判定</tspan></text>
+    <text class="node-detail" x="720" y="399.5" text-anchor="middle" data-node-detail="是否达到放行阈值"><tspan x="720" dy="0">是否达到放行阈值</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N4" data-group="G1" data-x="870" data-y="455" data-original-x="870" data-original-y="455" data-width="205" data-height="145" data-title-wrap="10" data-detail-wrap="6" tabindex="0">
+    <desc>扩大抽检；增加样本确认风险</desc><rect class="node-shape" x="870" y="455" width="205" height="145" rx="14"></rect>
+    <text class="node-tag" x="1057" y="480" text-anchor="end"></text>
+    <text class="node-title" x="972.5" y="500" text-anchor="middle" data-node-title="扩大抽检"><tspan x="972.5" dy="0">扩大抽检</tspan></text>
+    <text class="node-detail" x="972.5" y="549" text-anchor="middle" data-node-detail="增加样本确认风险"><tspan x="972.5" dy="0">增加样本确认</tspan><tspan x="972.5" dy="31">风险</tspan></text>
+  </g>
+<g class="visual-node node-decision" data-node-id="N5" data-group="G1" data-x="790" data-y="660" data-original-x="790" data-original-y="660" data-width="270" data-height="190" data-title-wrap="10" data-detail-wrap="10" tabindex="0">
+    <desc>复检判定；合格 / 可返工 / 不可返工</desc><polygon class="node-shape decision" points="925,660 1060,755 925,850 790,755"></polygon>
+    <text class="node-tag" x="1042" y="685" text-anchor="end"></text>
+    <text class="node-title" x="925" y="727.5" text-anchor="middle" data-node-title="复检判定"><tspan x="925" dy="0">复检判定</tspan></text>
+    <text class="node-detail" x="925" y="776.5" text-anchor="middle" data-node-detail="合格 / 可返工 / 不可返工"><tspan x="925" dy="0">合格 / 可返工 /</tspan><tspan x="925" dy="31"> 不可返工</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N6" data-group="G2" data-x="1160" data-y="285" data-original-x="1160" data-original-y="285" data-width="205" data-height="125" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>批次放行；进入交付环节</desc><rect class="node-shape" x="1160" y="285" width="205" height="125" rx="14"></rect>
+    <text class="node-tag" x="1347" y="310" text-anchor="end"></text>
+    <text class="node-title" x="1262.5" y="335.5" text-anchor="middle" data-node-title="批次放行"><tspan x="1262.5" dy="0">批次放行</tspan></text>
+    <text class="node-detail" x="1262.5" y="384.5" text-anchor="middle" data-node-detail="进入交付环节"><tspan x="1262.5" dy="0">进入交付环节</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N7" data-group="G2" data-x="1160" data-y="540" data-original-x="1160" data-original-y="540" data-width="205" data-height="125" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>返工处理；纠正可修复缺陷</desc><rect class="node-shape" x="1160" y="540" width="205" height="125" rx="14"></rect>
+    <text class="node-tag" x="1347" y="565" text-anchor="end"></text>
+    <text class="node-title" x="1262.5" y="590.5" text-anchor="middle" data-node-title="返工处理"><tspan x="1262.5" dy="0">返工处理</tspan></text>
+    <text class="node-detail" x="1262.5" y="639.5" text-anchor="middle" data-node-detail="纠正可修复缺陷"><tspan x="1262.5" dy="0">纠正可修复缺陷</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N8" data-group="G2" data-x="1390" data-y="540" data-original-x="1390" data-original-y="540" data-width="175" data-height="125" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>返工复检；验证整改效果</desc><rect class="node-shape" x="1390" y="540" width="175" height="125" rx="14"></rect>
+    <text class="node-tag" x="1547" y="565" text-anchor="end"></text>
+    <text class="node-title" x="1477.5" y="590.5" text-anchor="middle" data-node-title="返工复检"><tspan x="1477.5" dy="0">返工复检</tspan></text>
+    <text class="node-detail" x="1477.5" y="639.5" text-anchor="middle" data-node-detail="验证整改效果"><tspan x="1477.5" dy="0">验证整改效果</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N9" data-group="G2" data-x="1160" data-y="755" data-original-x="1160" data-original-y="755" data-width="205" data-height="115" data-title-wrap="10" data-detail-wrap="14" tabindex="0">
+    <desc>报废隔离；阻断不合格品</desc><rect class="node-shape" x="1160" y="755" width="205" height="115" rx="14"></rect>
+    <text class="node-tag" x="1347" y="780" text-anchor="end"></text>
+    <text class="node-title" x="1262.5" y="800.5" text-anchor="middle" data-node-title="报废隔离"><tspan x="1262.5" dy="0">报废隔离</tspan></text>
+    <text class="node-detail" x="1262.5" y="849.5" text-anchor="middle" data-node-detail="阻断不合格品"><tspan x="1262.5" dy="0">阻断不合格品</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N10" data-group="G3" data-x="1645" data-y="510" data-original-x="1645" data-original-y="510" data-width="200" data-height="160" data-title-wrap="10" data-detail-wrap="8" tabindex="0">
+    <desc>规则更新；更新阈值与抽检比例</desc><rect class="node-shape" x="1645" y="510" width="200" height="160" rx="14"></rect>
+    <text class="node-tag" x="1827" y="535" text-anchor="end"></text>
+    <text class="node-title" x="1745" y="562.5" text-anchor="middle" data-node-title="规则更新"><tspan x="1745" dy="0">规则更新</tspan></text>
+    <text class="node-detail" x="1745" y="611.5" text-anchor="middle" data-node-detail="更新阈值与抽检比例"><tspan x="1745" dy="0">更新阈值与抽检比</tspan><tspan x="1745" dy="31">例</tspan></text>
+  </g></g>
+  
+  </svg>

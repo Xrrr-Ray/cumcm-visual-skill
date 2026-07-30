@@ -34,11 +34,11 @@ const examples = [
     href: asset("/showcase-v2/charts/boxplot/index.html"),
   },
   {
-    eyebrow: "MODEL DIAGRAM · OPTIMIZATION",
-    title: "多目标配送路径优化模型",
-    description: "变量、目标、约束、算法与输出形成完整研究链路。",
-    image: asset("/showcase-v2/model-diagrams/optimization/pptx/diagram-preview.png"),
-    href: asset("/showcase-v2/model-diagrams/optimization/index.html"),
+    eyebrow: "PAPER VISUAL · FEEDBACK LOOP",
+    title: "产品批次质量检测与闭环处置",
+    description: "检测、复检、分级处置和规则更新构成可追踪闭环。",
+    image: asset("/showcase-v2/flowcharts/quality-loop/diagram-preview.png"),
+    href: asset("/showcase-v2/flowcharts/quality-loop/index.html"),
   },
   {
     eyebrow: "PAPER CHART · HEATMAP",
@@ -107,11 +107,11 @@ export default function Home() {
               <span />
               <span />
               <span />
-              <p>model-diagram / optimization / edit.html</p>
+              <p>paper-visual / quality-loop / edit.html</p>
             </div>
             <img
-              src={asset("/showcase-v2/model-diagrams/optimization/pptx/diagram-preview.png")}
-              alt="多目标配送路径优化模型关系图"
+              src={asset("/showcase-v2/flowcharts/quality-loop/diagram-preview.png")}
+              alt="产品批次质量检测与闭环处置流程图"
             />
           </div>
           <div className="floating-card card-edit">

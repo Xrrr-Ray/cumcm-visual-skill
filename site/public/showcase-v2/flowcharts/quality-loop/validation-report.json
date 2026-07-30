@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-07-23T06:06:09.216Z",
+  "mode": "paper-visual",
+  "type": "feedback-loop",
+  "title": "产品批次质量检测与闭环处置流程",
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "planValidation": {
+    "status": "PASS",
+    "errors": [],
+    "nodes": 10,
+    "groups": 3,
+    "edges": 13
+  },
+  "checks": [
+    {
+      "id": "single_canvas",
+      "pass": true
+    },
+    {
+      "id": "no_deck_chrome",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true,
+      "evidence": []
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    }
+  ],
+  "files": [
+    {
+      "name": "visual-plan.json",
+      "bytes": 6430,
+      "sha256": "b01fd9f3fc8444805f99f96bf06bf31ac76c22c022750464a0afddaadba5e06b"
+    },
+    {
+      "name": "index.html",
+      "bytes": 75378,
+      "sha256": "304aa969484e7307ceadc2834ad64a912feb39e2a30cf31fb0948bed2299c78c"
+    },
+    {
+      "name": "edit.html",
+      "bytes": 75408,
+      "sha256": "ed39543d91bb71da8f8d063792865735d1a3f1bb2cae80800ffe995914c69cc6"
+    },
+    {
+      "name": "diagram.svg",
+      "bytes": 24081,
+      "sha256": "69d9bc383af8ecdb979eca3a659f74883c111726da6ba6a433e3546358b9a18d"
+    }
+  ]
+}
