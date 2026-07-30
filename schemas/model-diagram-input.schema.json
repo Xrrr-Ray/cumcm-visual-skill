@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.html-ppt.dev/schemas/model-diagram-input.schema.json",
+  "title": "Model Diagram Input",
+  "type": "object",
+  "required": ["variables", "objective", "constraints", "solver", "outputs"],
+  "properties": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "theme": { "type": "string" },
+    "variables": { "type": "array", "minItems": 1 },
+    "parameters": { "type": "array" },
+    "objective": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "anyOf": [
+            { "required": ["expression"] },
+            { "required": ["latex"] }
+          ],
+          "properties": {
+            "sense": { "type": "string" },
+            "expression": { "type": "string", "minLength": 1 },
+            "latex": { "type": "string" },
+            "meaning": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "constraints": { "type": "array", "minItems": 1 },
+    "solver": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "method": { "type": "string" },
+            "steps": { "type": "array" }
+          }
+        }
+      ]
+    },
+    "validation": { "type": "array" },
+    "outputs": { "type": "array", "minItems": 1 }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,36 @@
+{
+  "row_count": 6,
+  "column_count": 3,
+  "columns": [
+    {
+      "name": "iteration",
+      "type": "number",
+      "count": 6,
+      "missing": 0,
+      "unique": 6,
+      "min": 1,
+      "max": 6,
+      "mean": 3.5
+    },
+    {
+      "name": "baseline",
+      "type": "number",
+      "count": 6,
+      "missing": 0,
+      "unique": 6,
+      "min": 0.35,
+      "max": 0.82,
+      "mean": 0.5116666666666667
+    },
+    {
+      "name": "improved",
+      "type": "number",
+      "count": 6,
+      "missing": 0,
+      "unique": 6,
+      "min": 0.19,
+      "max": 0.74,
+      "mean": 0.38166666666666665
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{"kind":"deck","id":"pr/1ap86t","name":"Deck"}
+{"kind":"layout","layoutId":"9e52d7fd-72a1-478a-b3f1-d63e66cf1638","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"860e4688-c107-442e-9cb8-a3c3cd55bd0d","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/ftln6u","slide":1,"title":"多目标配送路径优化模型","textShapes":19}
+{"kind":"shape","id":"sh/xkn6dkn2","slide":1,"name":"title-rule","bbox":[48,44,4,54.67]}
+{"kind":"textbox","id":"sh/ahw7i54b","slide":1,"name":"visual-title","text":"多目标配送路径优化模型","textPreview":"多目标配送路径优化模型","textChars":11,"textLines":1,"bbox":[68,41.33,1140,36]}
+{"kind":"textbox","id":"sh/bi5oba5w","slide":1,"name":"visual-subtitle","text":"决策变量—目标函数—约束—求解—输出","textPreview":"决策变量—目标函数—约束—求解—输出","textChars":18,"textLines":1,"bbox":[69.33,74.67,1138.67,28]}
+{"kind":"textbox","id":"sh/ofe5gvml","slide":1,"name":"group-G1","text":"01  模型输入","textPreview":"01  模型输入","textChars":8,"textLines":1,"bbox":[23.33,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/pgn690n6","slide":1,"name":"group-G2","text":"02  优化目标","textPreview":"02  优化目标","textChars":8,"textLines":1,"bbox":[250,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/2tcnel4f","slide":1,"name":"group-G3","text":"03  约束体系","textPreview":"03  约束体系","textChars":8,"textLines":1,"bbox":[476.67,126.67,293.33,513.33]}
+{"kind":"textbox","id":"sh/nulo7q50","slide":1,"name":"group-G4","text":"04  求解与检验","textPreview":"04  求解与检验","textChars":9,"textLines":1,"bbox":[786.67,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/8bypszmp","slide":1,"name":"group-G5","text":"05  模型输出","textPreview":"05  模型输出","textChars":8,"textLines":1,"bbox":[1013.33,126.67,243.33,513.33]}
+{"kind":"textbox","id":"sh/9c76l43a","slide":1,"name":"node-N1","text":"决策变量\nx_ijk：车辆 \nk 是否经过弧 i\n→j；t_i：节点","textPreview":"决策变量 | x_ijk：车辆  | k 是否经过弧 i | →j；t_i：节点","textChars":34,"textLines":4,"bbox":[43.33,200,170,126.67]}
+{"kind":"textbox","id":"sh/5sf650fm","slide":1,"name":"node-N2","text":"参数与常量\nd_ij：节点间距\n离；q_i：客户需\n求量；Q_k：车辆","textPreview":"参数与常量 | d_ij：节点间距 | 离；q_i：客户需 | 求量；Q_k：车辆","textChars":35,"textLines":4,"bbox":[43.33,390,170,113.33]}
+{"kind":"textbox","id":"sh/4r6pwve1","slide":1,"name":"node-N3","text":"最小化目标\nmin Z = α ∑\n_(i,j,k) dᵢ\nⱼxᵢⱼₖ + β ∑\nᵢ pᵢ","textPreview":"最小化目标 | min Z = α ∑ | _(i,j,k) dᵢ | ⱼxᵢⱼₖ + β ∑ | ᵢ pᵢ","textChars":46,"textLines":5,"bbox":[270,260,170,163.33]}
+{"kind":"textbox","id":"sh/jqxo3qxw","slide":1,"name":"node-N4","text":"流平衡约束\nΣⱼ xᵢjk = Σⱼ\n xⱼik；车辆进入与离\n开守恒","textPreview":"流平衡约束 | Σⱼ xᵢjk = Σⱼ |  xⱼik；车辆进入与离 | 开守恒","textChars":35,"textLines":4,"bbox":[500,180,246.67,86.67]}
+{"kind":"textbox","id":"sh/ipo7ulwb","slide":1,"name":"node-N5","text":"容量约束\n∑ᵢ qᵢ xᵢⱼₖ ≤\n Qₖ；装载量不超过容量","textPreview":"容量约束 | ∑ᵢ qᵢ xᵢⱼₖ ≤ |  Qₖ；装载量不超过容量","textChars":30,"textLines":3,"bbox":[500,281.67,246.67,86.67]}
+{"kind":"textbox","id":"sh/hof61gfq","slide":1,"name":"node-N6","text":"时间窗约束\naᵢ ≤ tᵢ ≤ bᵢ\n；在允许时段服务","textPreview":"时间窗约束 | aᵢ ≤ tᵢ ≤ bᵢ | ；在允许时段服务","textChars":27,"textLines":3,"bbox":[500,383.33,246.67,86.67]}
+{"kind":"textbox","id":"sh/wn6psbe5","slide":1,"name":"node-N7","text":"唯一服务约束\nΣₖΣⱼ xᵢjk = \n1；每个客户仅服务一次","textPreview":"唯一服务约束 | ΣₖΣⱼ xᵢjk =  | 1；每个客户仅服务一次","textChars":31,"textLines":3,"bbox":[500,485,246.67,86.67]}
+{"kind":"textbox","id":"sh/vmdozqxk","slide":1,"name":"node-N8","text":"改进遗传算法\n编码与初始化；选择\n交叉变异；另 2 \n项","textPreview":"改进遗传算法 | 编码与初始化；选择 | 交叉变异；另 2  | 项","textChars":28,"textLines":4,"bbox":[806.67,223.33,170,126.67]}
+{"kind":"textbox","id":"sh/ul4nqlwz","slide":1,"name":"node-N9","text":"结果检验\n约束可行性检查；基\n准算法对比；敏感性\n分析","textPreview":"结果检验 | 约束可行性检查；基 | 准算法对比；敏感性 | 分析","textChars":27,"textLines":4,"bbox":[806.67,416.67,170,113.33]}
+{"kind":"textbox","id":"sh/1kzqdkfu","slide":1,"name":"node-N10","text":"最优路径\n车辆访问顺序与分配\n方案","textPreview":"最优路径 | 车辆访问顺序与分配 | 方案","textChars":17,"textLines":3,"bbox":[1036.67,193.33,196.67,103.33]}
+{"kind":"textbox","id":"sh/gjqp4fe9","slide":1,"name":"node-N11","text":"目标函数值\n总里程与延误成本","textPreview":"目标函数值 | 总里程与延误成本","textChars":14,"textLines":2,"bbox":[1036.67,318.89,196.67,103.33]}
+{"kind":"textbox","id":"sh/0ny90jml","slide":1,"name":"node-N12","text":"评价指标\n收敛性、稳定性与运\n行时间","textPreview":"评价指标 | 收敛性、稳定性与运 | 行时间","textChars":18,"textLines":3,"bbox":[1036.67,444.44,196.67,103.33]}
+{"kind":"shape","id":"sh/lo7q9o36","slide":1,"bbox":[213.33,263.33,56.67,78.33]}
+{"kind":"shape","id":"sh/elgryt4f","slide":1,"bbox":[213.33,341.67,56.67,105]}
+{"kind":"shape","id":"sh/zmp87el0","slide":1,"bbox":[440,223.33,60,118.33]}
+{"kind":"shape","id":"sh/czy9wjmp","slide":1,"bbox":[440,325,60,16.67]}
+{"kind":"shape","id":"sh/dk7q5o3u","slide":1,"bbox":[440,341.67,60,85]}
+{"kind":"shape","id":"sh/qxwru94j","slide":1,"bbox":[440,341.67,60,186.67]}
+{"kind":"shape","id":"sh/ry583el4","slide":1,"bbox":[746.67,286.67,60,38.33]}
+{"kind":"shape","id":"sh/4ve9szmd","slide":1,"bbox":[891.67,350,0,66.67]}
+{"kind":"shape","id":"sh/pwnq14ny","slide":1,"bbox":[976.67,245,60,228.33]}
+{"kind":"shape","id":"sh/7qlsbupk","slide":1,"bbox":[976.67,370.56,60,102.78]}
+{"kind":"shape","id":"sh/6pcr2pof","slide":1,"bbox":[976.67,473.33,60,22.78]}
+{"kind":"notes","id":"nt/ftln6u","slide":1,"text":""}

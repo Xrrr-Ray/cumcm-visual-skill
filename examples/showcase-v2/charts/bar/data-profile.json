@@ -1,0 +1,33 @@
+{
+  "row_count": 4,
+  "column_count": 3,
+  "columns": [
+    {
+      "name": "模型",
+      "type": "category",
+      "count": 4,
+      "missing": 0,
+      "unique": 4
+    },
+    {
+      "name": "准确率",
+      "type": "number",
+      "count": 4,
+      "missing": 0,
+      "unique": 4,
+      "min": 0.812,
+      "max": 0.913,
+      "mean": 0.8675000000000002
+    },
+    {
+      "name": "F1分数",
+      "type": "number",
+      "count": 4,
+      "missing": 0,
+      "unique": 4,
+      "min": 0.798,
+      "max": 0.906,
+      "mean": 0.8570000000000001
+    }
+  ]
+}

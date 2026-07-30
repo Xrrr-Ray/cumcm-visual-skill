@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:38:34.057Z",
+  "ended_at": "2026-07-24T09:38:34.130Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\line\\paper-chart-convergence.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 6
+  },
+  "plan": {
+    "type": "line",
+    "title": "算法收敛性能对比",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 6,
+        "type": "line"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1290,
+    "sha256": "6b568eb46b736f214bdbf62b746288a820451258d48b0ce1a057909344a61f37"
+  },
+  "data-profile.json": {
+    "bytes": 615,
+    "sha256": "29c2a1f15d57b272fc669251bc97ea49916ed8cbcb8d810ea2ffab93f5af39a5"
+  },
+  "chart.svg": {
+    "bytes": 5349,
+    "sha256": "181e94c0246ce909811ce9f055916cbcf7d8af60c8b26a7cfbf01ea0bef731c3"
+  },
+  "index.html": {
+    "bytes": 6422,
+    "sha256": "58f62dbc803829ecc464152490c1ad3dfd44ef5ca9116fa108314a2d258351d6"
+  },
+  "edit.html": {
+    "bytes": 10361,
+    "sha256": "74c08b463641c26a3740e8e7260f585b144b485b526d7e4eb5e0c3c16ba2a61e"
+  }
+}

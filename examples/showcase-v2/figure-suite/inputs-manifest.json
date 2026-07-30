@@ -1,0 +1,16 @@
+{
+  "figures": {
+    "F01": {
+      "input": "paper-chart-convergence.csv",
+      "chart": "line",
+      "x": "iteration",
+      "y": "baseline,improved",
+      "title": "算法收敛曲线",
+      "x_title": "迭代次数",
+      "y_title": "目标函数值"
+    },
+    "F02": {
+      "input": "model-diagram-routing.json"
+    }
+  }
+}

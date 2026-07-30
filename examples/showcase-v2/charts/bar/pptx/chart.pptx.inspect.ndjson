@@ -1,0 +1,9 @@
+{"kind":"deck","id":"pr/s42th6","name":"Deck"}
+{"kind":"layout","layoutId":"efd53365-f827-4499-b3d7-5d7a5264082c","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"0a68139c-dcf4-465d-a71c-81c37f50f1f8","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/osdn3e","slide":1,"title":"不同模型预测性能对比","textShapes":2}
+{"kind":"shape","id":"sh/y18f650n","slide":1,"name":"title-rule","bbox":[44,36,6,76]}
+{"kind":"textbox","id":"sh/l4ze1kjy","slide":1,"name":"chart-title","text":"不同模型预测性能对比","textPreview":"不同模型预测性能对比","textChars":10,"textLines":1,"bbox":[70,34,1120,52]}
+{"kind":"textbox","id":"sh/k3qx8fid","slide":1,"name":"chart-subtitle","text":"准确率与 F1 分数","textPreview":"准确率与 F1 分数","textChars":10,"textLines":1,"bbox":[72,82,1120,30]}
+{"kind":"chart","id":"ch/zm94jah4","slide":1,"name":"","chartType":"bar","bbox":[82,145,1118,500]}
+{"kind":"notes","id":"nt/osdn3e","slide":1,"text":""}

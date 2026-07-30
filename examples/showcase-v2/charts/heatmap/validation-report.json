@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:46:41.824Z",
+  "ended_at": "2026-07-24T09:46:41.905Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\heatmap\\paper-chart-heatmap.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 8
+  },
+  "plan": {
+    "type": "heatmap",
+    "title": "配送系统变量相关性",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 8,
+        "type": "heatmap"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1991,
+    "sha256": "0d9179db3c9ee4df34f2858ff6e2b8f63c90913a53299b18eeec9a6c35b6692c"
+  },
+  "data-profile.json": {
+    "bytes": 1139,
+    "sha256": "769abb44fe71055ec2920a93975f1435b813f588af830965960a0fb5a893f319"
+  },
+  "chart.svg": {
+    "bytes": 12359,
+    "sha256": "d56d2618dac5d7e762b1e7aa74b61c99810e09d03a717b9f2dfc66756097411b"
+  },
+  "index.html": {
+    "bytes": 13435,
+    "sha256": "27ba155201a0cd993ee7cc8cbca9abe122fd9c9a0fb53eb7847ea4a6b1071ae8"
+  },
+  "edit.html": {
+    "bytes": 17774,
+    "sha256": "e23d2d8829ce576aaf030d0bbb21b7061baa0b5b75d88576a1177d95fbe07d16"
+  }
+}

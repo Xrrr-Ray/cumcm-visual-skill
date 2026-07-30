@@ -1,0 +1,66 @@
+{
+  "row_count": 8,
+  "column_count": 6,
+  "columns": [
+    {
+      "name": "需求强度",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 12,
+      "max": 64,
+      "mean": 36.5
+    },
+    {
+      "name": "平均距离",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 24.8,
+      "max": 52.2,
+      "mean": 35.4375
+    },
+    {
+      "name": "车辆数",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 4,
+      "max": 12,
+      "mean": 7.75
+    },
+    {
+      "name": "服务时长",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 96,
+      "max": 301,
+      "mean": 196.625
+    },
+    {
+      "name": "准时率",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 0.82,
+      "max": 0.97,
+      "mean": 0.91125
+    },
+    {
+      "name": "总成本",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 1350,
+      "max": 5020,
+      "mean": 2939.375
+    }
+  ]
+}

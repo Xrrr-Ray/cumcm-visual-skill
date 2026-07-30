@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "mode": "paper-chart",
+  "type": "bar",
+  "title": "不同模型预测性能对比",
+  "subtitle": "准确率与 F1 分数",
+  "theme": "academic-blue",
+  "canvas": {
+    "width": 1600,
+    "height": 1000
+  },
+  "data": {
+    "source": "paper-chart-bar.csv",
+    "sheet": "",
+    "row_count": 4,
+    "columns": [
+      {
+        "name": "模型",
+        "type": "category",
+        "count": 4,
+        "missing": 0,
+        "unique": 4
+      },
+      {
+        "name": "准确率",
+        "type": "number",
+        "count": 4,
+        "missing": 0,
+        "unique": 4,
+        "min": 0.812,
+        "max": 0.913,
+        "mean": 0.8675000000000002
+      },
+      {
+        "name": "F1分数",
+        "type": "number",
+        "count": 4,
+        "missing": 0,
+        "unique": 4,
+        "min": 0.798,
+        "max": 0.906,
+        "mean": 0.8570000000000001
+      }
+    ]
+  },
+  "encoding": {
+    "x": "模型",
+    "y": [
+      "准确率",
+      "F1分数"
+    ],
+    "error": "",
+    "series": "",
+    "x_title": "模型",
+    "y_title": "得分"
+  },
+  "options": {
+    "show_grid": true,
+    "show_legend": true,
+    "y_zero": true,
+    "accent": "",
+    "note": ""
+  }
+}

@@ -1,0 +1,9 @@
+{"kind":"deck","id":"pr/cxg74z","name":"Deck"}
+{"kind":"layout","layoutId":"c7246247-a8e6-40d2-b5ba-486ea9df0ee7","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"77a16b47-2564-430c-bf7f-d9201dcaea3b","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/cktbyn","slide":1,"title":"算法收敛性能对比","textShapes":2}
+{"kind":"shape","id":"sh/nyx4ri54","slide":1,"name":"title-rule","bbox":[44,36,6,76]}
+{"kind":"textbox","id":"sh/oz650nmp","slide":1,"name":"chart-title","text":"算法收敛性能对比","textPreview":"算法收敛性能对比","textChars":8,"textLines":1,"bbox":[70,34,1120,52]}
+{"kind":"textbox","id":"sh/p0z6tsna","slide":1,"name":"chart-subtitle","text":"基准方案与改进方案","textPreview":"基准方案与改进方案","textChars":9,"textLines":1,"bbox":[72,82,1120,30]}
+{"kind":"chart","id":"ch/ulcrulwr","slide":1,"name":"","chartType":"line","bbox":[82,145,1118,500]}
+{"kind":"notes","id":"nt/cktbyn","slide":1,"text":""}

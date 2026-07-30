@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:38:34.421Z",
+  "ended_at": "2026-07-24T09:38:34.463Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\scatter\\paper-chart-scatter.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 8
+  },
+  "plan": {
+    "type": "scatter",
+    "title": "训练成本与模型性能关系",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 8,
+        "type": "scatter"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1319,
+    "sha256": "51b60a4eb436fc7af22bbf3b196e574f7892a8995de9dd04587fde0c12e1cacf"
+  },
+  "data-profile.json": {
+    "bytes": 625,
+    "sha256": "ce3e80d15753567a8ad67ae4a2359ca6e2e770ba2cd8526cbb06837eaf30c479"
+  },
+  "chart.svg": {
+    "bytes": 5367,
+    "sha256": "ef4ed52619a5168d8918e3e1b7cded7e4194e52ddb2e7bb42ab9626070a696f0"
+  },
+  "index.html": {
+    "bytes": 6449,
+    "sha256": "cb3b232b35e02b346d45f33537ca882fff8761466755cd49e6fe016701d3a000"
+  },
+  "edit.html": {
+    "bytes": 10432,
+    "sha256": "a8992480c8ea6c8c25739c28bd9e3dc2cd9e61267b80bc193c200aefb592c302"
+  }
+}

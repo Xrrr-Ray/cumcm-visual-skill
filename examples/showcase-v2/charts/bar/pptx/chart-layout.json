@@ -1,0 +1,235 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/osdn3e",
+    "id": "osdn3e",
+    "slide": 1,
+    "layoutId": "0a68139c-dcf4-465d-a71c-81c37f50f1f8",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "efd53365-f827-4499-b3d7-5d7a5264082c",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F7F9FC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Microsoft YaHei"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "0a68139c-dcf4-465d-a71c-81c37f50f1f8",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "efd53365-f827-4499-b3d7-5d7a5264082c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "efd53365-f827-4499-b3d7-5d7a5264082c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y18f650n",
+      "id": "1",
+      "name": "title-rule",
+      "bbox": [
+        44,
+        36,
+        6,
+        76
+      ],
+      "geometry": "rect",
+      "fillColor": "#2457A7",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l4ze1kjy",
+      "id": "2",
+      "name": "chart-title",
+      "bbox": [
+        70,
+        34,
+        1120,
+        52
+      ],
+      "geometry": "rect",
+      "text": "不同模型预测性能对比",
+      "textPreview": "不同模型预测性能对比",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 38,
+        "typeface": "Microsoft YaHei",
+        "color": "#162033",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 2,
+          "bottom": 0,
+          "left": 2
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "不同模型预测性能对比"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "不同模型预测性能对比",
+          "resolvedTextStyle": {
+            "fontSize": 38,
+            "typeface": "Microsoft YaHei",
+            "color": "#162033",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "不同模型预测性能对比",
+              "fontSize": 38,
+              "typeface": "Microsoft YaHei",
+              "color": "#162033",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/k3qx8fid",
+      "id": "3",
+      "name": "chart-subtitle",
+      "bbox": [
+        72,
+        82,
+        1120,
+        30
+      ],
+      "geometry": "rect",
+      "text": "准确率与 F1 分数",
+      "textPreview": "准确率与 F1 分数",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 18,
+        "typeface": "Microsoft YaHei",
+        "color": "#607086",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 2,
+          "bottom": 0,
+          "left": 2
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "准确率与 F1 分数"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "准确率与 F1 分数",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Microsoft YaHei",
+            "color": "#607086",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "准确率与 F1 分数",
+              "fontSize": 18,
+              "typeface": "Microsoft YaHei",
+              "color": "#607086",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "chart",
+      "scope": "slide",
+      "aid": "ch/zm94jah4",
+      "id": "4",
+      "bbox": [
+        82,
+        145,
+        1118,
+        500
+      ],
+      "chartType": "bar"
+    }
+  ],
+  "composeRuns": []
+}

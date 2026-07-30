@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "mode": "paper-visual",
+  "type": "mindmap",
+  "title": "城市内涝风险评估与治理研究思维导图",
+  "subtitle": "模型基础—研究主线—任务分解",
+  "theme": "academic-blue",
+  "canvas": { "width": 1920, "height": 1080 },
+  "groups": [
+    { "id": "G1", "index": "01", "label": "模型基础", "x": 55, "y": 190, "width": 540, "height": 820 },
+    { "id": "G2", "index": "02", "label": "研究主线", "x": 650, "y": 190, "width": 450, "height": 820 },
+    { "id": "G3", "index": "03", "label": "任务分解", "x": 1155, "y": 190, "width": 710, "height": 820 }
+  ],
+  "nodes": [
+    { "id": "N3", "group": "G1", "label": "数据融合", "detail": "降雨 · 地形 · 排水", "x": 145, "y": 285, "width": 360, "height": 145 },
+    { "id": "N4", "group": "G1", "label": "风险评价", "detail": "暴露度 · 脆弱性", "x": 145, "y": 525, "width": 360, "height": 145 },
+    { "id": "N5", "group": "G1", "label": "调度优化", "detail": "时间窗 · 容量约束", "x": 145, "y": 765, "width": 360, "height": 145 },
+    { "id": "N1", "group": "G2", "shape": "pill", "label": "模型体系", "detail": "数据—评价—优化", "x": 735, "y": 350, "width": 280, "height": 165 },
+    { "id": "N2", "group": "G2", "shape": "pill", "label": "研究任务", "detail": "识别—预测—决策", "x": 735, "y": 690, "width": 280, "height": 165 },
+    { "id": "N6", "group": "G3", "label": "风险因子识别", "detail": "筛选关键驱动因素", "tag": "数据融合", "x": 1255, "y": 240, "width": 500, "height": 110 },
+    { "id": "N7", "group": "G3", "label": "易涝点分级", "detail": "形成空间风险等级", "tag": "风险评价", "x": 1255, "y": 365, "width": 500, "height": 110 },
+    { "id": "N8", "group": "G3", "label": "积水深度预测", "detail": "模拟典型降雨情景", "tag": "数据融合", "x": 1255, "y": 490, "width": 500, "height": 110 },
+    { "id": "N9", "group": "G3", "label": "避险路线规划", "detail": "最小化通行风险", "tag": "调度优化", "x": 1255, "y": 615, "width": 500, "height": 110 },
+    { "id": "N10", "group": "G3", "label": "应急资源配置", "detail": "匹配需求与供给", "tag": "调度优化", "x": 1255, "y": 740, "width": 500, "height": 110 },
+    { "id": "N11", "group": "G3", "label": "治理方案评价", "detail": "比较效益与稳健性", "tag": "综合分析", "x": 1255, "y": 865, "width": 500, "height": 110 }
+  ],
+  "edges": [
+    { "id": "E01", "from": "N3", "to": "N1", "kind": "flow", "route": [[610, 357], [670, 405]] },
+    { "id": "E02", "from": "N4", "to": "N1", "kind": "flow", "route": [[610, 597], [670, 450]] },
+    { "id": "E03", "from": "N5", "to": "N1", "kind": "flow", "route": [[610, 837], [670, 490]] },
+    { "id": "E04", "from": "N1", "to": "N2", "kind": "flow" },
+    { "id": "E05", "from": "N2", "to": "N6", "kind": "flow", "route": [[1125, 770], [1195, 295]] },
+    { "id": "E06", "from": "N2", "to": "N7", "kind": "flow", "route": [[1125, 775], [1195, 420]] },
+    { "id": "E07", "from": "N2", "to": "N8", "kind": "flow", "route": [[1125, 780], [1195, 545]] },
+    { "id": "E08", "from": "N2", "to": "N9", "kind": "flow", "route": [[1125, 785], [1195, 670]] },
+    { "id": "E09", "from": "N2", "to": "N10", "kind": "flow", "route": [[1125, 790], [1195, 795]] },
+    { "id": "E10", "from": "N2", "to": "N11", "kind": "flow", "route": [[1125, 795], [1195, 920]] }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "多目标配送路径优化模型",
+  "subtitle": "决策变量—目标函数—约束—求解—输出",
+  "variables": [
+    { "symbol": "x_ijk", "meaning": "车辆 k 是否经过弧 i→j" },
+    { "symbol": "t_i", "meaning": "节点 i 的到达时间" }
+  ],
+  "parameters": [
+    { "symbol": "d_ij", "meaning": "节点间距离" },
+    { "symbol": "q_i", "meaning": "客户需求量" },
+    { "symbol": "Q_k", "meaning": "车辆容量" }
+  ],
+  "objective": {
+    "sense": "min",
+    "expression": "min Z = α·总里程 + β·延误惩罚",
+    "latex": "\\min Z = \\alpha \\sum_{i,j,k} d_{ij}x_{ijk} + \\beta \\sum_i p_i",
+    "meaning": "兼顾运输成本与服务时效"
+  },
+  "constraints": [
+    { "name": "流平衡约束", "expression": "Σ_j x_ijk = Σ_j x_jik", "meaning": "车辆进入与离开守恒" },
+    { "name": "容量约束", "expression": "Σ_i q_i x_ijk ≤ Q_k", "latex": "\\sum_i q_i x_{ijk} \\leq Q_k", "meaning": "装载量不超过容量" },
+    { "name": "时间窗约束", "expression": "a_i ≤ t_i ≤ b_i", "meaning": "在允许时段服务" },
+    { "name": "唯一服务约束", "expression": "Σ_kΣ_j x_ijk = 1", "meaning": "每个客户仅服务一次" }
+  ],
+  "solver": {
+    "name": "改进遗传算法",
+    "steps": ["编码与初始化", "选择交叉变异", "可行性修复", "终止判定"]
+  },
+  "validation": ["约束可行性检查", "基准算法对比", "敏感性分析"],
+  "outputs": [
+    { "name": "最优路径", "meaning": "车辆访问顺序与分配方案" },
+    { "name": "目标函数值", "meaning": "总里程与延误成本" },
+    { "name": "评价指标", "meaning": "收敛性、稳定性与运行时间" }
+  ]
+}

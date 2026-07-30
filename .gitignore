@@ -1,0 +1,6 @@
+site/node_modules/
+site/.next/
+site/out/
+*.log
+.DS_Store
+Thumbs.db

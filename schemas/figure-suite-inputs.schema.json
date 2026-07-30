@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Figure Suite Inputs Manifest",
+  "type": "object",
+  "required": ["figures"],
+  "properties": {
+    "figures": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "engine": { "enum": ["paper-chart", "model-diagram", "paper-visual"] },
+          "input": { "type": "string" },
+          "plan": { "type": "string" },
+          "chart": { "type": "string" },
+          "x": { "type": "string" },
+          "y": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "array", "items": { "type": "string" } }
+            ]
+          },
+          "error": { "type": "string" },
+          "series": { "type": "string" },
+          "title": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "theme": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

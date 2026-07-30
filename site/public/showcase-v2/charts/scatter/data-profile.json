@@ -1,0 +1,36 @@
+{
+  "row_count": 8,
+  "column_count": 3,
+  "columns": [
+    {
+      "name": "训练时长",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 12,
+      "max": 96,
+      "mean": 47.125
+    },
+    {
+      "name": "准确率",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 0.801,
+      "max": 0.904,
+      "mean": 0.8630000000000001
+    },
+    {
+      "name": "参数量",
+      "type": "number",
+      "count": 8,
+      "missing": 0,
+      "unique": 8,
+      "min": 1.2,
+      "max": 12.1,
+      "mean": 5.6625000000000005
+    }
+  ]
+}

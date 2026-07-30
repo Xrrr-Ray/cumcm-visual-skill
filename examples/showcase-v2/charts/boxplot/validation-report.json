@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:38:34.767Z",
+  "ended_at": "2026-07-24T09:38:34.837Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\boxplot\\paper-chart-boxplot.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 24
+  },
+  "plan": {
+    "type": "boxplot",
+    "title": "不同算法交叉验证准确率分布",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 24,
+        "type": "boxplot"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1021,
+    "sha256": "d85186864b5e6ff4aa0c25cfb67db8d335877606d9aac9def4dc2da9291fb7aa"
+  },
+  "data-profile.json": {
+    "bytes": 378,
+    "sha256": "4f1458aa6dafed040db0c8941151bceceb3d4c213091590c29bf4597402cc6cb"
+  },
+  "chart.svg": {
+    "bytes": 4870,
+    "sha256": "c839562c250eebbac31c1878f40385d629816ca69c7f06f4e434e2504bdafa5d"
+  },
+  "index.html": {
+    "bytes": 5958,
+    "sha256": "53b086705ad435a90e3fa208a1bfc737fe00a30fc83d6d2f5a920df56c5fa76c"
+  },
+  "edit.html": {
+    "bytes": 9786,
+    "sha256": "9efb3a60147b94184bd3c55fdc483b980534a976148e87c9fca73102467abfe4"
+  }
+}

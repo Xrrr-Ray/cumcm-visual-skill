@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HTML-PPT Skill · 学生上手中心</title>
+  <meta name="description" content="面向数学建模竞赛和论文写作的 HTML-PPT Skill 学生使用说明，包含 Codex、Kimi、论文图、数据图、模型图和可编辑 PPTX。">
+  <style>
+    :root{--navy:#142746;--blue:#2457a7;--green:#26735b;--orange:#d2782f;--ink:#172033;--muted:#63748a;--line:#d9e3ef;--paper:#f4f7fb;--surface:#fff;--soft-blue:#edf3fb;--soft-green:#eaf5f0;--soft-orange:#fbf0e7}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",sans-serif}a{color:inherit}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(244,247,251,.91);border-bottom:1px solid rgba(217,227,239,.9);backdrop-filter:blur(16px)}
+    .nav{max-width:1240px;height:68px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{font-weight:900;letter-spacing:-.02em;text-decoration:none}.brand span{color:var(--blue)}
+    .navlinks{display:flex;gap:22px;align-items:center}.navlinks a{font-size:14px;color:#52647a;text-decoration:none;font-weight:700}.navlinks a:hover{color:var(--blue)}.navlinks .primary{padding:9px 13px;border-radius:9px;background:var(--navy);color:#fff}
+    .hero{background:radial-gradient(circle at 82% 12%,rgba(75,130,205,.28),transparent 28%),linear-gradient(135deg,#12213b,#17345f 68%,#2457a7);color:#fff}.hero-inner{max-width:1240px;margin:auto;padding:82px 28px 72px;display:grid;grid-template-columns:1.12fr .88fr;gap:64px;align-items:center}
+    .eyebrow{font-size:13px;font-weight:800;letter-spacing:.16em;color:#a9c6ee}.hero h1{font:800 54px/1.14 "Songti SC","STSong",serif;margin:17px 0 18px;letter-spacing:-.03em}.hero p{margin:0;color:#d5e3f5;line-height:1.85;font-size:17px;max-width:720px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:10px;text-decoration:none;font-weight:800;font-size:14px;border:1px solid rgba(255,255,255,.22)}.button.white{background:#fff;color:#17345f}.button.ghost{background:rgba(255,255,255,.08);color:#fff}.button:hover{transform:translateY(-1px)}
+    .hero-panel{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:22px;padding:24px;box-shadow:0 26px 75px rgba(4,15,34,.3)}.hero-panel-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.hero-panel-title strong{font-size:16px}.status{font-size:12px;padding:5px 9px;border-radius:999px;background:#dff5e9;color:#176044;font-weight:900}
+    .flow{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;align-items:center}.flow-step{min-height:94px;border-radius:14px;padding:15px 12px;background:rgba(255,255,255,.1);display:grid;place-items:center;text-align:center}.flow-step b{font-size:14px}.flow-step span{display:block;margin-top:5px;font-size:11px;color:#bdd0e8}.arrow{text-align:center;color:#a9c6ee;font-weight:900}
+    .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.mini-stat{border-radius:12px;padding:12px;background:rgba(255,255,255,.07)}.mini-stat strong{display:block;font-size:22px}.mini-stat span{font-size:11px;color:#bdd0e8}
+    main{max-width:1240px;margin:auto;padding:54px 28px 88px}.section{margin-bottom:72px;scroll-margin-top:90px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:24px}.section-head h2{margin:0;font-size:34px;letter-spacing:-.025em}.section-head p{max-width:620px;margin:0;color:var(--muted);line-height:1.75}.kicker{display:block;margin-bottom:9px;color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.14em}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 30px rgba(39,66,101,.06)}.card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#edf2f8;border-bottom:1px solid #e2e8f0}.card-body{padding:19px}
+    .tag{display:inline-block;padding:5px 8px;border-radius:7px;background:var(--soft-blue);color:var(--blue);font-size:11px;font-weight:900}.tag.green{background:var(--soft-green);color:var(--green)}.tag.orange{background:var(--soft-orange);color:#a75b23}.card h3{font-size:20px;margin:12px 0 8px}.card p{min-height:52px;margin:0 0 15px;color:var(--muted);font-size:14px;line-height:1.7}.card a{font-size:13px;color:var(--blue);font-weight:900;text-decoration:none}
+    .model-switch{display:flex;gap:8px;padding:6px;background:#e8edf4;border-radius:12px;width:max-content;margin-bottom:20px}.model-tab{border:0;border-radius:8px;padding:10px 17px;background:transparent;color:#596a80;font:800 14px "Microsoft YaHei";cursor:pointer}.model-tab.active{background:#fff;color:var(--blue);box-shadow:0 4px 15px rgba(45,67,94,.1)}
+    .model-pane{display:none}.model-pane.active{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px}.model-info,.code-panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}.model-info h3{font-size:26px;margin:0 0 10px}.model-info p{color:var(--muted);line-height:1.75}.checklist{display:grid;gap:10px;margin-top:18px}.check{display:flex;gap:10px;font-size:14px;line-height:1.55}.dot{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--soft-green);color:var(--green);font-size:12px;font-weight:900}
+    .code-panel{background:#111d31;color:#dce7f5;border-color:#1b3152}.code-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.code-head strong{font-size:13px;color:#91b9ec}.copy{border:1px solid #345073;background:#1c3150;color:#dbe9fb;border-radius:7px;padding:7px 10px;font:700 12px "Microsoft YaHei";cursor:pointer}pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.72 Consolas,"Cascadia Code",monospace;color:#e6edf7}.hint{margin-top:13px;color:#90a5c0;font-size:12px;line-height:1.6}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.step-no{font-size:32px;font-weight:900;color:#d3dfef}.step h3{margin:3px 0 8px;font-size:18px}.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+    .output-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.output{border-radius:14px;padding:18px;background:#fff;border:1px solid var(--line)}.output code{display:block;color:var(--blue);font-weight:900;margin-bottom:7px}.output span{color:var(--muted);font-size:13px;line-height:1.55}
+    .prompt-box{display:grid;grid-template-columns:1fr 1fr;gap:22px}.prompt-info{padding:27px;border-radius:18px;background:linear-gradient(145deg,#fff,#f0f5fb);border:1px solid var(--line)}.prompt-info h3{margin:0 0 12px;font-size:25px}.prompt-info p{color:var(--muted);line-height:1.75}.prompt-points{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.prompt-points span{padding:7px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:800;color:#52657b}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px 19px}.faq summary{cursor:pointer;font-weight:900}.faq p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.7}
+    .cta{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:34px;border-radius:22px;background:linear-gradient(135deg,#17345f,#2457a7);color:#fff}.cta h2{margin:0 0 9px;font-size:30px}.cta p{margin:0;color:#d4e2f4;line-height:1.7}.cta .actions{margin:0}footer{border-top:1px solid var(--line);padding:28px;color:#75849a;text-align:center;font-size:13px}
+    @media(max-width:980px){.hero-inner,.model-pane.active,.prompt-box{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.steps,.output-grid{grid-template-columns:repeat(2,1fr)}.hero-panel{max-width:680px}.cta{grid-template-columns:1fr}.cta .actions{margin-top:5px}}
+    @media(max-width:680px){.nav{height:auto;padding-top:14px;padding-bottom:14px}.navlinks a:not(.primary){display:none}.hero-inner{padding-top:58px}.hero h1{font-size:39px}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);height:24px}.cards,.steps,.output-grid,.faq{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:10px}.model-switch{width:100%}.model-tab{flex:1}.mini-stats{grid-template-columns:1fr 1fr}.cta{padding:26px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <nav class="nav" aria-label="主要导航">
+      <a class="brand" href="#top">HTML-PPT <span>学生上手中心</span></a>
+      <div class="navlinks">
+        <a href="#capabilities">功能效果</a><a href="#models">Codex / Kimi</a><a href="#workflow">使用流程</a><a href="#prompts">提示词</a><a class="primary" href="../showcase-v2/index.html">完整示例库</a>
+      </div>
+    </nav>
+  </div>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">PAPER VISUALIZATION · STUDENT EDITION</div>
+        <h1>论文图、数据图与模型图，一套流程完成</h1>
+        <p>面向数学建模竞赛和论文写作。使用 Codex 或 Kimi 理解内容，再由统一生成器输出可编辑 HTML、SVG、PNG 和 PowerPoint 原生对象。</p>
+        <div class="actions"><a class="button white" href="#models">选择使用入口</a><a class="button ghost" href="../showcase-v2/index.html">查看真实示例</a><a class="button ghost" href="../../docs/HTML-PPT-Skill-Student-Guide-Codex-Kimi.md">阅读 Markdown</a></div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-title"><strong>统一生成链路</strong><span class="status">已验证可交付</span></div>
+        <div class="flow"><div class="flow-step"><div><b>Codex / Kimi</b><span>理解论文语义</span></div></div><div class="arrow">→</div><div class="flow-step"><div><b>确定性生成器</b><span>布局、编辑与导出</span></div></div><div class="arrow">→</div><div class="flow-step"><div><b>多格式交付</b><span>HTML · SVG · PPTX</span></div></div></div>
+        <div class="mini-stats"><div class="mini-stat"><strong>7</strong><span>论文数据图类型</span></div><div class="mini-stat"><strong>87</strong><span>编辑器回归检查</span></div><div class="mini-stat"><strong>12</strong><span>PPTX 重导入通过</span></div></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="section" id="capabilities">
+      <div class="section-head"><div><span class="kicker">01 · 真实效果</span><h2>当前能够稳定完成什么</h2></div><p>下面直接使用完整示例库中的真实导出预览。每张图都有展示版、浏览器编辑版、SVG、输入数据和可编辑 PPTX。</p></div>
+      <div class="cards">
+        <article class="card"><img src="../showcase-v2/charts/boxplot/pptx/chart-preview.png" alt="论文箱线图示例"><div class="card-body"><span class="tag">PAPER CHART</span><h3>7 类论文数据图</h3><p>折线、柱状、散点、热力图、箱线图、雷达图和误差棒图。</p><a href="../showcase-v2/index.html">查看全部数据图 →</a></div></article>
+        <article class="card"><img src="../showcase-v2/model-diagrams/optimization/pptx/diagram-preview.png" alt="优化模型关系图示例"><div class="card-body"><span class="tag green">MODEL DIAGRAM</span><h3>变量—目标—约束关系图</h3><p>支持优化、预测和评价模型，保留常用 LaTeX 公式。</p><a href="../showcase-v2/model-diagrams/optimization/index.html">打开优化模型示例 →</a></div></article>
+        <article class="card"><img src="../showcase-v2/model-diagrams/prediction/pptx/diagram-preview.png" alt="预测模型关系图示例"><div class="card-body"><span class="tag green">FORMULA</span><h3>可编辑公式与结构</h3><p>公式使用数学字体文本；节点、分区、连接符均为独立对象。</p><a href="../showcase-v2/model-diagrams/prediction/edit.html">进入浏览器编辑 →</a></div></article>
+        <article class="card"><img src="../showcase-v2/charts/errorbar/pptx/chart-preview.png" alt="误差棒图示例"><div class="card-body"><span class="tag orange">EXPERIMENT</span><h3>实验结果与不确定性</h3><p>根据真实误差列生成均值、标准差或标准误表达。</p><a href="../showcase-v2/charts/errorbar/index.html">打开误差棒示例 →</a></div></article>
+        <article class="card"><img src="../showcase-v2/charts/heatmap/pptx/chart-preview.png" alt="相关性热力图示例"><div class="card-body"><span class="tag">DATA PROFILE</span><h3>CSV / Excel 数据画像</h3><p>生成前检查字段、缺失值、数值范围和行数，不擅自补造数据。</p><a href="../showcase-v2/charts/heatmap/edit.html">查看热力图编辑版 →</a></div></article>
+        <article class="card"><img src="../showcase-v2/charts/radar/pptx/chart-preview.png" alt="雷达图示例"><div class="card-body"><span class="tag orange">POWERPOINT</span><h3>PowerPoint 后续精修</h3><p>普通图使用原生图表；特殊图使用独立形状、文字和连接符。</p><a href="../showcase-v2/charts/radar/pptx/chart.pptx">下载雷达图 PPTX →</a></div></article>
+      </div>
+    </section>
+    <section class="section" id="models">
+      <div class="section-head"><div><span class="kicker">02 · 双模型入口</span><h2>选择 Codex 或 Kimi</h2></div><p>两种入口最终使用同一个生成器。差异主要在论文内容理解和节点拆分，不在最终文件格式。</p></div>
+      <div class="model-switch" role="tablist"><button class="model-tab active" role="tab" aria-selected="true" data-target="codex-pane">Codex 端到端</button><button class="model-tab" role="tab" aria-selected="false" data-target="kimi-pane">Kimi K3 规划</button></div>
+      <div class="model-pane active" id="codex-pane">
+        <div class="model-info"><span class="tag">推荐新手</span><h3>Codex：自然语言完成全流程</h3><p>在 Codex 中打开项目，要求它先阅读当前项目的 SKILL.md。Codex 会判断该生成单图、数据图、模型图、全文插图套件还是完整演示。</p><div class="checklist"><div class="check"><span class="dot">✓</span><span>无需记忆脚本命令，适合第一次使用。</span></div><div class="check"><span class="dot">✓</span><span>可以直接读取论文、CSV、Excel 和 JSON。</span></div><div class="check"><span class="dot">✓</span><span>可以继续修改代码、检查结果并导出 PPTX。</span></div><div class="check"><span class="dot">✓</span><span>当前覆盖全部已交付模块。</span></div></div></div>
+        <div class="code-panel"><div class="code-head"><strong>复制到 Codex</strong><button class="copy" data-copy="codex-prompt" data-label="复制提示词">复制提示词</button></div><pre id="codex-prompt">请先阅读当前项目的 SKILL.md，并使用 html-ppt Skill。
+
+根据我提供的论文内容生成一张技术路线图，不要生成完整 PPT。
+要求：
+- 用于数学建模国赛论文正文；
+- 近白背景、低饱和学术配色；
+- 节点、背景框、文字和箭头都可编辑；
+- 输出 index.html、edit.html、SVG、2× PNG 和可编辑 PPTX；
+- 不得补造原文中没有的数据、公式、结论和引用。</pre><div class="hint">把论文或附件同时交给 Codex。需要整套插图时，把“生成一张技术路线图”改为“读取整篇论文并规划一套插图”。</div></div>
+      </div>
+      <div class="model-pane" id="kimi-pane">
+        <div class="model-info"><span class="tag green">已有 Kimi 会员</span><h3>Kimi：会员 CLI 或开放平台 API</h3><p>Kimi 负责把论文材料转换为统一语义规划，随后仍由本地布局器生成 HTML、SVG 和编辑页。会员通道与 API 通道不能混用凭证。</p><div class="checklist"><div class="check"><span class="dot">✓</span><span>会员推荐使用官方 Kimi Code CLI 和设备登录。</span></div><div class="check"><span class="dot">✓</span><span>会员 provider：<code>kimi-cli</code>，模型：<code>kimi-code/k3</code>。</span></div><div class="check"><span class="dot">✓</span><span>开放平台 provider：<code>kimi</code>，模型：<code>kimi-k3</code>。</span></div><div class="check"><span class="dot">✓</span><span>当前正式接入论文单图的语义规划。</span></div></div></div>
+        <div class="code-panel"><div class="code-head"><strong>Kimi Code 会员命令</strong><button class="copy" data-copy="kimi-command" data-label="复制命令">复制命令</button></div><pre id="kimi-command">npm install -g @moonshot-ai/kimi-code@latest
+kimi login
+
+cd D:\html-ppt-skill-dev
+
+node scripts/plan-paper-visual-with-model.mjs `
+  --provider kimi-cli `
+  --model kimi-code/k3 `
+  --input input.md `
+  --prompt prompt.md `
+  --output output\kimi-member-planning-001</pre><div class="hint">每次重跑使用新的空输出目录。Moonshot 开放平台用户把 provider 改为 <code>kimi</code>、模型改为 <code>kimi-k3</code>，并设置 <code>MOONSHOT_API_KEY</code>。</div></div>
+      </div>
+    </section>
+    <section class="section" id="workflow">
+      <div class="section-head"><div><span class="kicker">03 · 标准工作流</span><h2>学生使用只需要四步</h2></div><p>先保证内容真实，再选择表达方式。默认生成单张论文图；只有明确要求答辩 PPT 时才进入多页模式。</p></div>
+      <div class="steps"><article class="step"><div class="step-no">01</div><h3>准备材料</h3><p>论文段落、Markdown、CSV、Excel 或模型 JSON。不要提前把数据截图成图片。</p></article><article class="step"><div class="step-no">02</div><h3>说明产物</h3><p>写清流程图、思维导图、数据图、模型图、整套插图或完整答辩 PPT。</p></article><article class="step"><div class="step-no">03</div><h3>查看与编辑</h3><p>先打开 index.html 看效果，再用 edit.html 拖动节点、分区和箭头。</p></article><article class="step"><div class="step-no">04</div><h3>论文交付</h3><p>论文优先使用 SVG；汇报精修使用 PPTX；同时保存规划 JSON 便于继续修改。</p></article></div>
+    </section>
+    <section class="section">
+      <div class="section-head"><div><span class="kicker">04 · 输出文件</span><h2>每个文件分别用来做什么</h2></div><p>系统不会只交付一张不可修改的截图，而是同时保留展示、编辑、矢量和结构数据。</p></div>
+      <div class="output-grid"><div class="output"><code>index.html</code><span>干净展示版，适合检查最终视觉。</span></div><div class="output"><code>edit.html</code><span>拖动节点、背景框、箭头并修改颜色。</span></div><div class="output"><code>diagram.svg</code><span>论文首选矢量文件，缩放不失真。</span></div><div class="output"><code>diagram.png</code><span>经过浏览器真实渲染的高分辨率位图。</span></div><div class="output"><code>visual-plan.json</code><span>保存节点、坐标、分区和连线关系。</span></div><div class="output"><code>chart-plan.json</code><span>保存数据字段、图型、坐标轴和主题。</span></div><div class="output"><code>diagram.pptx</code><span>节点、文字、框和连接符为原生对象。</span></div><div class="output"><code>validation-report.json</code><span>记录格式、渲染和导出是否通过。</span></div></div>
+    </section>
+    <section class="section" id="prompts">
+      <div class="section-head"><div><span class="kicker">05 · 提示词模板</span><h2>把需求说清楚，结果会更稳定</h2></div><p>好的请求需要同时说明内容来源、产物类型、表达重点、风格、编辑要求和禁止补造的内容。</p></div>
+      <div class="prompt-box">
+        <div class="prompt-info"><h3>一个完整请求应包含</h3><p>输入越明确，模型越少猜测。数据图必须给真实数据；数学模型最好给变量、目标、约束、求解和输出。</p><div class="prompt-points"><span>产物类型</span><span>输入材料</span><span>核心关系</span><span>学术风格</span><span>编辑要求</span><span>PPTX</span><span>禁止补造</span></div></div>
+        <div class="code-panel"><div class="code-head"><strong>通用学生模板</strong><button class="copy" data-copy="student-template" data-label="复制模板">复制模板</button></div><pre id="student-template">请使用 html-ppt Skill，根据【输入材料】生成一张【图型】。
+
+核心内容：
+- 【内容 1】
+- 【内容 2】
+- 【内容 3】
+
+要求：
+- 用于国赛论文正文；
+- 近白背景、低饱和学术配色；
+- 中文清晰，缩小后仍可阅读；
+- 节点、背景框、文字和箭头可编辑；
+- 输出 HTML、SVG、2× PNG、JSON 和可编辑 PPTX；
+- 不得补造输入中没有的数据、公式、结论和引用。</pre></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head"><div><span class="kicker">06 · 常见问题</span><h2>第一次使用最容易遇到什么</h2></div></div>
+      <div class="faq"><details><summary>为什么提示 Cannot find module？</summary><p>通常是 PowerShell 当前目录不正确。先执行 <code>cd D:\html-ppt-skill-dev</code>，再运行项目脚本。</p></details><details><summary>为什么输出目录非空就失败？</summary><p>这是为了保护已有结果。把 run-001 改成 run-002，不要直接覆盖上一次生成文件。</p></details><details><summary>Kimi 会员为什么不能当 API Key？</summary><p>Kimi Code 会员应使用 <code>kimi login</code> 和 <code>kimi-cli</code>。Moonshot API 使用独立的 <code>MOONSHOT_API_KEY</code>。</p></details><details><summary>没有 Codex 能不能生成？</summary><p>使用 Kimi CLI 可以完成语义规划并生成 HTML/SVG。PPTX 当前需要包含 <code>@oai/artifact-tool</code> 的 Codex 运行时依赖。</p></details><details><summary>为什么误差棒图不能自动算标准差？</summary><p>系统不猜测统计定义。请在数据中明确提供标准差、标准误或置信区间列，并指定误差列。</p></details><details><summary>论文内容太多怎么办？</summary><p>优先拆成主流程图、模型关系图和实验结果图，不要靠无限缩小字号把所有内容塞进一张图。</p></details></div>
+    </section>
+    <section class="cta"><div><h2>先看真实效果，再复制提示词开始</h2><p>完整示例库包含 7 类数据图、3 类模型图、全文插图套件、输入文件、提示词和可编辑 PPTX。</p></div><div class="actions"><a class="button white" href="../showcase-v2/index.html">打开完整示例库</a><a class="button ghost" href="../../docs/HTML-PPT-Skill-Student-Guide-Codex-Kimi.md">查看完整文档</a></div></section>
+  </main>
+  <footer>HTML-PPT Skill · 面向数学建模竞赛与论文写作 · Codex + Kimi K3</footer>
+  <script>
+    const tabs=[...document.querySelectorAll(".model-tab")];
+    tabs.forEach(tab=>tab.addEventListener("click",()=>{tabs.forEach(item=>{item.classList.toggle("active",item===tab);item.setAttribute("aria-selected",item===tab?"true":"false")});document.querySelectorAll(".model-pane").forEach(pane=>pane.classList.toggle("active",pane.id===tab.dataset.target))}));
+    document.querySelectorAll("[data-copy]").forEach(button=>button.addEventListener("click",async()=>{const text=document.getElementById(button.dataset.copy)?.innerText||"";try{await navigator.clipboard.writeText(text);button.textContent="已复制";setTimeout(()=>button.textContent=button.dataset.label,1500)}catch{button.textContent="请手动复制"}}));
+  </script>
+</body>
+</html>

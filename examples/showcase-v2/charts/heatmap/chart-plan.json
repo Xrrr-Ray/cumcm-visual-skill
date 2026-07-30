@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "mode": "paper-chart",
+  "type": "heatmap",
+  "title": "配送系统变量相关性",
+  "subtitle": "Pearson 相关系数矩阵",
+  "theme": "academic-blue",
+  "canvas": {
+    "width": 1600,
+    "height": 1000
+  },
+  "data": {
+    "source": "paper-chart-heatmap.csv",
+    "sheet": "",
+    "row_count": 8,
+    "columns": [
+      {
+        "name": "需求强度",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 12,
+        "max": 64,
+        "mean": 36.5
+      },
+      {
+        "name": "平均距离",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 24.8,
+        "max": 52.2,
+        "mean": 35.4375
+      },
+      {
+        "name": "车辆数",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 4,
+        "max": 12,
+        "mean": 7.75
+      },
+      {
+        "name": "服务时长",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 96,
+        "max": 301,
+        "mean": 196.625
+      },
+      {
+        "name": "准时率",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 0.82,
+        "max": 0.97,
+        "mean": 0.91125
+      },
+      {
+        "name": "总成本",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 1350,
+        "max": 5020,
+        "mean": 2939.375
+      }
+    ]
+  },
+  "encoding": {
+    "x": "需求强度",
+    "y": [
+      "平均距离",
+      "车辆数",
+      "服务时长",
+      "准时率",
+      "总成本"
+    ],
+    "error": "",
+    "series": "",
+    "x_title": "需求强度",
+    "y_title": "平均距离 / 车辆数 / 服务时长 / 准时率 / 总成本"
+  },
+  "options": {
+    "show_grid": true,
+    "show_legend": true,
+    "y_zero": false,
+    "accent": "",
+    "note": ""
+  }
+}

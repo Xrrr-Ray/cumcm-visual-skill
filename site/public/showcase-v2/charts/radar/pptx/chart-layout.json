@@ -1,0 +1,235 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/njg3gb",
+    "id": "njg3gb",
+    "slide": 1,
+    "layoutId": "08d53232-6e75-4a20-9d4a-2e60bb1057ec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "f726018a-39bd-4883-a04d-e8487e031f5f",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#F7F9FC",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Microsoft YaHei"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "08d53232-6e75-4a20-9d4a-2e60bb1057ec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "f726018a-39bd-4883-a04d-e8487e031f5f",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "f726018a-39bd-4883-a04d-e8487e031f5f",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7atwfu54",
+      "id": "1",
+      "name": "title-rule",
+      "bbox": [
+        44,
+        36,
+        6,
+        76
+      ],
+      "geometry": "rect",
+      "fillColor": "#2457A7",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sv2d8fmp",
+      "id": "2",
+      "name": "chart-title",
+      "bbox": [
+        70,
+        34,
+        1120,
+        52
+      ],
+      "geometry": "rect",
+      "text": "模型综合能力评估",
+      "textPreview": "模型综合能力评估",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 38,
+        "typeface": "Microsoft YaHei",
+        "color": "#162033",
+        "bold": true,
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 2,
+          "bottom": 0,
+          "left": 2
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "模型综合能力评估"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "模型综合能力评估",
+          "resolvedTextStyle": {
+            "fontSize": 38,
+            "typeface": "Microsoft YaHei",
+            "color": "#162033",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "模型综合能力评估",
+              "fontSize": 38,
+              "typeface": "Microsoft YaHei",
+              "color": "#162033",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/twbehkna",
+      "id": "3",
+      "name": "chart-subtitle",
+      "bbox": [
+        72,
+        82,
+        1120,
+        30
+      ],
+      "geometry": "rect",
+      "text": "六维指标对比",
+      "textPreview": "六维指标对比",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 18,
+        "typeface": "Microsoft YaHei",
+        "color": "#607086",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "autoFit": "shrinkText",
+        "autoFitScale": 1,
+        "insets": {
+          "top": 0,
+          "right": 2,
+          "bottom": 0,
+          "left": 2
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "六维指标对比"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "六维指标对比",
+          "resolvedTextStyle": {
+            "fontSize": 18,
+            "typeface": "Microsoft YaHei",
+            "color": "#607086",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "六维指标对比",
+              "fontSize": 18,
+              "typeface": "Microsoft YaHei",
+              "color": "#607086",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "chart",
+      "scope": "slide",
+      "aid": "ch/6x03yp4f",
+      "id": "4",
+      "bbox": [
+        82,
+        145,
+        1118,
+        500
+      ],
+      "chartType": "radar"
+    }
+  ],
+  "composeRuns": []
+}

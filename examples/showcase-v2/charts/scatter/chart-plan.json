@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "mode": "paper-chart",
+  "type": "scatter",
+  "title": "训练成本与模型性能关系",
+  "subtitle": "性能收益与计算成本权衡",
+  "theme": "academic-blue",
+  "canvas": {
+    "width": 1600,
+    "height": 1000
+  },
+  "data": {
+    "source": "paper-chart-scatter.csv",
+    "sheet": "",
+    "row_count": 8,
+    "columns": [
+      {
+        "name": "训练时长",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 12,
+        "max": 96,
+        "mean": 47.125
+      },
+      {
+        "name": "准确率",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 0.801,
+        "max": 0.904,
+        "mean": 0.8630000000000001
+      },
+      {
+        "name": "参数量",
+        "type": "number",
+        "count": 8,
+        "missing": 0,
+        "unique": 8,
+        "min": 1.2,
+        "max": 12.1,
+        "mean": 5.6625000000000005
+      }
+    ]
+  },
+  "encoding": {
+    "x": "训练时长",
+    "y": [
+      "准确率",
+      "参数量"
+    ],
+    "error": "",
+    "series": "",
+    "x_title": "训练时长 / min",
+    "y_title": "指标值"
+  },
+  "options": {
+    "show_grid": true,
+    "show_legend": true,
+    "y_zero": false,
+    "accent": "",
+    "note": ""
+  }
+}

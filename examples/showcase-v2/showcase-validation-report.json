@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "checked_at": "2026-07-25T15:17:19.927Z",
+  "root": "D:\\html-ppt-skill-dev\\examples\\showcase-v2",
+  "checks": [
+    {
+      "id": "gallery_links",
+      "pass": true,
+      "total": 65,
+      "missing": []
+    },
+    {
+      "id": "reports_pass",
+      "pass": true,
+      "total": 25,
+      "failed": []
+    },
+    {
+      "id": "pptx_count",
+      "pass": true,
+      "actual": 12
+    },
+    {
+      "id": "prompt_count",
+      "pass": true,
+      "actual": 11
+    }
+  ],
+  "reports": [
+    {
+      "path": "charts/bar/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/bar/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/boxplot/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/boxplot/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/errorbar/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/errorbar/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/heatmap/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/heatmap/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/line/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/line/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/radar/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/radar/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/scatter/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "charts/scatter/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "figure-suite/figures/F01/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "figure-suite/figures/F01/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "figure-suite/figures/F02/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "figure-suite/figures/F02/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "figure-suite/suite-execution-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "model-diagrams/evaluation/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "model-diagrams/evaluation/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "model-diagrams/optimization/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "model-diagrams/optimization/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "model-diagrams/prediction/pptx/pptx-export-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "model-diagrams/prediction/validation-report.json",
+      "status": "PASS",
+      "pass": true
+    }
+  ],
+  "pptx_files": [
+    "charts/bar/pptx/chart.pptx",
+    "charts/boxplot/pptx/chart.pptx",
+    "charts/errorbar/pptx/chart.pptx",
+    "charts/heatmap/pptx/chart.pptx",
+    "charts/line/pptx/chart.pptx",
+    "charts/radar/pptx/chart.pptx",
+    "charts/scatter/pptx/chart.pptx",
+    "figure-suite/figures/F01/pptx/chart.pptx",
+    "figure-suite/figures/F02/pptx/diagram.pptx",
+    "model-diagrams/evaluation/pptx/diagram.pptx",
+    "model-diagrams/optimization/pptx/diagram.pptx",
+    "model-diagrams/prediction/pptx/diagram.pptx"
+  ]
+}

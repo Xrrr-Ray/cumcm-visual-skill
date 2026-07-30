@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:38:34.247Z",
+  "ended_at": "2026-07-24T09:38:34.307Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\bar\\paper-chart-bar.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 4
+  },
+  "plan": {
+    "type": "bar",
+    "title": "不同模型预测性能对比",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 4,
+        "type": "bar"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1210,
+    "sha256": "44a150384606287f4d7b51dd599ec78abbc4fe6e140835398579a1a58eb1fa7e"
+  },
+  "data-profile.json": {
+    "bytes": 567,
+    "sha256": "e2e98f8556084581ceac904ee0ded17df6191972be35948094cb5a63b57a89f6"
+  },
+  "chart.svg": {
+    "bytes": 4022,
+    "sha256": "fb537571825ed476236be79012d15640eaae60c24cce1a17f6e070456fdd99ad"
+  },
+  "index.html": {
+    "bytes": 5101,
+    "sha256": "58def300d65ccdd488271cdbe2eec77239e94b688f78a1e02afe8c912effe441"
+  },
+  "edit.html": {
+    "bytes": 8991,
+    "sha256": "7eaa911ac5558941466c6a5b8fb116de02c3e632199dc327734623312315333c"
+  }
+}

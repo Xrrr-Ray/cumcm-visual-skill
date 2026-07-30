@@ -1,0 +1,20 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import { planModelDiagram } from "../model-diagram/model-diagram.mjs";
+import { latexToUnicode } from "../model-diagram/math-text.mjs";
+import { renderHtml, renderSvg, validateVisualPlan } from "../paper-visual/render-paper-visual.mjs";
+
+const input = JSON.parse(fs.readFileSync(new URL("./fixtures/model-diagram-routing.json", import.meta.url), "utf8"));
+const plan = planModelDiagram(input);
+assert.equal(plan.type, "architecture");
+assert.equal(plan.groups.length, 5);
+assert.ok(plan.nodes.length >= 10);
+assert.ok(plan.edges.length >= 10);
+assert.equal(validateVisualPlan(plan).status, "PASS");
+assert.doesNotMatch(renderSvg(plan), /NaN|undefined|Infinity/);
+assert.match(renderHtml(plan, { edit: true }), /论文图高级编辑器/);
+assert.equal(latexToUnicode("\\sum_i x_i \\leq Q_k"), "∑ᵢ xᵢ ≤ Qₖ");
+assert.ok(plan.nodes.some((node) => node.math && node.formula_latex));
+assert.match(renderSvg(plan), /node-math/);
+assert.throws(() => planModelDiagram({ variables: [], constraints: [] }), /决策变量/);
+process.stdout.write(`${JSON.stringify({ status: "PASS", groups: plan.groups.length, nodes: plan.nodes.length, edges: plan.edges.length }, null, 2)}\n`);

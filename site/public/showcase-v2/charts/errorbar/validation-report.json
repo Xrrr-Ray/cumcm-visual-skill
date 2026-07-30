@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:38:35.123Z",
+  "ended_at": "2026-07-24T09:38:35.177Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\errorbar\\paper-chart-errorbar.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 6
+  },
+  "plan": {
+    "type": "errorbar",
+    "title": "样本规模对预测性能的影响",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 6,
+        "type": "errorbar"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1330,
+    "sha256": "13aee28e914d35e51a5874da8caeb6fe7dcaf0389e8dec6d89fcfb8e0a01184d"
+  },
+  "data-profile.json": {
+    "bytes": 649,
+    "sha256": "b59a4e6ca56da2d826c1c706428b2e816b5b2662b7948ea2a46a5574324a7ee9"
+  },
+  "chart.svg": {
+    "bytes": 6484,
+    "sha256": "ec089f08d406a0edf51b6c68830bcdc53a8f83184c59abfda7516958c7ea7605"
+  },
+  "index.html": {
+    "bytes": 7569,
+    "sha256": "74b0980a82f8a497afd556f893b77cb5745642009d090ee72aed2b8d3863df00"
+  },
+  "edit.html": {
+    "bytes": 11559,
+    "sha256": "c2cb8842ea743de03e7dbb823126281699013a296c862662d74cb15063c9ed75"
+  }
+}

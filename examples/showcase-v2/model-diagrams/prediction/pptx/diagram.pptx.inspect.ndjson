@@ -1,0 +1,36 @@
+{"kind":"deck","id":"pr/m50p9w","name":"Deck"}
+{"kind":"layout","layoutId":"075ed591-6427-49bb-876b-8e1d563f7a2b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"1a0d77a4-dec2-4876-be20-b1ea5531c58a","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/8z744k","slide":1,"title":"多源特征需求预测模型","textShapes":19}
+{"kind":"shape","id":"sh/u9w72tgn","slide":1,"name":"title-rule","bbox":[48,44,4,54.67]}
+{"kind":"textbox","id":"sh/hcnqdozy","slide":1,"name":"visual-title","text":"多源特征需求预测模型","textPreview":"多源特征需求预测模型","textChars":10,"textLines":1,"bbox":[68,41.33,1140,36]}
+{"kind":"textbox","id":"sh/gbep4jyd","slide":1,"name":"visual-subtitle","text":"特征输入—损失函数—约束—训练验证—预测输出","textPreview":"特征输入—损失函数—约束—训练验证—预测输出","textChars":22,"textLines":1,"bbox":[69.33,74.67,1138.67,28]}
+{"kind":"textbox","id":"sh/3yp8fyh4","slide":1,"name":"group-G1","text":"01  模型输入","textPreview":"01  模型输入","textChars":8,"textLines":1,"bbox":[23.33,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/2xw76tgj","slide":1,"name":"group-G2","text":"02  优化目标","textPreview":"02  优化目标","textChars":8,"textLines":1,"bbox":[250,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/p07qh8za","slide":1,"name":"group-G3","text":"03  约束体系","textPreview":"03  约束体系","textChars":8,"textLines":1,"bbox":[476.67,126.67,293.33,513.33]}
+{"kind":"textbox","id":"sh/4zyp83yp","slide":1,"name":"group-G4","text":"04  求解与检验","textPreview":"04  求解与检验","textChars":9,"textLines":1,"bbox":[786.67,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/j2lo3eh0","slide":1,"name":"group-G5","text":"05  模型输出","textPreview":"05  模型输出","textChars":8,"textLines":1,"bbox":[1013.33,126.67,243.33,513.33]}
+{"kind":"textbox","id":"sh/ihc7u9gf","slide":1,"name":"node-N1","text":"决策变量\nx_t：时刻 t \n的历史需求特征；w\n_t：天气与节假日","textPreview":"决策变量 | x_t：时刻 t  | 的历史需求特征；w | _t：天气与节假日","textChars":34,"textLines":4,"bbox":[43.33,200,170,126.67]}
+{"kind":"textbox","id":"sh/o7qpwbq5","slide":1,"name":"node-N2","text":"参数与常量\nθ：模型可训练参数\n；λ：正则化强度","textPreview":"参数与常量 | θ：模型可训练参数 | ；λ：正则化强度","textChars":24,"textLines":3,"bbox":[43.33,390,170,113.33]}
+{"kind":"textbox","id":"sh/98zqpw7q","slide":1,"name":"node-N3","text":"最小化目标\nmin_(θ) (1)\n/(n)∑ₜ₌₁ⁿ(y\nₜ-ŷₜ)² + λ\n ||θ||₂²","textPreview":"最小化目标 | min_(θ) (1) | /(n)∑ₜ₌₁ⁿ(y | ₜ-ŷₜ)² + λ |  ||θ||₂²","textChars":50,"textLines":5,"bbox":[270,260,170,163.33]}
+{"kind":"textbox","id":"sh/m5o7u18z","slide":1,"name":"node-N4","text":"非负预测\nŷₜ ≥ 0；需求量不\n能为负","textPreview":"非负预测 | ŷₜ ≥ 0；需求量不 | 能为负","textChars":21,"textLines":3,"bbox":[500,180,246.67,86.67]}
+{"kind":"textbox","id":"sh/n6h8n6pk","slide":1,"name":"node-N5","text":"容量上界\nŷₜ ≤ Cₜ；不超过\n系统最大承载量","textPreview":"容量上界 | ŷₜ ≤ Cₜ；不超过 | 系统最大承载量","textChars":25,"textLines":3,"bbox":[500,281.67,246.67,86.67]}
+{"kind":"textbox","id":"sh/wbqp0b61","slide":1,"name":"node-N6","text":"时序一致性\n训练集时间早于验证集；避\n免未来信息泄漏","textPreview":"时序一致性 | 训练集时间早于验证集；避 | 免未来信息泄漏","textChars":26,"textLines":3,"bbox":[500,383.33,246.67,86.67]}
+{"kind":"textbox","id":"sh/xwzqtg7m","slide":1,"name":"node-N7","text":"缺失率约束\nmissing(xⱼ) \n≤ 5%；保证输入特征质\n量","textPreview":"缺失率约束 | missing(xⱼ)  | ≤ 5%；保证输入特征质 | 量","textChars":33,"textLines":4,"bbox":[500,485,246.67,86.67]}
+{"kind":"textbox","id":"sh/a987y18b","slide":1,"name":"node-N8","text":"时序交叉验证 + X\nGBoost\n滑动窗口构造样本；\n贝叶斯参数搜索；另\n 2 项","textPreview":"时序交叉验证 + X | GBoost | 滑动窗口构造样本； | 贝叶斯参数搜索；另 |  2 项","textChars":42,"textLines":5,"bbox":[806.67,223.33,170,126.67]}
+{"kind":"textbox","id":"sh/bah8r6pw","slide":1,"name":"node-N9","text":"结果检验\nMAE / RMS\nE；残差诊断；消融\n实验","textPreview":"结果检验 | MAE / RMS | E；残差诊断；消融 | 实验","textChars":27,"textLines":4,"bbox":[806.67,416.67,170,113.33]}
+{"kind":"textbox","id":"sh/cf6porqx","slide":1,"name":"node-N10","text":"点预测\n未来各时段需求量","textPreview":"点预测 | 未来各时段需求量","textChars":12,"textLines":2,"bbox":[1036.67,193.33,196.67,103.33]}
+{"kind":"textbox","id":"sh/d0f6hc7i","slide":1,"name":"node-N11","text":"置信区间\n预测上下界","textPreview":"置信区间 | 预测上下界","textChars":10,"textLines":2,"bbox":[1036.67,318.89,196.67,103.33]}
+{"kind":"textbox","id":"sh/tw76l8z6","slide":1,"name":"node-N12","text":"特征贡献\nSHAP 重要性排\n序","textPreview":"特征贡献 | SHAP 重要性排 | 序","textChars":16,"textLines":3,"bbox":[1036.67,444.44,196.67,103.33]}
+{"kind":"shape","id":"sh/svy5c3il","slide":1,"bbox":[213.33,263.33,56.67,78.33]}
+{"kind":"shape","id":"sh/7up4jyhg","slide":1,"bbox":[213.33,341.67,56.67,105]}
+{"kind":"shape","id":"sh/6twnad0v","slide":1,"bbox":[440,223.33,60,118.33]}
+{"kind":"shape","id":"sh/h076pszi","slide":1,"bbox":[440,325,60,16.67]}
+{"kind":"shape","id":"sh/gzy5gnix","slide":1,"bbox":[440,341.67,60,85]}
+{"kind":"shape","id":"sh/fyponihc","slide":1,"bbox":[440,341.67,60,186.67]}
+{"kind":"shape","id":"sh/uxgned0r","slide":1,"bbox":[746.67,286.67,60,38.33]}
+{"kind":"shape","id":"sh/p4r6tsze","slide":1,"bbox":[891.67,350,0,66.67]}
+{"kind":"shape","id":"sh/43i5knit","slide":1,"bbox":[976.67,245,60,228.33]}
+{"kind":"shape","id":"sh/mx8by5cf","slide":1,"bbox":[976.67,370.56,60,102.78]}
+{"kind":"shape","id":"sh/ny1crqtk","slide":1,"bbox":[976.67,473.33,60,22.78]}
+{"kind":"notes","id":"nt/8z744k","slide":1,"text":""}

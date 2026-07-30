@@ -1,0 +1,81 @@
+{
+  "title": "区域韧性综合评价模型",
+  "subtitle": "评价指标—综合目标—权重约束—测算—结果解释",
+  "variables": [
+    {
+      "symbol": "z_ij",
+      "meaning": "区域 i 的第 j 个标准化指标"
+    },
+    {
+      "symbol": "w_j",
+      "meaning": "第 j 个指标权重"
+    }
+  ],
+  "parameters": [
+    {
+      "symbol": "z_j^+",
+      "meaning": "指标正理想解"
+    },
+    {
+      "symbol": "z_j^-",
+      "meaning": "指标负理想解"
+    }
+  ],
+  "objective": {
+    "sense": "max",
+    "expression": "\\max C_i = \\frac{D_i^-}{D_i^+ + D_i^-}",
+    "latex": "\\max C_i = \\frac{D_i^-}{D_i^+ + D_i^-}",
+    "meaning": "获得接近正理想解的综合韧性得分"
+  },
+  "constraints": [
+    {
+      "name": "权重归一化",
+      "latex": "\\sum_{j=1}^{m} w_j = 1",
+      "meaning": "全部指标权重之和为 1"
+    },
+    {
+      "name": "权重非负",
+      "latex": "w_j \\geq 0",
+      "meaning": "指标贡献不为负"
+    },
+    {
+      "name": "同向化处理",
+      "expression": "成本型指标先正向化",
+      "meaning": "统一指标优劣方向"
+    },
+    {
+      "name": "量纲消除",
+      "expression": "z_ij ∈ [0,1]",
+      "meaning": "保证指标可比较"
+    }
+  ],
+  "solver": {
+    "name": "熵权法—TOPSIS",
+    "steps": [
+      "指标同向化",
+      "熵权计算",
+      "理想解距离",
+      "贴近度排序"
+    ]
+  },
+  "outputs": [
+    {
+      "name": "综合得分",
+      "meaning": "各区域韧性贴近度"
+    },
+    {
+      "name": "分项贡献",
+      "meaning": "经济、社会、生态维度贡献"
+    },
+    {
+      "name": "等级划分",
+      "meaning": "高、中、低韧性区域"
+    }
+  ],
+  "validation": [
+    "权重敏感性",
+    "专家排序一致性",
+    "年度稳健性"
+  ],
+  "theme": "minimal-gray"
+}

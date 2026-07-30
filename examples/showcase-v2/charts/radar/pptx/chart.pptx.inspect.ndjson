@@ -1,0 +1,9 @@
+{"kind":"deck","id":"pr/y8y9ec","name":"Deck"}
+{"kind":"layout","layoutId":"f726018a-39bd-4883-a04d-e8487e031f5f","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"08d53232-6e75-4a20-9d4a-2e60bb1057ec","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/njg3gb","slide":1,"title":"模型综合能力评估","textShapes":2}
+{"kind":"shape","id":"sh/7atwfu54","slide":1,"name":"title-rule","bbox":[44,36,6,76]}
+{"kind":"textbox","id":"sh/sv2d8fmp","slide":1,"name":"chart-title","text":"模型综合能力评估","textPreview":"模型综合能力评估","textChars":8,"textLines":1,"bbox":[70,34,1120,52]}
+{"kind":"textbox","id":"sh/twbehkna","slide":1,"name":"chart-subtitle","text":"六维指标对比","textPreview":"六维指标对比","textChars":6,"textLines":1,"bbox":[72,82,1120,30]}
+{"kind":"chart","id":"ch/6x03yp4f","slide":1,"name":"","chartType":"radar","bbox":[82,145,1118,500]}
+{"kind":"notes","id":"nt/njg3gb","slide":1,"text":""}

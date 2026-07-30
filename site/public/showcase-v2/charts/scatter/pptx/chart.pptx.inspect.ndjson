@@ -1,0 +1,9 @@
+{"kind":"deck","id":"pr/qyl8ob","name":"Deck"}
+{"kind":"layout","layoutId":"35621d5e-a38a-46e7-99e7-9880e71ddb42","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"1dd9f794-7bad-4525-8e72-0239e4099a25","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/dgdml7","slide":1,"title":"训练成本与模型性能关系","textShapes":2}
+{"kind":"shape","id":"sh/rmtkj2pg","slide":1,"name":"title-rule","bbox":[44,36,6,76]}
+{"kind":"textbox","id":"sh/sn2lcnq1","slide":1,"name":"chart-title","text":"训练成本与模型性能关系","textPreview":"训练成本与模型性能关系","textChars":11,"textLines":1,"bbox":[70,34,1120,52]}
+{"kind":"textbox","id":"sh/d8b2ls7m","slide":1,"name":"chart-subtitle","text":"性能收益与计算成本权衡","textPreview":"性能收益与计算成本权衡","textChars":11,"textLines":1,"bbox":[72,82,1120,30]}
+{"kind":"chart","id":"ch/6lgzyhgf","slide":1,"name":"","chartType":"scatter","bbox":[82,145,1118,500]}
+{"kind":"notes","id":"nt/dgdml7","slide":1,"text":""}

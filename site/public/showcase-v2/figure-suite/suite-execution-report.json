@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:58:13.968Z",
+  "ended_at": "2026-07-24T09:58:43.699Z",
+  "figures_total": 2,
+  "figures_passed": 2,
+  "figures_failed": 0,
+  "figures_skipped": 0,
+  "results": [
+    {
+      "id": "F01",
+      "engine": "paper-chart",
+      "status": "PASS",
+      "command": [
+        "D:\\Programs\\nodejs\\node.exe",
+        "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\scripts\\generate-paper-chart.mjs",
+        "--input",
+        "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\tests\\fixtures\\paper-chart-convergence.csv",
+        "--output",
+        "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F01",
+        "--chart",
+        "line",
+        "--x",
+        "iteration",
+        "--y",
+        "baseline,improved",
+        "--title",
+        "算法收敛曲线",
+        "--x-title",
+        "迭代次数",
+        "--y-title",
+        "目标函数值"
+      ],
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"type\": \"line\",\n  \"rows\": 6,\n  \"output\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F01\"\n}\n",
+      "stderr": "",
+      "reason": "",
+      "pptx": {
+        "status": "PASS",
+        "filename": "chart.pptx",
+        "command": [
+          "D:\\Programs\\nodejs\\node.exe",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\exporters\\export-paper-chart-pptx.mjs",
+          "--plan",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F01\\chart-plan.json",
+          "--input",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\tests\\fixtures\\paper-chart-convergence.csv",
+          "--output",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F01\\pptx",
+          "--node-modules",
+          "C:\\Users\\Xrrr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules"
+        ],
+        "stdout": "Inspect result written to file: C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F01\\pptx\\chart.pptx.inspect.ndjson\n{\n  \"schema_version\": 1,\n  \"status\": \"PASS\",\n  \"started_at\": \"2026-07-24T09:58:14.261Z\",\n  \"ended_at\": \"2026-07-24T09:58:19.472Z\",\n  \"artifact_tool\": \"C:\\\\Users\\\\Xrrr\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\node_modules\\\\@oai\\\\artifact-tool\\\\dist\\\\artifact_tool.mjs\",\n  \"plan\": {\n    \"title\": \"算法收敛曲线\",\n    \"type\": \"line\",\n    \"theme\": \"academic-blue\"\n  },\n  \"metadata\": {\n    \"nativeMode\": \"native-chart\",\n    \"type\": \"line\",\n    \"rows\": 6,\n    \"slideSize\": {\n      \"width\": 1280,\n      \"height\": 720\n    }\n  },\n  \"outputs\": {\n    \"pptx\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F01\\\\pptx\\\\chart.pptx\",\n    \"preview\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F01\\\\pptx\\\\chart-preview.png\",\n    \"reimport_preview\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F01\\\\pptx\\\\chart-reimport.png\",\n    \"layout\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F01\\\\pptx\\\\chart-layout.json\"\n  },\n  \"checks\": [\n    {\n      \"id\": \"pptx_zip_signature\",\n      \"pass\": true,\n      \"bytes\": 13361\n    },\n    {\n      \"id\": \"preview_png\",\n      \"pass\": true,\n      \"signature\": true,\n      \"width\": 1280,\n      \"height\": 720,\n      \"bytes\": 29757\n    },\n    {\n      \"id\": \"reimport_png\",\n      \"pass\": true,\n      \"signature\": true,\n      \"width\": 1280,\n      \"height\": 720,\n      \"bytes\": 29055\n    },\n    {\n      \"id\": \"reimport_title\",\n      \"pass\": true\n    },\n    {\n      \"id\": \"single_slide\",\n      \"pass\": true,\n      \"actual\": 1\n    },\n    {\n      \"id\": \"native_editability\",\n      \"pass\": true,\n      \"mode\": \"native-chart\"\n    }\n  ],\n  \"report\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F01\\\\pptx\\\\pptx-export-report.json\"\n}\n",
+        "stderr": "",
+        "reason": ""
+      }
+    },
+    {
+      "id": "F02",
+      "engine": "model-diagram",
+      "status": "PASS",
+      "command": [
+        "D:\\Programs\\nodejs\\node.exe",
+        "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\scripts\\generate-model-diagram.mjs",
+        "--input",
+        "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\tests\\fixtures\\model-diagram-routing.json",
+        "--output",
+        "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F02"
+      ],
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"output\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F02\",\n  \"nodes\": 12,\n  \"edges\": 11\n}\n",
+      "stderr": "",
+      "reason": "",
+      "pptx": {
+        "status": "PASS",
+        "filename": "diagram.pptx",
+        "command": [
+          "D:\\Programs\\nodejs\\node.exe",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\exporters\\export-model-diagram-pptx.mjs",
+          "--plan",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F02\\visual-plan.json",
+          "--output",
+          "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F02\\pptx",
+          "--node-modules",
+          "C:\\Users\\Xrrr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules"
+        ],
+        "stdout": "Inspect result written to file: C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F02\\pptx\\diagram.pptx.inspect.ndjson\n{\n  \"schema_version\": 1,\n  \"status\": \"PASS\",\n  \"started_at\": \"2026-07-24T09:58:29.048Z\",\n  \"ended_at\": \"2026-07-24T09:58:34.147Z\",\n  \"artifact_tool\": \"C:\\\\Users\\\\Xrrr\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\node\\\\node_modules\\\\@oai\\\\artifact-tool\\\\dist\\\\artifact_tool.mjs\",\n  \"plan\": {\n    \"title\": \"多目标配送路径优化模型\",\n    \"type\": \"architecture\",\n    \"theme\": \"academic-blue\"\n  },\n  \"metadata\": {\n    \"slideSize\": {\n      \"width\": 1280,\n      \"height\": 720\n    },\n    \"sourceCanvas\": {\n      \"width\": 1920,\n      \"height\": 1080\n    },\n    \"scale\": {\n      \"x\": 0.6666666666666666,\n      \"y\": 0.6666666666666666\n    },\n    \"groups\": 5,\n    \"nodes\": 12,\n    \"edges\": 11,\n    \"edgeRecords\": [\n      {\n        \"id\": \"E01\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E02\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E03\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E04\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E05\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E06\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E07\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E08\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E09\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E10\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      },\n      {\n        \"id\": \"E11\",\n        \"segments\": 1,\n        \"waypoints\": 0\n      }\n    ]\n  },\n  \"outputs\": {\n    \"pptx\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F02\\\\pptx\\\\diagram.pptx\",\n    \"preview\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F02\\\\pptx\\\\diagram-preview.png\",\n    \"reimport_preview\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F02\\\\pptx\\\\diagram-reimport.png\",\n    \"layout\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F02\\\\pptx\\\\diagram-layout.json\"\n  },\n  \"checks\": [\n    {\n      \"id\": \"pptx_zip_signature\",\n      \"pass\": true,\n      \"bytes\": 14900\n    },\n    {\n      \"id\": \"preview_png\",\n      \"pass\": true,\n      \"signature\": true,\n      \"width\": 1280,\n      \"height\": 720,\n      \"bytes\": 125703\n    },\n    {\n      \"id\": \"reimport_png\",\n      \"pass\": true,\n      \"signature\": true,\n      \"width\": 1280,\n      \"height\": 720,\n      \"bytes\": 126011\n    },\n    {\n      \"id\": \"reimport_title\",\n      \"pass\": true\n    },\n    {\n      \"id\": \"reimport_node_labels\",\n      \"pass\": true,\n      \"missing\": []\n    },\n    {\n      \"id\": \"single_slide\",\n      \"pass\": true,\n      \"actual\": 1\n    }\n  ],\n  \"report\": \"C:\\\\Users\\\\Xrrr\\\\.codex\\\\visualizations\\\\2026\\\\07\\\\21\\\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\\\html-ppt-skill-dev-staging\\\\examples\\\\showcase-v2\\\\figure-suite\\\\figures\\\\F02\\\\pptx\\\\pptx-export-report.json\"\n}\n",
+        "stderr": "",
+        "reason": ""
+      }
+    }
+  ]
+}

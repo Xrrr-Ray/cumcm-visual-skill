@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "mode": "paper-visual",
+  "type": "architecture",
+  "title": "多源特征需求预测模型",
+  "subtitle": "特征输入—损失函数—约束—训练验证—预测输出",
+  "theme": "academic-green",
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "groups": [
+    {
+      "id": "G1",
+      "index": "01",
+      "label": "模型输入",
+      "x": 35,
+      "y": 190,
+      "width": 315,
+      "height": 770
+    },
+    {
+      "id": "G2",
+      "index": "02",
+      "label": "优化目标",
+      "x": 375,
+      "y": 190,
+      "width": 315,
+      "height": 770
+    },
+    {
+      "id": "G3",
+      "index": "03",
+      "label": "约束体系",
+      "x": 715,
+      "y": 190,
+      "width": 440,
+      "height": 770
+    },
+    {
+      "id": "G4",
+      "index": "04",
+      "label": "求解与检验",
+      "x": 1180,
+      "y": 190,
+      "width": 315,
+      "height": 770
+    },
+    {
+      "id": "G5",
+      "index": "05",
+      "label": "模型输出",
+      "x": 1520,
+      "y": 190,
+      "width": 365,
+      "height": 770
+    }
+  ],
+  "nodes": [
+    {
+      "id": "N1",
+      "group": "G1",
+      "label": "决策变量",
+      "detail": "x_t：时刻 t 的历史需求特征；w_t：天气与节假日外生特征",
+      "detail_wrap": 9,
+      "x": 65,
+      "y": 300,
+      "width": 255,
+      "height": 190
+    },
+    {
+      "id": "N2",
+      "group": "G1",
+      "label": "参数与常量",
+      "detail": "θ：模型可训练参数；λ：正则化强度",
+      "detail_wrap": 9,
+      "x": 65,
+      "y": 585,
+      "width": 255,
+      "height": 170
+    },
+    {
+      "id": "N3",
+      "group": "G2",
+      "label": "最小化目标",
+      "detail": "min_(θ) (1)/(n)∑ₜ₌₁ⁿ(yₜ-ŷₜ)² + λ ||θ||₂²",
+      "detail_wrap": 11,
+      "x": 405,
+      "y": 390,
+      "width": 255,
+      "height": 245,
+      "shape": "pill",
+      "math": true,
+      "detail_max_lines": 5,
+      "formula_latex": "\\min_{\\theta} \\frac{1}{n}\\sum_{t=1}^{n}(y_t-\\hat{y}_t)^2 + \\lambda ||\\theta||_2^2"
+    },
+    {
+      "id": "N4",
+      "group": "G3",
+      "label": "非负预测",
+      "detail": "ŷₜ ≥ 0；需求量不能为负",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 270,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": "\\hat{y}_t \\geq 0"
+    },
+    {
+      "id": "N5",
+      "group": "G3",
+      "label": "容量上界",
+      "detail": "ŷₜ ≤ Cₜ；不超过系统最大承载量",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 422.5,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": "\\hat{y}_t \\leq C_t"
+    },
+    {
+      "id": "N6",
+      "group": "G3",
+      "label": "时序一致性",
+      "detail": "训练集时间早于验证集；避免未来信息泄漏",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 575,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": ""
+    },
+    {
+      "id": "N7",
+      "group": "G3",
+      "label": "缺失率约束",
+      "detail": "missing(xⱼ) ≤ 5%；保证输入特征质量",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 727.5,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": ""
+    },
+    {
+      "id": "N8",
+      "group": "G4",
+      "label": "时序交叉验证 + XGBoost",
+      "detail": "滑动窗口构造样本；贝叶斯参数搜索；另 2 项",
+      "detail_wrap": 9,
+      "x": 1210,
+      "y": 335,
+      "width": 255,
+      "height": 190
+    },
+    {
+      "id": "N9",
+      "group": "G4",
+      "label": "结果检验",
+      "detail": "MAE / RMSE；残差诊断；消融实验",
+      "detail_wrap": 9,
+      "x": 1210,
+      "y": 625,
+      "width": 255,
+      "height": 170
+    },
+    {
+      "id": "N10",
+      "group": "G5",
+      "label": "点预测",
+      "detail": "未来各时段需求量",
+      "detail_wrap": 9,
+      "x": 1555,
+      "y": 290,
+      "width": 295,
+      "height": 155
+    },
+    {
+      "id": "N11",
+      "group": "G5",
+      "label": "置信区间",
+      "detail": "预测上下界",
+      "detail_wrap": 9,
+      "x": 1555,
+      "y": 478.33333333333337,
+      "width": 295,
+      "height": 155
+    },
+    {
+      "id": "N12",
+      "group": "G5",
+      "label": "特征贡献",
+      "detail": "SHAP 重要性排序",
+      "detail_wrap": 9,
+      "x": 1555,
+      "y": 666.6666666666667,
+      "width": 295,
+      "height": 155
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01",
+      "from": "N1",
+      "to": "N3",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E02",
+      "from": "N2",
+      "to": "N3",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E03",
+      "from": "N3",
+      "to": "N4",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E04",
+      "from": "N3",
+      "to": "N5",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E05",
+      "from": "N3",
+      "to": "N6",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E06",
+      "from": "N3",
+      "to": "N7",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E07",
+      "from": "N5",
+      "to": "N8",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E08",
+      "from": "N8",
+      "to": "N9",
+      "kind": "flow",
+      "start_anchor": "bottom",
+      "end_anchor": "top"
+    },
+    {
+      "id": "E09",
+      "from": "N9",
+      "to": "N10",
+      "kind": "pass",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E10",
+      "from": "N9",
+      "to": "N11",
+      "kind": "pass",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E11",
+      "from": "N9",
+      "to": "N12",
+      "kind": "pass",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    }
+  ]
+}

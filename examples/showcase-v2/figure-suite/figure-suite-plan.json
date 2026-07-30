@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "mode": "figure-suite",
+  "paper_title": "配送优化示例论文",
+  "global_style": {
+    "theme": "academic-blue",
+    "background": "near-white",
+    "typography": "serif-title + sans-body",
+    "aspect": "paper-landscape",
+    "palette_rule": "统一主题色",
+    "export": ["SVG", "2x PNG", "editable HTML"]
+  },
+  "figures": [
+    {
+      "id": "F01",
+      "section": "收敛性分析",
+      "suggested_title": "算法收敛曲线",
+      "engine": "paper-chart",
+      "visual_type": "line",
+      "purpose": "比较基准算法与改进算法的收敛过程",
+      "required_inputs": ["迭代轮次列", "指标列"],
+      "status": "planned",
+      "source_trace": "记录每轮迭代的目标函数值。"
+    },
+    {
+      "id": "F02",
+      "section": "优化模型",
+      "suggested_title": "配送路径优化模型",
+      "engine": "model-diagram",
+      "visual_type": "model-relationship",
+      "purpose": "解释变量、目标、约束、求解与输出",
+      "required_inputs": ["模型结构 JSON"],
+      "status": "planned",
+      "source_trace": "构建容量与时间窗约束下的路径优化模型。"
+    }
+  ],
+  "coverage": {
+    "sections_total": 2,
+    "sections_with_figures": 2,
+    "figures_total": 2
+  }
+}

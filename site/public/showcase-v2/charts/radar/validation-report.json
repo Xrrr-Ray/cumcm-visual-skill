@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:38:34.948Z",
+  "ended_at": "2026-07-24T09:38:35.009Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\radar\\paper-chart-radar.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 6
+  },
+  "plan": {
+    "type": "radar",
+    "title": "模型综合能力评估",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 6,
+        "type": "radar"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1189,
+    "sha256": "412f6c753551472e7de2ea9b6cce310656a7c429171cf0e8b076f7886ca3d8c5"
+  },
+  "data-profile.json": {
+    "bytes": 545,
+    "sha256": "3f3bb1356838582dcf60e4a7fe604d7a770d7abf3dd243aa491ba489ea2188ba"
+  },
+  "chart.svg": {
+    "bytes": 5152,
+    "sha256": "503f458f9d5d15d24fe9779b7373d10ba5b3a84442044d0e216f1be77f07e8ec"
+  },
+  "index.html": {
+    "bytes": 6225,
+    "sha256": "1793e7fe96810cc24240f3611c9cc14ce254550ba54168c606a66ca1a24d0497"
+  },
+  "edit.html": {
+    "bytes": 10084,
+    "sha256": "64240887023900601d9290ce5330da510ae340dab52258cb4ba4ffd45a9f8ae3"
+  }
+}

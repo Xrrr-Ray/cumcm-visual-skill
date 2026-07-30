@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" class="paper-visual" data-visual-type="architecture" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="visual-title visual-subtitle">
+  <style>
+    :root{--bg:#fafafa;--surface:#ffffff;--ink:#20242b;--muted:#68707c;--accent:#374151;--accent-soft:#eef0f2;--border:#a7adb5;--group-fill:#f4f5f6;--flow:#4b5563;--pass:#52806c;--reject:#a84949;--feedback:#2563a6}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",Arial,sans-serif;color:var(--ink)}
+    .slide{width:100vw;height:100vh;overflow:hidden}.paper-visual{width:100vw;height:100vh;display:block;background:var(--bg)}
+    .visual-title{font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC",serif;font-size:46px;font-weight:700;fill:var(--ink);letter-spacing:.5px}.visual-subtitle{font-size:24px;fill:var(--muted)}
+    .title-rule{stroke:var(--accent);stroke-width:6}
+    .visual-group rect{fill:var(--group-fill);stroke:var(--border);stroke-width:1.5}.visual-group text{font-size:27px;font-weight:700;fill:var(--ink)}.group-index{fill:var(--accent);font-size:22px;letter-spacing:1px}
+    .node-shape{fill:var(--surface);stroke:var(--border);stroke-width:2}.visual-node:focus .node-shape,.visual-node:hover .node-shape{stroke:var(--accent);stroke-width:3}.node-title{font-size:32px;font-weight:700;fill:var(--ink)}.node-detail{font-size:28px;fill:var(--muted)}.node-math .node-detail{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:24px;font-style:italic;letter-spacing:.2px}.node-tag{font-size:20px;font-weight:700;fill:var(--accent)}
+    .node-decision .node-shape{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2.5}.node-pill .node-shape{fill:var(--accent);stroke:var(--accent)}.node-pill .node-title,.node-pill .node-detail{fill:#fff}
+    .visual-edge path{fill:none;stroke:var(--flow);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.edge-pass path{stroke:var(--pass);stroke-width:3.5}.edge-reject path{stroke:var(--reject);stroke-width:3.5}.edge-feedback path{stroke:var(--feedback);stroke-width:3.5;stroke-dasharray:11 8}.edge-label-wrap rect{fill:var(--bg);stroke:none}.edge-label{font-size:28px;font-weight:700;fill:var(--ink)}
+    .author-tools{display:none;position:fixed;right:16px;top:16px;bottom:16px;z-index:5;width:300px;overflow:auto;padding:16px;border:1px solid #cbd5e1;border-radius:14px;background:#fffffff2;color:#334155;font:14px/1.45 "Microsoft YaHei",sans-serif;box-shadow:0 10px 30px #0f172a2b;backdrop-filter:blur(10px)}
+    .is-authoring .author-tools{display:block}.is-authoring .slide{position:fixed;left:0;top:0;width:calc(100vw - 332px);height:100vh}.is-authoring .paper-visual{width:100%;height:100%}.is-authoring .visual-node{cursor:grab}.is-authoring .visual-node:active{cursor:grabbing}.is-authoring .visual-node.editor-selected .node-shape{stroke:var(--accent);stroke-width:4}
+    .author-tools h2{margin:0 0 4px;font-size:18px;color:#172033}.author-tools p{margin:0 0 12px;color:#64748b}.editor-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}.editor-actions button,.editor-export button,.author-tools>[data-action=close]{border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#24324a;padding:8px 6px;font:600 12px/1.2 sans-serif;cursor:pointer}.editor-actions button:hover,.editor-export button:hover,.author-tools>[data-action=close]:hover{border-color:var(--accent);color:var(--accent)}.editor-fields{display:grid;gap:9px}.editor-fields label{display:grid;gap:4px;font-weight:700;color:#334155}.editor-fields input,.editor-fields textarea{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#172033;font:14px/1.4 sans-serif}.editor-fields textarea{min-height:66px;resize:vertical}.editor-fields input:disabled,.editor-fields textarea:disabled{background:#f1f5f9;color:#94a3b8}.editor-divider{height:1px;margin:14px 0;background:#e2e8f0}.editor-export{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.editor-status{min-height:20px;margin-top:10px!important;font-size:12px}.editor-kbd{display:inline-block;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:5px;padding:0 5px;background:#f8fafc;font:12px/1.6 monospace;color:#334155}
+    
+    .author-tools{width:360px}
+    .is-authoring .slide{width:calc(100vw - 392px)}
+    .editor-object-type{display:inline-flex;align-items:center;border-radius:999px;padding:2px 8px;background:#eaf1fb;color:#2457a7;font-weight:700}
+    .editor-object-panel[hidden]{display:none}.editor-object-panel h3{margin:0 0 10px;font-size:15px;color:#172033}
+    .editor-color-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .editor-color-control{position:relative;min-width:0}.editor-color-label{display:block;margin-bottom:5px;color:#475569;font-size:12px}
+    .editor-color-trigger{display:flex;width:100%;height:34px;align-items:center;gap:6px;border:1px solid #cbd5e1;border-radius:8px;padding:4px 7px;background:#fff;color:#334155;cursor:pointer}
+    .editor-color-trigger:hover,.editor-color-trigger[aria-expanded="true"]{border-color:#2563eb;box-shadow:0 0 0 2px #dbeafe}
+    .editor-color-preview{width:20px;height:20px;flex:0 0 auto;border:1px solid #94a3b8;border-radius:4px;background:#000}
+    .editor-color-value{min-width:0;flex:1;overflow:hidden;color:#64748b;font:10px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;text-overflow:ellipsis}
+    .editor-native-color{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+    .editor-color-popover{position:fixed;z-index:80;width:306px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;background:#fff;box-shadow:0 18px 45px rgba(15,23,42,.24);color:#172033}
+    .editor-color-popover[hidden]{display:none}.editor-color-popover h4{margin:0 0 8px;font-size:13px}.editor-color-popover h4:not(:first-child){margin-top:13px;padding-top:11px;border-top:1px solid #e2e8f0}
+    .editor-theme-colors{display:grid;grid-template-columns:repeat(10,24px);gap:4px}
+    .editor-theme-column{display:grid;grid-template-rows:repeat(6,24px);gap:3px}
+    .editor-standard-colors{display:grid;grid-template-columns:repeat(10,24px);gap:4px}
+    .editor-palette-swatch{position:relative;width:24px;height:24px;border:1px solid rgba(15,23,42,.28);border-radius:3px;padding:0;background:var(--swatch);cursor:pointer}
+    .editor-palette-swatch:hover,.editor-palette-swatch:focus-visible{z-index:1;outline:2px solid #2563eb;outline-offset:1px}
+    .editor-palette-swatch.is-current::after{position:absolute;inset:-3px;border:2px solid #f97316;border-radius:5px;content:"";pointer-events:none}
+    .editor-more-color{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;margin-top:12px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:#f8fafc;color:#334155;font:600 12px/1.2 sans-serif;cursor:pointer}
+    .editor-more-color:hover{border-color:#2563eb;color:#1d4ed8}
+    .editor-two-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .editor-fields select{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#172033;font:14px/1.4 sans-serif}
+    .editor-inline-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .editor-inline-actions button{border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#24324a;padding:8px 6px;font:600 12px/1.2 sans-serif;cursor:pointer}
+    .editor-inline-actions button:hover{border-color:var(--accent);color:var(--accent)}
+    .editor-snap-toggle{display:flex!important;grid-template-columns:auto 1fr!important;align-items:center;gap:8px!important;padding:9px 10px;border:1px solid #bfdbfe;border-radius:9px;background:#eff6ff;color:#1e40af!important}.editor-snap-toggle input{width:16px!important;height:16px;margin:0}
+    .editor-overlay{display:none;pointer-events:none}.is-authoring .editor-overlay{display:block}
+    .editor-snap-guide{stroke:#0ea5e9;stroke-width:2;stroke-dasharray:7 5;vector-effect:non-scaling-stroke;opacity:.95}
+    .editor-selection-outline{fill:none;stroke:#f97316;stroke-width:3;stroke-dasharray:10 7;vector-effect:non-scaling-stroke}
+    .editor-resize-handle,.editor-route-handle,.editor-endpoint-handle{pointer-events:all;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}
+    .editor-resize-handle{fill:#f97316;cursor:nwse-resize}.editor-route-handle{fill:#2563eb;cursor:move}.editor-endpoint-handle{fill:#16a34a;cursor:crosshair}
+    .is-authoring .visual-group{cursor:move}.is-authoring .visual-edge path{cursor:pointer;pointer-events:stroke}
+    .is-authoring .visual-group.editor-selected>rect{stroke:#f97316!important;stroke-width:3!important}
+    .is-authoring .visual-edge.editor-selected>path{filter:drop-shadow(0 0 3px #f97316);stroke-width:max(4px,var(--edge-width,3px))}
+  
+    @media print{html,body{width:100%;height:100%;print-color-adjust:exact;-webkit-print-color-adjust:exact}.author-tools,.editor-overlay{display:none!important}}
+  </style>
+  <defs>
+    <marker id="arrow-flow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--flow)"></path></marker>
+<marker id="arrow-pass" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--pass)"></path></marker>
+<marker id="arrow-reject" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--reject)"></path></marker>
+<marker id="arrow-feedback" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--feedback)"></path></marker>
+    <marker id="arrow-triangle" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11 Z" fill="context-stroke"></path></marker>
+    <marker id="arrow-dot" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto"><circle cx="6" cy="6" r="4.5" fill="context-stroke"></circle></marker>
+    <marker id="arrow-diamond" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,6 L6,1 L11,6 L6,11 Z" fill="context-stroke"></path></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="var(--bg)"></rect>
+  <line class="title-rule" x1="72" y1="66" x2="72" y2="148"></line>
+  <text id="visual-title" class="visual-title" x="102" y="103">区域韧性综合评价模型</text>
+  <text id="visual-subtitle" class="visual-subtitle" x="104" y="139">评价指标—综合目标—权重约束—测算—结果解释</text>
+  <g class="groups-layer"><g class="visual-group" data-group-id="G1" data-x="35" data-y="190" data-width="315" data-height="770">
+    <rect x="35" y="190" width="315" height="770" rx="18"></rect>
+    <text class="group-label" x="57" y="227"><tspan class="group-index">01</tspan><tspan class="group-name" dx="13">模型输入</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G2" data-x="375" data-y="190" data-width="315" data-height="770">
+    <rect x="375" y="190" width="315" height="770" rx="18"></rect>
+    <text class="group-label" x="397" y="227"><tspan class="group-index">02</tspan><tspan class="group-name" dx="13">优化目标</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G3" data-x="715" data-y="190" data-width="440" data-height="770">
+    <rect x="715" y="190" width="440" height="770" rx="18"></rect>
+    <text class="group-label" x="737" y="227"><tspan class="group-index">03</tspan><tspan class="group-name" dx="13">约束体系</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G4" data-x="1180" data-y="190" data-width="315" data-height="770">
+    <rect x="1180" y="190" width="315" height="770" rx="18"></rect>
+    <text class="group-label" x="1202" y="227"><tspan class="group-index">04</tspan><tspan class="group-name" dx="13">求解与检验</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G5" data-x="1520" data-y="190" data-width="365" data-height="770">
+    <rect x="1520" y="190" width="365" height="770" rx="18"></rect>
+    <text class="group-label" x="1542" y="227"><tspan class="group-index">05</tspan><tspan class="group-name" dx="13">模型输出</tspan></text>
+  </g></g>
+  <g class="edges-layer"><g class="visual-edge edge-flow" data-edge-wrapper="E01">
+    <path d="M320.0,395.0 L405.0,512.5" data-edge-id="E01" data-edge-from="N1" data-edge-to="N3" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E02">
+    <path d="M320.0,670.0 L405.0,512.5" data-edge-id="E02" data-edge-from="N2" data-edge-to="N3" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E03">
+    <path d="M660.0,512.5 L750.0,335.0" data-edge-id="E03" data-edge-from="N3" data-edge-to="N4" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E04">
+    <path d="M660.0,512.5 L750.0,487.5" data-edge-id="E04" data-edge-from="N3" data-edge-to="N5" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E05">
+    <path d="M660.0,512.5 L750.0,640.0" data-edge-id="E05" data-edge-from="N3" data-edge-to="N6" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E06">
+    <path d="M660.0,512.5 L750.0,792.5" data-edge-id="E06" data-edge-from="N3" data-edge-to="N7" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E07">
+    <path d="M1120.0,487.5 L1210.0,430.0" data-edge-id="E07" data-edge-from="N5" data-edge-to="N8" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E08">
+    <path d="M1337.5,525.0 L1337.5,625.0" data-edge-id="E08" data-edge-from="N8" data-edge-to="N9" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="bottom" data-end-anchor="top" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E09">
+    <path d="M1465.0,710.0 L1555.0,367.5" data-edge-id="E09" data-edge-from="N9" data-edge-to="N10" data-edge-kind="pass" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E10">
+    <path d="M1465.0,710.0 L1555.0,555.8" data-edge-id="E10" data-edge-from="N9" data-edge-to="N11" data-edge-kind="pass" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E11">
+    <path d="M1465.0,710.0 L1555.0,744.2" data-edge-id="E11" data-edge-from="N9" data-edge-to="N12" data-edge-kind="pass" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g></g>
+  <g class="nodes-layer"><g class="visual-node node-process" data-node-id="N1" data-group="G1" data-x="65" data-y="300" data-original-x="65" data-original-y="300" data-width="255" data-height="190" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>决策变量；z_ij：区域 i 的第 j 个标准化指标；w_j：第 j 个指标权重</desc><rect class="node-shape" x="65" y="300" width="255" height="190" rx="14"></rect>
+    <text class="node-tag" x="302" y="325" text-anchor="end"></text>
+    <text class="node-title" x="192.5" y="352" text-anchor="middle" data-node-title="决策变量"><tspan x="192.5" dy="0">决策变量</tspan></text>
+    <text class="node-detail" x="192.5" y="401" text-anchor="middle" data-node-detail="z_ij：区域 i 的第 j 个标准化指标；w_j：第 j 个指标权重"><tspan x="192.5" dy="0">z_ij：区域 i</tspan><tspan x="192.5" dy="31"> 的第 j 个标准</tspan><tspan x="192.5" dy="31">化指标；w_j：第</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N2" data-group="G1" data-x="65" data-y="585" data-original-x="65" data-original-y="585" data-width="255" data-height="170" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>参数与常量；z_j^+：指标正理想解；z_j^-：指标负理想解</desc><rect class="node-shape" x="65" y="585" width="255" height="170" rx="14"></rect>
+    <text class="node-tag" x="302" y="610" text-anchor="end"></text>
+    <text class="node-title" x="192.5" y="627" text-anchor="middle" data-node-title="参数与常量"><tspan x="192.5" dy="0">参数与常量</tspan></text>
+    <text class="node-detail" x="192.5" y="676" text-anchor="middle" data-node-detail="z_j^+：指标正理想解；z_j^-：指标负理想解"><tspan x="192.5" dy="0">z_j^+：指标正</tspan><tspan x="192.5" dy="31">理想解；z_j^-</tspan><tspan x="192.5" dy="31">：指标负理想解</tspan></text>
+  </g>
+<g class="visual-node node-pill node-math" data-node-id="N3" data-group="G2" data-x="405" data-y="390" data-original-x="405" data-original-y="390" data-width="255" data-height="245" data-title-wrap="10" data-detail-wrap="11" data-formula-latex="\max C_i = \frac{D_i^-}{D_i^+ + D_i^-}" tabindex="0">
+    <desc>最大化目标；max Cᵢ = (Dᵢ^-)/(Dᵢ^+ + Dᵢ^-)</desc><rect class="node-shape pill" x="405" y="390" width="255" height="245" rx="122.5"></rect>
+    <text class="node-tag" x="642" y="415" text-anchor="end"></text>
+    <text class="node-title" x="532.5" y="469.5" text-anchor="middle" data-node-title="最大化目标"><tspan x="532.5" dy="0">最大化目标</tspan></text>
+    <text class="node-detail" x="532.5" y="518.5" text-anchor="middle" data-node-detail="max Cᵢ = (Dᵢ^-)/(Dᵢ^+ + Dᵢ^-)"><tspan x="532.5" dy="0">max Cᵢ = (D</tspan><tspan x="532.5" dy="31">ᵢ^-)/(Dᵢ^+ </tspan><tspan x="532.5" dy="31">+ Dᵢ^-)</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N4" data-group="G3" data-x="750" data-y="270" data-original-x="750" data-original-y="270" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" data-formula-latex="\sum_{j=1}^{m} w_j = 1" tabindex="0">
+    <desc>权重归一化；∑ⱼ₌₁^(m) wⱼ = 1；全部指标权重之和为 1</desc><rect class="node-shape" x="750" y="270" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="295" text-anchor="end"></text>
+    <text class="node-title" x="935" y="292" text-anchor="middle" data-node-title="权重归一化"><tspan x="935" dy="0">权重归一化</tspan></text>
+    <text class="node-detail" x="935" y="341" text-anchor="middle" data-node-detail="∑ⱼ₌₁^(m) wⱼ = 1；全部指标权重之和为 1"><tspan x="935" dy="0">∑ⱼ₌₁^(m) wⱼ </tspan><tspan x="935" dy="31">= 1；全部指标权重之和</tspan><tspan x="935" dy="31">为 1</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N5" data-group="G3" data-x="750" data-y="422.5" data-original-x="750" data-original-y="422.5" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" data-formula-latex="w_j \geq 0" tabindex="0">
+    <desc>权重非负；wⱼ ≥ 0；指标贡献不为负</desc><rect class="node-shape" x="750" y="422.5" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="447.5" text-anchor="end"></text>
+    <text class="node-title" x="935" y="460" text-anchor="middle" data-node-title="权重非负"><tspan x="935" dy="0">权重非负</tspan></text>
+    <text class="node-detail" x="935" y="509" text-anchor="middle" data-node-detail="wⱼ ≥ 0；指标贡献不为负"><tspan x="935" dy="0">wⱼ ≥ 0；指标贡献不</tspan><tspan x="935" dy="31">为负</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N6" data-group="G3" data-x="750" data-y="575" data-original-x="750" data-original-y="575" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" tabindex="0">
+    <desc>同向化处理；成本型指标先正向化；统一指标优劣方向</desc><rect class="node-shape" x="750" y="575" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="600" text-anchor="end"></text>
+    <text class="node-title" x="935" y="612.5" text-anchor="middle" data-node-title="同向化处理"><tspan x="935" dy="0">同向化处理</tspan></text>
+    <text class="node-detail" x="935" y="661.5" text-anchor="middle" data-node-detail="成本型指标先正向化；统一指标优劣方向"><tspan x="935" dy="0">成本型指标先正向化；统一</tspan><tspan x="935" dy="31">指标优劣方向</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N7" data-group="G3" data-x="750" data-y="727.5" data-original-x="750" data-original-y="727.5" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" tabindex="0">
+    <desc>量纲消除；zᵢj ∈ [0,1]；保证指标可比较</desc><rect class="node-shape" x="750" y="727.5" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="752.5" text-anchor="end"></text>
+    <text class="node-title" x="935" y="765" text-anchor="middle" data-node-title="量纲消除"><tspan x="935" dy="0">量纲消除</tspan></text>
+    <text class="node-detail" x="935" y="814" text-anchor="middle" data-node-detail="zᵢj ∈ [0,1]；保证指标可比较"><tspan x="935" dy="0">zᵢj ∈ [0,1]；</tspan><tspan x="935" dy="31">保证指标可比较</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N8" data-group="G4" data-x="1210" data-y="335" data-original-x="1210" data-original-y="335" data-width="255" data-height="190" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>熵权法—TOPSIS；指标同向化；熵权计算；另 2 项</desc><rect class="node-shape" x="1210" y="335" width="255" height="190" rx="14"></rect>
+    <text class="node-tag" x="1447" y="360" text-anchor="end"></text>
+    <text class="node-title" x="1337.5" y="402.5" text-anchor="middle" data-node-title="熵权法—TOPSIS"><tspan x="1337.5" dy="0">熵权法—TOPSIS</tspan></text>
+    <text class="node-detail" x="1337.5" y="451.5" text-anchor="middle" data-node-detail="指标同向化；熵权计算；另 2 项"><tspan x="1337.5" dy="0">指标同向化；熵权计</tspan><tspan x="1337.5" dy="31">算；另 2 项</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N9" data-group="G4" data-x="1210" data-y="625" data-original-x="1210" data-original-y="625" data-width="255" data-height="170" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>结果检验；权重敏感性；专家排序一致性；年度稳健性</desc><rect class="node-shape" x="1210" y="625" width="255" height="170" rx="14"></rect>
+    <text class="node-tag" x="1447" y="650" text-anchor="end"></text>
+    <text class="node-title" x="1337.5" y="667" text-anchor="middle" data-node-title="结果检验"><tspan x="1337.5" dy="0">结果检验</tspan></text>
+    <text class="node-detail" x="1337.5" y="716" text-anchor="middle" data-node-detail="权重敏感性；专家排序一致性；年度稳健性"><tspan x="1337.5" dy="0">权重敏感性；专家排</tspan><tspan x="1337.5" dy="31">序一致性；年度稳健</tspan><tspan x="1337.5" dy="31">性</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N10" data-group="G5" data-x="1555" data-y="290" data-original-x="1555" data-original-y="290" data-width="295" data-height="155" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>综合得分；各区域韧性贴近度</desc><rect class="node-shape" x="1555" y="290" width="295" height="155" rx="14"></rect>
+    <text class="node-tag" x="1832" y="315" text-anchor="end"></text>
+    <text class="node-title" x="1702.5" y="355.5" text-anchor="middle" data-node-title="综合得分"><tspan x="1702.5" dy="0">综合得分</tspan></text>
+    <text class="node-detail" x="1702.5" y="404.5" text-anchor="middle" data-node-detail="各区域韧性贴近度"><tspan x="1702.5" dy="0">各区域韧性贴近度</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N11" data-group="G5" data-x="1555" data-y="478.33333333333337" data-original-x="1555" data-original-y="478.33333333333337" data-width="295" data-height="155" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>分项贡献；经济、社会、生态维度贡献</desc><rect class="node-shape" x="1555" y="478.33333333333337" width="295" height="155" rx="14"></rect>
+    <text class="node-tag" x="1832" y="503.33333333333337" text-anchor="end"></text>
+    <text class="node-title" x="1702.5" y="528.3333333333334" text-anchor="middle" data-node-title="分项贡献"><tspan x="1702.5" dy="0">分项贡献</tspan></text>
+    <text class="node-detail" x="1702.5" y="577.3333333333334" text-anchor="middle" data-node-detail="经济、社会、生态维度贡献"><tspan x="1702.5" dy="0">经济、社会、生态维</tspan><tspan x="1702.5" dy="31">度贡献</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N12" data-group="G5" data-x="1555" data-y="666.6666666666667" data-original-x="1555" data-original-y="666.6666666666667" data-width="295" data-height="155" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>等级划分；高、中、低韧性区域</desc><rect class="node-shape" x="1555" y="666.6666666666667" width="295" height="155" rx="14"></rect>
+    <text class="node-tag" x="1832" y="691.6666666666667" text-anchor="end"></text>
+    <text class="node-title" x="1702.5" y="732.1666666666667" text-anchor="middle" data-node-title="等级划分"><tspan x="1702.5" dy="0">等级划分</tspan></text>
+    <text class="node-detail" x="1702.5" y="781.1666666666667" text-anchor="middle" data-node-detail="高、中、低韧性区域"><tspan x="1702.5" dy="0">高、中、低韧性区域</tspan></text>
+  </g></g>
+  
+  </svg>

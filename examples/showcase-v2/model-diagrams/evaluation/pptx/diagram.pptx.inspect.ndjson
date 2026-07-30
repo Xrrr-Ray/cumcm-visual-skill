@@ -1,0 +1,36 @@
+{"kind":"deck","id":"pr/1dm2rb","name":"Deck"}
+{"kind":"layout","layoutId":"3b3c013c-8760-4862-a81c-77bc4b1bdf19","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"b9f4107c-6e86-4a6d-ab7e-dd4328290b06","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/0x43d3","slide":1,"title":"区域韧性综合评价模型","textShapes":19}
+{"kind":"shape","id":"sh/2lsje543","slide":1,"name":"title-rule","bbox":[48,44,4,54.67]}
+{"kind":"textbox","id":"sh/98329k3u","slide":1,"name":"visual-title","text":"区域韧性综合评价模型","textPreview":"区域韧性综合评价模型","textChars":10,"textLines":1,"bbox":[68,41.33,1140,36]}
+{"kind":"textbox","id":"sh/o7u1gfm9","slide":1,"name":"visual-subtitle","text":"评价指标—综合目标—权重约束—测算—结果解释","textPreview":"评价指标—综合目标—权重约束—测算—结果解释","textChars":22,"textLines":1,"bbox":[69.33,74.67,1138.67,28]}
+{"kind":"textbox","id":"sh/balkbal0","slide":1,"name":"group-G1","text":"01  模型输入","textPreview":"01  模型输入","textChars":8,"textLines":1,"bbox":[23.33,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/a9cjip4f","slide":1,"name":"group-G2","text":"02  优化目标","textPreview":"02  优化目标","textChars":8,"textLines":1,"bbox":[250,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/xc32dk3q","slide":1,"name":"group-G3","text":"03  约束体系","textPreview":"03  约束体系","textChars":8,"textLines":1,"bbox":[476.67,126.67,293.33,513.33]}
+{"kind":"textbox","id":"sh/wbulkfm5","slide":1,"name":"group-G4","text":"04  求解与检验","textPreview":"04  求解与检验","textChars":9,"textLines":1,"bbox":[786.67,126.67,210,513.33]}
+{"kind":"textbox","id":"sh/rehkzqlg","slide":1,"name":"group-G5","text":"05  模型输出","textPreview":"05  模型输出","textChars":8,"textLines":1,"bbox":[1013.33,126.67,243.33,513.33]}
+{"kind":"textbox","id":"sh/qd8j6l4v","slide":1,"name":"node-N1","text":"决策变量\nz_ij：区域 i\n 的第 j 个标准\n化指标；w_j：第","textPreview":"决策变量 | z_ij：区域 i |  的第 j 个标准 | 化指标；w_j：第","textChars":34,"textLines":4,"bbox":[43.33,200,170,126.67]}
+{"kind":"textbox","id":"sh/47adcja1","slide":1,"name":"node-N2","text":"参数与常量\nz_j^+：指标正\n理想解；z_j^-\n：指标负理想解","textPreview":"参数与常量 | z_j^+：指标正 | 理想解；z_j^- | ：指标负理想解","textChars":33,"textLines":4,"bbox":[43.33,390,170,113.33]}
+{"kind":"textbox","id":"sh/psje5orm","slide":1,"name":"node-N3","text":"最大化目标\nmax Cᵢ = (D\nᵢ^-)/(Dᵢ^+ \n+ Dᵢ^-)","textPreview":"最大化目标 | max Cᵢ = (D | ᵢ^-)/(Dᵢ^+  | + Dᵢ^-)","textChars":37,"textLines":4,"bbox":[270,260,170,163.33]}
+{"kind":"textbox","id":"sh/258va9sv","slide":1,"name":"node-N4","text":"权重归一化\n∑ⱼ₌₁^(m) wⱼ \n= 1；全部指标权重之和\n为 1","textPreview":"权重归一化 | ∑ⱼ₌₁^(m) wⱼ  | = 1；全部指标权重之和 | 为 1","textChars":35,"textLines":4,"bbox":[500,180,246.67,86.67]}
+{"kind":"textbox","id":"sh/36hw3e9g","slide":1,"name":"node-N5","text":"权重非负\nwⱼ ≥ 0；指标贡献不\n为负","textPreview":"权重非负 | wⱼ ≥ 0；指标贡献不 | 为负","textChars":20,"textLines":3,"bbox":[500,281.67,246.67,86.67]}
+{"kind":"textbox","id":"sh/cvaxg3ax","slide":1,"name":"node-N6","text":"同向化处理\n成本型指标先正向化；统一\n指标优劣方向","textPreview":"同向化处理 | 成本型指标先正向化；统一 | 指标优劣方向","textChars":25,"textLines":3,"bbox":[500,383.33,246.67,86.67]}
+{"kind":"textbox","id":"sh/dwje98ri","slide":1,"name":"node-N7","text":"量纲消除\nzᵢj ∈ [0,1]；\n保证指标可比较","textPreview":"量纲消除 | zᵢj ∈ [0,1]； | 保证指标可比较","textChars":25,"textLines":3,"bbox":[500,485,246.67,86.67]}
+{"kind":"textbox","id":"sh/qtsvets7","slide":1,"name":"node-N8","text":"熵权法—TOPSIS\n指标同向化；熵权计\n算；另 2 项","textPreview":"熵权法—TOPSIS | 指标同向化；熵权计 | 算；另 2 项","textChars":28,"textLines":3,"bbox":[806.67,223.33,170,126.67]}
+{"kind":"textbox","id":"sh/ru1w7y9s","slide":1,"name":"node-N9","text":"结果检验\n权重敏感性；专家排\n序一致性；年度稳健\n性","textPreview":"结果检验 | 权重敏感性；专家排 | 序一致性；年度稳健 | 性","textChars":26,"textLines":4,"bbox":[806.67,416.67,170,113.33]}
+{"kind":"textbox","id":"sh/sz6d4zat","slide":1,"name":"node-N10","text":"综合得分\n各区域韧性贴近度","textPreview":"综合得分 | 各区域韧性贴近度","textChars":13,"textLines":2,"bbox":[1036.67,193.33,196.67,103.33]}
+{"kind":"textbox","id":"sh/t0zex4re","slide":1,"name":"node-N11","text":"分项贡献\n经济、社会、生态维\n度贡献","textPreview":"分项贡献 | 经济、社会、生态维 | 度贡献","textChars":18,"textLines":3,"bbox":[1036.67,318.89,196.67,103.33]}
+{"kind":"textbox","id":"sh/9k72lwf6","slide":1,"name":"node-N12","text":"等级划分\n高、中、低韧性区域","textPreview":"等级划分 | 高、中、低韧性区域","textChars":14,"textLines":2,"bbox":[1036.67,444.44,196.67,103.33]}
+{"kind":"shape","id":"sh/8jylcryl","slide":1,"bbox":[213.33,263.33,56.67,78.33]}
+{"kind":"shape","id":"sh/ni5kj6h0","slide":1,"bbox":[213.33,341.67,56.67,105]}
+{"kind":"shape","id":"sh/mhw3a1gf","slide":1,"bbox":[440,223.33,60,118.33]}
+{"kind":"shape","id":"sh/xo72pgf2","slide":1,"bbox":[440,325,60,16.67]}
+{"kind":"shape","id":"sh/wnylgbyh","slide":1,"bbox":[440,341.67,60,85]}
+{"kind":"shape","id":"sh/vmpkn6xw","slide":1,"bbox":[440,341.67,60,186.67]}
+{"kind":"shape","id":"sh/alg3e1gb","slide":1,"bbox":[746.67,286.67,60,38.33]}
+{"kind":"shape","id":"sh/5crmtgfy","slide":1,"bbox":[891.67,350,0,66.67]}
+{"kind":"shape","id":"sh/kbilkbyt","slide":1,"bbox":[976.67,245,60,228.33]}
+{"kind":"shape","id":"sh/2xszedwb","slide":1,"bbox":[976.67,370.56,60,102.78]}
+{"kind":"shape","id":"sh/3y107ixg","slide":1,"bbox":[976.67,473.33,60,22.78]}
+{"kind":"notes","id":"nt/0x43d3","slide":1,"text":""}

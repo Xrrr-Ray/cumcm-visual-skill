@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "mode": "paper-visual",
+  "type": "architecture",
+  "title": "多目标配送路径优化模型",
+  "subtitle": "决策变量—目标函数—约束—求解—输出",
+  "theme": "academic-blue",
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "groups": [
+    {
+      "id": "G1",
+      "index": "01",
+      "label": "模型输入",
+      "x": 35,
+      "y": 190,
+      "width": 315,
+      "height": 770
+    },
+    {
+      "id": "G2",
+      "index": "02",
+      "label": "优化目标",
+      "x": 375,
+      "y": 190,
+      "width": 315,
+      "height": 770
+    },
+    {
+      "id": "G3",
+      "index": "03",
+      "label": "约束体系",
+      "x": 715,
+      "y": 190,
+      "width": 440,
+      "height": 770
+    },
+    {
+      "id": "G4",
+      "index": "04",
+      "label": "求解与检验",
+      "x": 1180,
+      "y": 190,
+      "width": 315,
+      "height": 770
+    },
+    {
+      "id": "G5",
+      "index": "05",
+      "label": "模型输出",
+      "x": 1520,
+      "y": 190,
+      "width": 365,
+      "height": 770
+    }
+  ],
+  "nodes": [
+    {
+      "id": "N1",
+      "group": "G1",
+      "label": "决策变量",
+      "detail": "x_ijk：车辆 k 是否经过弧 i→j；t_i：节点 i 的到达时间",
+      "detail_wrap": 9,
+      "x": 65,
+      "y": 300,
+      "width": 255,
+      "height": 190
+    },
+    {
+      "id": "N2",
+      "group": "G1",
+      "label": "参数与常量",
+      "detail": "d_ij：节点间距离；q_i：客户需求量；Q_k：车辆容量",
+      "detail_wrap": 9,
+      "x": 65,
+      "y": 585,
+      "width": 255,
+      "height": 170
+    },
+    {
+      "id": "N3",
+      "group": "G2",
+      "label": "最小化目标",
+      "detail": "min Z = α ∑_(i,j,k) dᵢⱼxᵢⱼₖ + β ∑ᵢ pᵢ",
+      "detail_wrap": 11,
+      "x": 405,
+      "y": 390,
+      "width": 255,
+      "height": 245,
+      "shape": "pill",
+      "math": true,
+      "detail_max_lines": 5,
+      "formula_latex": "\\min Z = \\alpha \\sum_{i,j,k} d_{ij}x_{ijk} + \\beta \\sum_i p_i"
+    },
+    {
+      "id": "N4",
+      "group": "G3",
+      "label": "流平衡约束",
+      "detail": "Σⱼ xᵢjk = Σⱼ xⱼik；车辆进入与离开守恒",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 270,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": ""
+    },
+    {
+      "id": "N5",
+      "group": "G3",
+      "label": "容量约束",
+      "detail": "∑ᵢ qᵢ xᵢⱼₖ ≤ Qₖ；装载量不超过容量",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 422.5,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": "\\sum_i q_i x_{ijk} \\leq Q_k"
+    },
+    {
+      "id": "N6",
+      "group": "G3",
+      "label": "时间窗约束",
+      "detail": "aᵢ ≤ tᵢ ≤ bᵢ；在允许时段服务",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 575,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": ""
+    },
+    {
+      "id": "N7",
+      "group": "G3",
+      "label": "唯一服务约束",
+      "detail": "ΣₖΣⱼ xᵢjk = 1；每个客户仅服务一次",
+      "detail_wrap": 12,
+      "x": 750,
+      "y": 727.5,
+      "width": 370,
+      "height": 130,
+      "math": true,
+      "formula_latex": ""
+    },
+    {
+      "id": "N8",
+      "group": "G4",
+      "label": "改进遗传算法",
+      "detail": "编码与初始化；选择交叉变异；另 2 项",
+      "detail_wrap": 9,
+      "x": 1210,
+      "y": 335,
+      "width": 255,
+      "height": 190
+    },
+    {
+      "id": "N9",
+      "group": "G4",
+      "label": "结果检验",
+      "detail": "约束可行性检查；基准算法对比；敏感性分析",
+      "detail_wrap": 9,
+      "x": 1210,
+      "y": 625,
+      "width": 255,
+      "height": 170
+    },
+    {
+      "id": "N10",
+      "group": "G5",
+      "label": "最优路径",
+      "detail": "车辆访问顺序与分配方案",
+      "detail_wrap": 9,
+      "x": 1555,
+      "y": 290,
+      "width": 295,
+      "height": 155
+    },
+    {
+      "id": "N11",
+      "group": "G5",
+      "label": "目标函数值",
+      "detail": "总里程与延误成本",
+      "detail_wrap": 9,
+      "x": 1555,
+      "y": 478.33333333333337,
+      "width": 295,
+      "height": 155
+    },
+    {
+      "id": "N12",
+      "group": "G5",
+      "label": "评价指标",
+      "detail": "收敛性、稳定性与运行时间",
+      "detail_wrap": 9,
+      "x": 1555,
+      "y": 666.6666666666667,
+      "width": 295,
+      "height": 155
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01",
+      "from": "N1",
+      "to": "N3",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E02",
+      "from": "N2",
+      "to": "N3",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E03",
+      "from": "N3",
+      "to": "N4",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E04",
+      "from": "N3",
+      "to": "N5",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E05",
+      "from": "N3",
+      "to": "N6",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E06",
+      "from": "N3",
+      "to": "N7",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E07",
+      "from": "N5",
+      "to": "N8",
+      "kind": "flow",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E08",
+      "from": "N8",
+      "to": "N9",
+      "kind": "flow",
+      "start_anchor": "bottom",
+      "end_anchor": "top"
+    },
+    {
+      "id": "E09",
+      "from": "N9",
+      "to": "N10",
+      "kind": "pass",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E10",
+      "from": "N9",
+      "to": "N11",
+      "kind": "pass",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    },
+    {
+      "id": "E11",
+      "from": "N9",
+      "to": "N12",
+      "kind": "pass",
+      "start_anchor": "right",
+      "end_anchor": "left"
+    }
+  ]
+}

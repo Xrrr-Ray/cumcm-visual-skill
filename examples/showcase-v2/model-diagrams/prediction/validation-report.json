@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:54:58.461Z",
+  "ended_at": "2026-07-24T09:54:58.544Z",
+  "checks": [
+    {
+      "id": "visual_plan",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "nodes": 12,
+        "groups": 5,
+        "edges": 11
+      }
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "editor",
+      "pass": true
+    }
+  ],
+  "files": {
+    "model-spec.json": {
+      "bytes": 1928,
+      "sha256": "20bbdff0d5904f1b8ef1e4de4298d83cd4815939c8399a18a72e3c21dfaeca97"
+    },
+    "visual-plan.json": {
+      "bytes": 6181,
+      "sha256": "884574e9d945e9c39d8213e04dd1f4ed0a308fb6e631e247f8e7f09febbc8def"
+    },
+    "diagram.svg": {
+      "bytes": 27095,
+      "sha256": "06f1700419e12cee7276f17432ff4a5468a9acf5a7b417fbf5a422b3a598a226"
+    },
+    "index.html": {
+      "bytes": 90402,
+      "sha256": "f3a8d65dcb5422cd962ddc88edccbc3ad9b9871b9f350ea22d2f98379581bb6f"
+    },
+    "edit.html": {
+      "bytes": 90432,
+      "sha256": "8cb850304a36852a28adb3c877aeabb508a94c798adcb89f05b33414e0d6ed31"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:44:51.161Z",
+  "ended_at": "2026-07-24T09:44:58.589Z",
+  "artifact_tool": "C:\\Users\\Xrrr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules\\@oai\\artifact-tool\\dist\\artifact_tool.mjs",
+  "plan": {
+    "title": "样本规模对预测性能的影响",
+    "type": "errorbar",
+    "theme": "academic-blue"
+  },
+  "metadata": {
+    "nativeMode": "editable-shapes",
+    "type": "errorbar",
+    "rows": 6,
+    "slideSize": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "outputs": {
+    "pptx": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\errorbar\\pptx\\chart.pptx",
+    "preview": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\errorbar\\pptx\\chart-preview.png",
+    "reimport_preview": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\errorbar\\pptx\\chart-reimport.png",
+    "layout": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\charts\\errorbar\\pptx\\chart-layout.json"
+  },
+  "checks": [
+    {
+      "id": "pptx_zip_signature",
+      "pass": true,
+      "bytes": 14738
+    },
+    {
+      "id": "preview_png",
+      "pass": true,
+      "signature": true,
+      "width": 1280,
+      "height": 720,
+      "bytes": 30050
+    },
+    {
+      "id": "reimport_png",
+      "pass": true,
+      "signature": true,
+      "width": 1280,
+      "height": 720,
+      "bytes": 29926
+    },
+    {
+      "id": "reimport_title",
+      "pass": true
+    },
+    {
+      "id": "single_slide",
+      "pass": true,
+      "actual": 1
+    },
+    {
+      "id": "native_editability",
+      "pass": true,
+      "mode": "editable-shapes"
+    }
+  ]
+}

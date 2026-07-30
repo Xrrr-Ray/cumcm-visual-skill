@@ -1,0 +1,1353 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>多目标配送路径优化模型</title><style>
+    :root{--bg:#f7f9fc;--surface:#ffffff;--ink:#162033;--muted:#5d6a7d;--accent:#2457a7;--accent-soft:#eaf1fb;--border:#9aabc2;--group-fill:#f2f6fb;--flow:#334155;--pass:#25845f;--reject:#c4513a;--feedback:#286bb5}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:"Noto Sans CJK SC","Microsoft YaHei","PingFang SC",Arial,sans-serif;color:var(--ink)}
+    .slide{width:100vw;height:100vh;overflow:hidden}.paper-visual{width:100vw;height:100vh;display:block;background:var(--bg)}
+    .visual-title{font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC",serif;font-size:46px;font-weight:700;fill:var(--ink);letter-spacing:.5px}.visual-subtitle{font-size:24px;fill:var(--muted)}
+    .title-rule{stroke:var(--accent);stroke-width:6}
+    .visual-group rect{fill:var(--group-fill);stroke:var(--border);stroke-width:1.5}.visual-group text{font-size:27px;font-weight:700;fill:var(--ink)}.group-index{fill:var(--accent);font-size:22px;letter-spacing:1px}
+    .node-shape{fill:var(--surface);stroke:var(--border);stroke-width:2}.visual-node:focus .node-shape,.visual-node:hover .node-shape{stroke:var(--accent);stroke-width:3}.node-title{font-size:32px;font-weight:700;fill:var(--ink)}.node-detail{font-size:28px;fill:var(--muted)}.node-math .node-detail{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:24px;font-style:italic;letter-spacing:.2px}.node-tag{font-size:20px;font-weight:700;fill:var(--accent)}
+    .node-decision .node-shape{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2.5}.node-pill .node-shape{fill:var(--accent);stroke:var(--accent)}.node-pill .node-title,.node-pill .node-detail{fill:#fff}
+    .visual-edge path{fill:none;stroke:var(--flow);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.edge-pass path{stroke:var(--pass);stroke-width:3.5}.edge-reject path{stroke:var(--reject);stroke-width:3.5}.edge-feedback path{stroke:var(--feedback);stroke-width:3.5;stroke-dasharray:11 8}.edge-label-wrap rect{fill:var(--bg);stroke:none}.edge-label{font-size:28px;font-weight:700;fill:var(--ink)}
+    .author-tools{display:none;position:fixed;right:16px;top:16px;bottom:16px;z-index:5;width:300px;overflow:auto;padding:16px;border:1px solid #cbd5e1;border-radius:14px;background:#fffffff2;color:#334155;font:14px/1.45 "Microsoft YaHei",sans-serif;box-shadow:0 10px 30px #0f172a2b;backdrop-filter:blur(10px)}
+    .is-authoring .author-tools{display:block}.is-authoring .slide{position:fixed;left:0;top:0;width:calc(100vw - 332px);height:100vh}.is-authoring .paper-visual{width:100%;height:100%}.is-authoring .visual-node{cursor:grab}.is-authoring .visual-node:active{cursor:grabbing}.is-authoring .visual-node.editor-selected .node-shape{stroke:var(--accent);stroke-width:4}
+    .author-tools h2{margin:0 0 4px;font-size:18px;color:#172033}.author-tools p{margin:0 0 12px;color:#64748b}.editor-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}.editor-actions button,.editor-export button,.author-tools>[data-action=close]{border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#24324a;padding:8px 6px;font:600 12px/1.2 sans-serif;cursor:pointer}.editor-actions button:hover,.editor-export button:hover,.author-tools>[data-action=close]:hover{border-color:var(--accent);color:var(--accent)}.editor-fields{display:grid;gap:9px}.editor-fields label{display:grid;gap:4px;font-weight:700;color:#334155}.editor-fields input,.editor-fields textarea{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#172033;font:14px/1.4 sans-serif}.editor-fields textarea{min-height:66px;resize:vertical}.editor-fields input:disabled,.editor-fields textarea:disabled{background:#f1f5f9;color:#94a3b8}.editor-divider{height:1px;margin:14px 0;background:#e2e8f0}.editor-export{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.editor-status{min-height:20px;margin-top:10px!important;font-size:12px}.editor-kbd{display:inline-block;border:1px solid #cbd5e1;border-bottom-width:2px;border-radius:5px;padding:0 5px;background:#f8fafc;font:12px/1.6 monospace;color:#334155}
+    
+    .author-tools{width:360px}
+    .is-authoring .slide{width:calc(100vw - 392px)}
+    .editor-object-type{display:inline-flex;align-items:center;border-radius:999px;padding:2px 8px;background:#eaf1fb;color:#2457a7;font-weight:700}
+    .editor-object-panel[hidden]{display:none}.editor-object-panel h3{margin:0 0 10px;font-size:15px;color:#172033}
+    .editor-color-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .editor-color-control{position:relative;min-width:0}.editor-color-label{display:block;margin-bottom:5px;color:#475569;font-size:12px}
+    .editor-color-trigger{display:flex;width:100%;height:34px;align-items:center;gap:6px;border:1px solid #cbd5e1;border-radius:8px;padding:4px 7px;background:#fff;color:#334155;cursor:pointer}
+    .editor-color-trigger:hover,.editor-color-trigger[aria-expanded="true"]{border-color:#2563eb;box-shadow:0 0 0 2px #dbeafe}
+    .editor-color-preview{width:20px;height:20px;flex:0 0 auto;border:1px solid #94a3b8;border-radius:4px;background:#000}
+    .editor-color-value{min-width:0;flex:1;overflow:hidden;color:#64748b;font:10px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;text-overflow:ellipsis}
+    .editor-native-color{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+    .editor-color-popover{position:fixed;z-index:80;width:306px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;background:#fff;box-shadow:0 18px 45px rgba(15,23,42,.24);color:#172033}
+    .editor-color-popover[hidden]{display:none}.editor-color-popover h4{margin:0 0 8px;font-size:13px}.editor-color-popover h4:not(:first-child){margin-top:13px;padding-top:11px;border-top:1px solid #e2e8f0}
+    .editor-theme-colors{display:grid;grid-template-columns:repeat(10,24px);gap:4px}
+    .editor-theme-column{display:grid;grid-template-rows:repeat(6,24px);gap:3px}
+    .editor-standard-colors{display:grid;grid-template-columns:repeat(10,24px);gap:4px}
+    .editor-palette-swatch{position:relative;width:24px;height:24px;border:1px solid rgba(15,23,42,.28);border-radius:3px;padding:0;background:var(--swatch);cursor:pointer}
+    .editor-palette-swatch:hover,.editor-palette-swatch:focus-visible{z-index:1;outline:2px solid #2563eb;outline-offset:1px}
+    .editor-palette-swatch.is-current::after{position:absolute;inset:-3px;border:2px solid #f97316;border-radius:5px;content:"";pointer-events:none}
+    .editor-more-color{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;margin-top:12px;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:#f8fafc;color:#334155;font:600 12px/1.2 sans-serif;cursor:pointer}
+    .editor-more-color:hover{border-color:#2563eb;color:#1d4ed8}
+    .editor-two-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .editor-fields select{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px 9px;background:#fff;color:#172033;font:14px/1.4 sans-serif}
+    .editor-inline-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .editor-inline-actions button{border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#24324a;padding:8px 6px;font:600 12px/1.2 sans-serif;cursor:pointer}
+    .editor-inline-actions button:hover{border-color:var(--accent);color:var(--accent)}
+    .editor-snap-toggle{display:flex!important;grid-template-columns:auto 1fr!important;align-items:center;gap:8px!important;padding:9px 10px;border:1px solid #bfdbfe;border-radius:9px;background:#eff6ff;color:#1e40af!important}.editor-snap-toggle input{width:16px!important;height:16px;margin:0}
+    .editor-overlay{display:none;pointer-events:none}.is-authoring .editor-overlay{display:block}
+    .editor-snap-guide{stroke:#0ea5e9;stroke-width:2;stroke-dasharray:7 5;vector-effect:non-scaling-stroke;opacity:.95}
+    .editor-selection-outline{fill:none;stroke:#f97316;stroke-width:3;stroke-dasharray:10 7;vector-effect:non-scaling-stroke}
+    .editor-resize-handle,.editor-route-handle,.editor-endpoint-handle{pointer-events:all;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}
+    .editor-resize-handle{fill:#f97316;cursor:nwse-resize}.editor-route-handle{fill:#2563eb;cursor:move}.editor-endpoint-handle{fill:#16a34a;cursor:crosshair}
+    .is-authoring .visual-group{cursor:move}.is-authoring .visual-edge path{cursor:pointer;pointer-events:stroke}
+    .is-authoring .visual-group.editor-selected>rect{stroke:#f97316!important;stroke-width:3!important}
+    .is-authoring .visual-edge.editor-selected>path{filter:drop-shadow(0 0 3px #f97316);stroke-width:max(4px,var(--edge-width,3px))}
+  
+    @media print{html,body{width:100%;height:100%;print-color-adjust:exact;-webkit-print-color-adjust:exact}.author-tools,.editor-overlay{display:none!important}}
+  body{display:grid;place-items:center}.paper-visual{width:100vw;height:100vh}</style></head><body><aside class="author-tools" aria-label="论文图高级编辑器">
+    <h2>论文图高级编辑器</h2>
+    <p>可选择节点、分组框或连线；修改会自动保存在当前浏览器。</p>
+    <div class="editor-actions">
+      <button type="button" data-action="undo">撤销</button>
+      <button type="button" data-action="redo">重做</button>
+      <button type="button" data-action="reset">重置</button>
+    </div>
+    <div class="editor-fields">
+      <label>图标题<input data-editor-field="title" type="text"></label>
+      <label>副标题<input data-editor-field="subtitle" type="text"></label>
+      <label class="editor-snap-toggle"><input data-editor-field="snap-enabled" type="checkbox" checked><span>智能吸附与参考线（按 Alt 临时关闭）</span></label>
+    </div>
+    <div class="editor-divider"></div>
+    <p>当前对象：<span class="editor-object-type" data-editor-field="selected-type">未选择</span> <strong data-editor-field="selected-id"></strong></p>
+    <section class="editor-object-panel" data-object-panel="none">
+      <p>点击节点、分组背景框或连线进行编辑。</p>
+    </section>
+    <section class="editor-object-panel" data-object-panel="node" hidden>
+      <h3>节点属性</h3>
+      <div class="editor-fields">
+        <label>节点标题<input data-editor-field="node-label" type="text"></label>
+        <label>节点说明<textarea data-editor-field="node-detail"></textarea></label>
+        <label>节点标签<input data-editor-field="node-tag" type="text"></label>
+        <div class="editor-color-grid">
+          <div class="editor-color-control" data-color-control="node-fill">
+    <span class="editor-color-label">填充</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="node-fill" aria-haspopup="dialog" aria-expanded="false" title="选择填充颜色">
+      <span class="editor-color-preview" data-color-preview="node-fill"></span>
+      <span class="editor-color-value" data-color-value="node-fill">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="node-fill" data-color-native="node-fill" type="color" tabindex="-1" aria-label="自定义填充颜色">
+  </div>
+          <div class="editor-color-control" data-color-control="node-stroke">
+    <span class="editor-color-label">边框</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="node-stroke" aria-haspopup="dialog" aria-expanded="false" title="选择边框颜色">
+      <span class="editor-color-preview" data-color-preview="node-stroke"></span>
+      <span class="editor-color-value" data-color-value="node-stroke">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="node-stroke" data-color-native="node-stroke" type="color" tabindex="-1" aria-label="自定义边框颜色">
+  </div>
+          <div class="editor-color-control" data-color-control="node-text-color">
+    <span class="editor-color-label">文字</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="node-text-color" aria-haspopup="dialog" aria-expanded="false" title="选择文字颜色">
+      <span class="editor-color-preview" data-color-preview="node-text-color"></span>
+      <span class="editor-color-value" data-color-value="node-text-color">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="node-text-color" data-color-native="node-text-color" type="color" tabindex="-1" aria-label="自定义文字颜色">
+  </div>
+        </div>
+      </div>
+    </section>
+    <section class="editor-object-panel" data-object-panel="group" hidden>
+      <h3>分组背景框</h3>
+      <div class="editor-fields">
+        <label>分组标题<input data-editor-field="group-label" type="text"></label>
+        <div class="editor-color-grid">
+          <div class="editor-color-control" data-color-control="group-fill">
+    <span class="editor-color-label">填充</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="group-fill" aria-haspopup="dialog" aria-expanded="false" title="选择填充颜色">
+      <span class="editor-color-preview" data-color-preview="group-fill"></span>
+      <span class="editor-color-value" data-color-value="group-fill">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="group-fill" data-color-native="group-fill" type="color" tabindex="-1" aria-label="自定义填充颜色">
+  </div>
+          <div class="editor-color-control" data-color-control="group-stroke">
+    <span class="editor-color-label">边框</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="group-stroke" aria-haspopup="dialog" aria-expanded="false" title="选择边框颜色">
+      <span class="editor-color-preview" data-color-preview="group-stroke"></span>
+      <span class="editor-color-value" data-color-value="group-stroke">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="group-stroke" data-color-native="group-stroke" type="color" tabindex="-1" aria-label="自定义边框颜色">
+  </div>
+          <div class="editor-color-control" data-color-control="group-text-color">
+    <span class="editor-color-label">文字</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="group-text-color" aria-haspopup="dialog" aria-expanded="false" title="选择文字颜色">
+      <span class="editor-color-preview" data-color-preview="group-text-color"></span>
+      <span class="editor-color-value" data-color-value="group-text-color">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="group-text-color" data-color-native="group-text-color" type="color" tabindex="-1" aria-label="自定义文字颜色">
+  </div>
+        </div>
+        <div class="editor-two-columns">
+          <label>X<input data-editor-field="group-x" type="number" step="1"></label>
+          <label>Y<input data-editor-field="group-y" type="number" step="1"></label>
+          <label>宽度<input data-editor-field="group-width" type="number" min="180" step="1"></label>
+          <label>高度<input data-editor-field="group-height" type="number" min="120" step="1"></label>
+        </div>
+      </div>
+    </section>
+    <section class="editor-object-panel" data-object-panel="edge" hidden>
+      <h3>连线与箭头</h3>
+      <div class="editor-fields">
+        <label>连线标签<input data-editor-field="edge-label" type="text"></label>
+        <div class="editor-two-columns">
+          <label>起始节点<select data-editor-field="edge-from"></select></label>
+          <label>终止节点<select data-editor-field="edge-to"></select></label>
+          <label>起始锚点<select data-editor-field="edge-start-anchor">
+            <option value="auto">自动</option><option value="top">上</option><option value="right">右</option><option value="bottom">下</option><option value="left">左</option>
+          </select></label>
+          <label>终止锚点<select data-editor-field="edge-end-anchor">
+            <option value="auto">自动</option><option value="top">上</option><option value="right">右</option><option value="bottom">下</option><option value="left">左</option>
+          </select></label>
+          <label>起点箭头<select data-editor-field="edge-start-arrow">
+            <option value="none">无</option><option value="triangle">三角箭头</option><option value="dot">圆点</option><option value="diamond">菱形</option>
+          </select></label>
+          <label>终点箭头<select data-editor-field="edge-end-arrow">
+            <option value="none">无</option><option value="triangle">三角箭头</option><option value="dot">圆点</option><option value="diamond">菱形</option>
+          </select></label>
+          <label>线型<select data-editor-field="edge-dash">
+            <option value="solid">实线</option><option value="dashed">虚线</option><option value="dotted">点线</option>
+          </select></label>
+          <label>线宽<input data-editor-field="edge-width" type="number" min="1" max="12" step="0.5"></label>
+        </div>
+        <div class="editor-color-control" data-color-control="edge-color">
+    <span class="editor-color-label">线条颜色</span>
+    <button class="editor-color-trigger" type="button" data-color-trigger="edge-color" aria-haspopup="dialog" aria-expanded="false" title="选择线条颜色颜色">
+      <span class="editor-color-preview" data-color-preview="edge-color"></span>
+      <span class="editor-color-value" data-color-value="edge-color">#000000</span>
+      <span aria-hidden="true">⌄</span>
+    </button>
+    <input class="editor-native-color" data-editor-field="edge-color" data-color-native="edge-color" type="color" tabindex="-1" aria-label="自定义线条颜色颜色">
+  </div>
+      </div>
+      <div class="editor-inline-actions">
+        <button type="button" data-action="add-bend">增加折点</button>
+        <button type="button" data-action="clear-bends">清除折点</button>
+      </div>
+      <p>蓝色控制点调整线路姿态；接近水平或垂直时自动吸附，按 Shift 强制锁定一个方向。绿色端点可拖到其他节点。</p>
+    </section>
+    <div class="editor-color-popover" data-color-popover role="dialog" aria-label="颜色选择" hidden>
+      <h4>主题颜色</h4>
+      <div class="editor-theme-colors" data-theme-colors></div>
+      <h4>标准色</h4>
+      <div class="editor-standard-colors" data-standard-colors></div>
+      <button class="editor-more-color" type="button" data-color-more><span aria-hidden="true">◉</span>更多颜色…</button>
+    </div>
+    <div class="editor-divider"></div>
+    <div class="editor-export">
+      <button type="button" data-action="export-svg">导出 SVG</button>
+      <button type="button" data-action="export-png">导出 PNG</button>
+      <button type="button" data-action="export-plan">导出 JSON</button>
+    </div>
+    <p class="editor-status">选择一个对象开始编辑</p>
+    <p>按 <span class="editor-kbd">E</span> 显示/隐藏编辑器，<span class="editor-kbd">Ctrl+Z</span> 撤销。</p>
+    <button type="button" data-action="close">隐藏编辑器</button>
+  </aside><section class="slide"><svg xmlns="http://www.w3.org/2000/svg" class="paper-visual" data-visual-type="architecture" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="visual-title visual-subtitle">
+  
+  <defs>
+    <marker id="arrow-flow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--flow)"></path></marker>
+<marker id="arrow-pass" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--pass)"></path></marker>
+<marker id="arrow-reject" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--reject)"></path></marker>
+<marker id="arrow-feedback" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1,1 L11,6 L1,11 Z" style="fill:var(--feedback)"></path></marker>
+    <marker id="arrow-triangle" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11 Z" fill="context-stroke"></path></marker>
+    <marker id="arrow-dot" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto"><circle cx="6" cy="6" r="4.5" fill="context-stroke"></circle></marker>
+    <marker id="arrow-diamond" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,6 L6,1 L11,6 L6,11 Z" fill="context-stroke"></path></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="var(--bg)"></rect>
+  <line class="title-rule" x1="72" y1="66" x2="72" y2="148"></line>
+  <text id="visual-title" class="visual-title" x="102" y="103">多目标配送路径优化模型</text>
+  <text id="visual-subtitle" class="visual-subtitle" x="104" y="139">决策变量—目标函数—约束—求解—输出</text>
+  <g class="groups-layer"><g class="visual-group" data-group-id="G1" data-x="35" data-y="190" data-width="315" data-height="770">
+    <rect x="35" y="190" width="315" height="770" rx="18"></rect>
+    <text class="group-label" x="57" y="227"><tspan class="group-index">01</tspan><tspan class="group-name" dx="13">模型输入</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G2" data-x="375" data-y="190" data-width="315" data-height="770">
+    <rect x="375" y="190" width="315" height="770" rx="18"></rect>
+    <text class="group-label" x="397" y="227"><tspan class="group-index">02</tspan><tspan class="group-name" dx="13">优化目标</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G3" data-x="715" data-y="190" data-width="440" data-height="770">
+    <rect x="715" y="190" width="440" height="770" rx="18"></rect>
+    <text class="group-label" x="737" y="227"><tspan class="group-index">03</tspan><tspan class="group-name" dx="13">约束体系</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G4" data-x="1180" data-y="190" data-width="315" data-height="770">
+    <rect x="1180" y="190" width="315" height="770" rx="18"></rect>
+    <text class="group-label" x="1202" y="227"><tspan class="group-index">04</tspan><tspan class="group-name" dx="13">求解与检验</tspan></text>
+  </g>
+<g class="visual-group" data-group-id="G5" data-x="1520" data-y="190" data-width="365" data-height="770">
+    <rect x="1520" y="190" width="365" height="770" rx="18"></rect>
+    <text class="group-label" x="1542" y="227"><tspan class="group-index">05</tspan><tspan class="group-name" dx="13">模型输出</tspan></text>
+  </g></g>
+  <g class="edges-layer"><g class="visual-edge edge-flow" data-edge-wrapper="E01">
+    <path d="M320.0,395.0 L405.0,512.5" data-edge-id="E01" data-edge-from="N1" data-edge-to="N3" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E02">
+    <path d="M320.0,670.0 L405.0,512.5" data-edge-id="E02" data-edge-from="N2" data-edge-to="N3" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E03">
+    <path d="M660.0,512.5 L750.0,335.0" data-edge-id="E03" data-edge-from="N3" data-edge-to="N4" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E04">
+    <path d="M660.0,512.5 L750.0,487.5" data-edge-id="E04" data-edge-from="N3" data-edge-to="N5" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E05">
+    <path d="M660.0,512.5 L750.0,640.0" data-edge-id="E05" data-edge-from="N3" data-edge-to="N6" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E06">
+    <path d="M660.0,512.5 L750.0,792.5" data-edge-id="E06" data-edge-from="N3" data-edge-to="N7" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E07">
+    <path d="M1120.0,487.5 L1210.0,430.0" data-edge-id="E07" data-edge-from="N5" data-edge-to="N8" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-flow" data-edge-wrapper="E08">
+    <path d="M1337.5,525.0 L1337.5,625.0" data-edge-id="E08" data-edge-from="N8" data-edge-to="N9" data-edge-kind="flow" data-edge-route="[]" data-start-anchor="bottom" data-end-anchor="top" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E09">
+    <path d="M1465.0,710.0 L1555.0,367.5" data-edge-id="E09" data-edge-from="N9" data-edge-to="N10" data-edge-kind="pass" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E10">
+    <path d="M1465.0,710.0 L1555.0,555.8" data-edge-id="E10" data-edge-from="N9" data-edge-to="N11" data-edge-kind="pass" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g>
+<g class="visual-edge edge-pass" data-edge-wrapper="E11">
+    <path d="M1465.0,710.0 L1555.0,744.2" data-edge-id="E11" data-edge-from="N9" data-edge-to="N12" data-edge-kind="pass" data-edge-route="[]" data-start-anchor="right" data-end-anchor="left" marker-end="url(#arrow-triangle)"></path>
+    
+  </g></g>
+  <g class="nodes-layer"><g class="visual-node node-process" data-node-id="N1" data-group="G1" data-x="65" data-y="300" data-original-x="65" data-original-y="300" data-width="255" data-height="190" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>决策变量；x_ijk：车辆 k 是否经过弧 i→j；t_i：节点 i 的到达时间</desc><rect class="node-shape" x="65" y="300" width="255" height="190" rx="14"></rect>
+    <text class="node-tag" x="302" y="325" text-anchor="end"></text>
+    <text class="node-title" x="192.5" y="352" text-anchor="middle" data-node-title="决策变量"><tspan x="192.5" dy="0">决策变量</tspan></text>
+    <text class="node-detail" x="192.5" y="401" text-anchor="middle" data-node-detail="x_ijk：车辆 k 是否经过弧 i→j；t_i：节点 i 的到达时间"><tspan x="192.5" dy="0">x_ijk：车辆 </tspan><tspan x="192.5" dy="31">k 是否经过弧 i</tspan><tspan x="192.5" dy="31">→j；t_i：节点</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N2" data-group="G1" data-x="65" data-y="585" data-original-x="65" data-original-y="585" data-width="255" data-height="170" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>参数与常量；d_ij：节点间距离；q_i：客户需求量；Q_k：车辆容量</desc><rect class="node-shape" x="65" y="585" width="255" height="170" rx="14"></rect>
+    <text class="node-tag" x="302" y="610" text-anchor="end"></text>
+    <text class="node-title" x="192.5" y="627" text-anchor="middle" data-node-title="参数与常量"><tspan x="192.5" dy="0">参数与常量</tspan></text>
+    <text class="node-detail" x="192.5" y="676" text-anchor="middle" data-node-detail="d_ij：节点间距离；q_i：客户需求量；Q_k：车辆容量"><tspan x="192.5" dy="0">d_ij：节点间距</tspan><tspan x="192.5" dy="31">离；q_i：客户需</tspan><tspan x="192.5" dy="31">求量；Q_k：车辆</tspan></text>
+  </g>
+<g class="visual-node node-pill node-math" data-node-id="N3" data-group="G2" data-x="405" data-y="390" data-original-x="405" data-original-y="390" data-width="255" data-height="245" data-title-wrap="10" data-detail-wrap="11" data-formula-latex="\min Z = \alpha \sum_{i,j,k} d_{ij}x_{ijk} + \beta \sum_i p_i" tabindex="0">
+    <desc>最小化目标；min Z = α ∑_(i,j,k) dᵢⱼxᵢⱼₖ + β ∑ᵢ pᵢ</desc><rect class="node-shape pill" x="405" y="390" width="255" height="245" rx="122.5"></rect>
+    <text class="node-tag" x="642" y="415" text-anchor="end"></text>
+    <text class="node-title" x="532.5" y="454" text-anchor="middle" data-node-title="最小化目标"><tspan x="532.5" dy="0">最小化目标</tspan></text>
+    <text class="node-detail" x="532.5" y="503" text-anchor="middle" data-node-detail="min Z = α ∑_(i,j,k) dᵢⱼxᵢⱼₖ + β ∑ᵢ pᵢ"><tspan x="532.5" dy="0">min Z = α ∑</tspan><tspan x="532.5" dy="31">_(i,j,k) dᵢ</tspan><tspan x="532.5" dy="31">ⱼxᵢⱼₖ + β ∑</tspan><tspan x="532.5" dy="31">ᵢ pᵢ</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N4" data-group="G3" data-x="750" data-y="270" data-original-x="750" data-original-y="270" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" tabindex="0">
+    <desc>流平衡约束；Σⱼ xᵢjk = Σⱼ xⱼik；车辆进入与离开守恒</desc><rect class="node-shape" x="750" y="270" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="295" text-anchor="end"></text>
+    <text class="node-title" x="935" y="292" text-anchor="middle" data-node-title="流平衡约束"><tspan x="935" dy="0">流平衡约束</tspan></text>
+    <text class="node-detail" x="935" y="341" text-anchor="middle" data-node-detail="Σⱼ xᵢjk = Σⱼ xⱼik；车辆进入与离开守恒"><tspan x="935" dy="0">Σⱼ xᵢjk = Σⱼ</tspan><tspan x="935" dy="31"> xⱼik；车辆进入与离</tspan><tspan x="935" dy="31">开守恒</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N5" data-group="G3" data-x="750" data-y="422.5" data-original-x="750" data-original-y="422.5" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" data-formula-latex="\sum_i q_i x_{ijk} \leq Q_k" tabindex="0">
+    <desc>容量约束；∑ᵢ qᵢ xᵢⱼₖ ≤ Qₖ；装载量不超过容量</desc><rect class="node-shape" x="750" y="422.5" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="447.5" text-anchor="end"></text>
+    <text class="node-title" x="935" y="460" text-anchor="middle" data-node-title="容量约束"><tspan x="935" dy="0">容量约束</tspan></text>
+    <text class="node-detail" x="935" y="509" text-anchor="middle" data-node-detail="∑ᵢ qᵢ xᵢⱼₖ ≤ Qₖ；装载量不超过容量"><tspan x="935" dy="0">∑ᵢ qᵢ xᵢⱼₖ ≤</tspan><tspan x="935" dy="31"> Qₖ；装载量不超过容量</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N6" data-group="G3" data-x="750" data-y="575" data-original-x="750" data-original-y="575" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" tabindex="0">
+    <desc>时间窗约束；aᵢ ≤ tᵢ ≤ bᵢ；在允许时段服务</desc><rect class="node-shape" x="750" y="575" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="600" text-anchor="end"></text>
+    <text class="node-title" x="935" y="612.5" text-anchor="middle" data-node-title="时间窗约束"><tspan x="935" dy="0">时间窗约束</tspan></text>
+    <text class="node-detail" x="935" y="661.5" text-anchor="middle" data-node-detail="aᵢ ≤ tᵢ ≤ bᵢ；在允许时段服务"><tspan x="935" dy="0">aᵢ ≤ tᵢ ≤ bᵢ</tspan><tspan x="935" dy="31">；在允许时段服务</tspan></text>
+  </g>
+<g class="visual-node node-process node-math" data-node-id="N7" data-group="G3" data-x="750" data-y="727.5" data-original-x="750" data-original-y="727.5" data-width="370" data-height="130" data-title-wrap="10" data-detail-wrap="12" tabindex="0">
+    <desc>唯一服务约束；ΣₖΣⱼ xᵢjk = 1；每个客户仅服务一次</desc><rect class="node-shape" x="750" y="727.5" width="370" height="130" rx="14"></rect>
+    <text class="node-tag" x="1102" y="752.5" text-anchor="end"></text>
+    <text class="node-title" x="935" y="765" text-anchor="middle" data-node-title="唯一服务约束"><tspan x="935" dy="0">唯一服务约束</tspan></text>
+    <text class="node-detail" x="935" y="814" text-anchor="middle" data-node-detail="ΣₖΣⱼ xᵢjk = 1；每个客户仅服务一次"><tspan x="935" dy="0">ΣₖΣⱼ xᵢjk = </tspan><tspan x="935" dy="31">1；每个客户仅服务一次</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N8" data-group="G4" data-x="1210" data-y="335" data-original-x="1210" data-original-y="335" data-width="255" data-height="190" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>改进遗传算法；编码与初始化；选择交叉变异；另 2 项</desc><rect class="node-shape" x="1210" y="335" width="255" height="190" rx="14"></rect>
+    <text class="node-tag" x="1447" y="360" text-anchor="end"></text>
+    <text class="node-title" x="1337.5" y="387" text-anchor="middle" data-node-title="改进遗传算法"><tspan x="1337.5" dy="0">改进遗传算法</tspan></text>
+    <text class="node-detail" x="1337.5" y="436" text-anchor="middle" data-node-detail="编码与初始化；选择交叉变异；另 2 项"><tspan x="1337.5" dy="0">编码与初始化；选择</tspan><tspan x="1337.5" dy="31">交叉变异；另 2 </tspan><tspan x="1337.5" dy="31">项</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N9" data-group="G4" data-x="1210" data-y="625" data-original-x="1210" data-original-y="625" data-width="255" data-height="170" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>结果检验；约束可行性检查；基准算法对比；敏感性分析</desc><rect class="node-shape" x="1210" y="625" width="255" height="170" rx="14"></rect>
+    <text class="node-tag" x="1447" y="650" text-anchor="end"></text>
+    <text class="node-title" x="1337.5" y="667" text-anchor="middle" data-node-title="结果检验"><tspan x="1337.5" dy="0">结果检验</tspan></text>
+    <text class="node-detail" x="1337.5" y="716" text-anchor="middle" data-node-detail="约束可行性检查；基准算法对比；敏感性分析"><tspan x="1337.5" dy="0">约束可行性检查；基</tspan><tspan x="1337.5" dy="31">准算法对比；敏感性</tspan><tspan x="1337.5" dy="31">分析</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N10" data-group="G5" data-x="1555" data-y="290" data-original-x="1555" data-original-y="290" data-width="295" data-height="155" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>最优路径；车辆访问顺序与分配方案</desc><rect class="node-shape" x="1555" y="290" width="295" height="155" rx="14"></rect>
+    <text class="node-tag" x="1832" y="315" text-anchor="end"></text>
+    <text class="node-title" x="1702.5" y="340" text-anchor="middle" data-node-title="最优路径"><tspan x="1702.5" dy="0">最优路径</tspan></text>
+    <text class="node-detail" x="1702.5" y="389" text-anchor="middle" data-node-detail="车辆访问顺序与分配方案"><tspan x="1702.5" dy="0">车辆访问顺序与分配</tspan><tspan x="1702.5" dy="31">方案</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N11" data-group="G5" data-x="1555" data-y="478.33333333333337" data-original-x="1555" data-original-y="478.33333333333337" data-width="295" data-height="155" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>目标函数值；总里程与延误成本</desc><rect class="node-shape" x="1555" y="478.33333333333337" width="295" height="155" rx="14"></rect>
+    <text class="node-tag" x="1832" y="503.33333333333337" text-anchor="end"></text>
+    <text class="node-title" x="1702.5" y="543.8333333333334" text-anchor="middle" data-node-title="目标函数值"><tspan x="1702.5" dy="0">目标函数值</tspan></text>
+    <text class="node-detail" x="1702.5" y="592.8333333333334" text-anchor="middle" data-node-detail="总里程与延误成本"><tspan x="1702.5" dy="0">总里程与延误成本</tspan></text>
+  </g>
+<g class="visual-node node-process" data-node-id="N12" data-group="G5" data-x="1555" data-y="666.6666666666667" data-original-x="1555" data-original-y="666.6666666666667" data-width="295" data-height="155" data-title-wrap="10" data-detail-wrap="9" tabindex="0">
+    <desc>评价指标；收敛性、稳定性与运行时间</desc><rect class="node-shape" x="1555" y="666.6666666666667" width="295" height="155" rx="14"></rect>
+    <text class="node-tag" x="1832" y="691.6666666666667" text-anchor="end"></text>
+    <text class="node-title" x="1702.5" y="716.6666666666667" text-anchor="middle" data-node-title="评价指标"><tspan x="1702.5" dy="0">评价指标</tspan></text>
+    <text class="node-detail" x="1702.5" y="765.6666666666667" text-anchor="middle" data-node-detail="收敛性、稳定性与运行时间"><tspan x="1702.5" dy="0">收敛性、稳定性与运</tspan><tspan x="1702.5" dy="31">行时间</tspan></text>
+  </g></g>
+  <g class="editor-overlay" aria-hidden="true">
+    <g data-editor-overlay="snap-guides"></g>
+    <rect class="editor-selection-outline" data-editor-overlay="group-outline" x="0" y="0" width="0" height="0" rx="18" visibility="hidden"></rect>
+    <rect class="editor-resize-handle" data-editor-handle="group-resize" x="0" y="0" width="18" height="18" rx="4" visibility="hidden"></rect>
+    <g data-editor-overlay="edge-handles"></g>
+  </g>
+  </svg></section><script>
+  (() => {
+    const svg = document.querySelector('.paper-visual');
+    const sourcePlan = {"schema_version":1,"mode":"paper-visual","type":"architecture","title":"多目标配送路径优化模型","subtitle":"决策变量—目标函数—约束—求解—输出","theme":"academic-blue","canvas":{"width":1920,"height":1080},"groups":[{"id":"G1","index":"01","label":"模型输入","x":35,"y":190,"width":315,"height":770},{"id":"G2","index":"02","label":"优化目标","x":375,"y":190,"width":315,"height":770},{"id":"G3","index":"03","label":"约束体系","x":715,"y":190,"width":440,"height":770},{"id":"G4","index":"04","label":"求解与检验","x":1180,"y":190,"width":315,"height":770},{"id":"G5","index":"05","label":"模型输出","x":1520,"y":190,"width":365,"height":770}],"nodes":[{"id":"N1","group":"G1","label":"决策变量","detail":"x_ijk：车辆 k 是否经过弧 i→j；t_i：节点 i 的到达时间","detail_wrap":9,"x":65,"y":300,"width":255,"height":190},{"id":"N2","group":"G1","label":"参数与常量","detail":"d_ij：节点间距离；q_i：客户需求量；Q_k：车辆容量","detail_wrap":9,"x":65,"y":585,"width":255,"height":170},{"id":"N3","group":"G2","label":"最小化目标","detail":"min Z = α ∑_(i,j,k) dᵢⱼxᵢⱼₖ + β ∑ᵢ pᵢ","detail_wrap":11,"x":405,"y":390,"width":255,"height":245,"shape":"pill","math":true,"detail_max_lines":5,"formula_latex":"\\min Z = \\alpha \\sum_{i,j,k} d_{ij}x_{ijk} + \\beta \\sum_i p_i"},{"id":"N4","group":"G3","label":"流平衡约束","detail":"Σⱼ xᵢjk = Σⱼ xⱼik；车辆进入与离开守恒","detail_wrap":12,"x":750,"y":270,"width":370,"height":130,"math":true,"formula_latex":""},{"id":"N5","group":"G3","label":"容量约束","detail":"∑ᵢ qᵢ xᵢⱼₖ ≤ Qₖ；装载量不超过容量","detail_wrap":12,"x":750,"y":422.5,"width":370,"height":130,"math":true,"formula_latex":"\\sum_i q_i x_{ijk} \\leq Q_k"},{"id":"N6","group":"G3","label":"时间窗约束","detail":"aᵢ ≤ tᵢ ≤ bᵢ；在允许时段服务","detail_wrap":12,"x":750,"y":575,"width":370,"height":130,"math":true,"formula_latex":""},{"id":"N7","group":"G3","label":"唯一服务约束","detail":"ΣₖΣⱼ xᵢjk = 1；每个客户仅服务一次","detail_wrap":12,"x":750,"y":727.5,"width":370,"height":130,"math":true,"formula_latex":""},{"id":"N8","group":"G4","label":"改进遗传算法","detail":"编码与初始化；选择交叉变异；另 2 项","detail_wrap":9,"x":1210,"y":335,"width":255,"height":190},{"id":"N9","group":"G4","label":"结果检验","detail":"约束可行性检查；基准算法对比；敏感性分析","detail_wrap":9,"x":1210,"y":625,"width":255,"height":170},{"id":"N10","group":"G5","label":"最优路径","detail":"车辆访问顺序与分配方案","detail_wrap":9,"x":1555,"y":290,"width":295,"height":155},{"id":"N11","group":"G5","label":"目标函数值","detail":"总里程与延误成本","detail_wrap":9,"x":1555,"y":478.33333333333337,"width":295,"height":155},{"id":"N12","group":"G5","label":"评价指标","detail":"收敛性、稳定性与运行时间","detail_wrap":9,"x":1555,"y":666.6666666666667,"width":295,"height":155}],"edges":[{"id":"E01","from":"N1","to":"N3","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E02","from":"N2","to":"N3","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E03","from":"N3","to":"N4","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E04","from":"N3","to":"N5","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E05","from":"N3","to":"N6","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E06","from":"N3","to":"N7","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E07","from":"N5","to":"N8","kind":"flow","start_anchor":"right","end_anchor":"left"},{"id":"E08","from":"N8","to":"N9","kind":"flow","start_anchor":"bottom","end_anchor":"top"},{"id":"E09","from":"N9","to":"N10","kind":"pass","start_anchor":"right","end_anchor":"left"},{"id":"E10","from":"N9","to":"N11","kind":"pass","start_anchor":"right","end_anchor":"left"},{"id":"E11","from":"N9","to":"N12","kind":"pass","start_anchor":"right","end_anchor":"left"}]};
+    const storageKey = "paper-visual:v2:architecture:多目标配送路径优化模型";
+    const clone = value => JSON.parse(JSON.stringify(value));
+    const field = name => document.querySelector('[data-editor-field="' + name + '"]');
+    const action = name => document.querySelector('[data-action="' + name + '"]');
+    const themeColorColumns = [
+      { name: '背景 1', base: '#ffffff', tones: ['#f2f2f2', '#d9d9d9', '#bfbfbf', '#a6a6a6', '#7f7f7f'] },
+      { name: '文本 1', base: '#111827', tones: ['#e5e7eb', '#9ca3af', '#6b7280', '#374151', '#111827'] },
+      { name: '背景 2', base: '#e5e7eb', tones: ['#f8fafc', '#e2e8f0', '#cbd5e1', '#94a3b8', '#64748b'] },
+      { name: '文本 2', base: '#475569', tones: ['#e2e8f0', '#cbd5e1', '#94a3b8', '#475569', '#1e293b'] },
+      { name: '主题蓝', base: '#4472c4', tones: ['#d9e2f3', '#b4c6e7', '#8eaadb', '#2f5597', '#203864'] },
+      { name: '主题橙', base: '#ed7d31', tones: ['#fce4d6', '#f8cbad', '#f4b183', '#c65911', '#843c0c'] },
+      { name: '主题灰', base: '#a5a5a5', tones: ['#ededed', '#dbdbdb', '#c9c9c9', '#7b7b7b', '#525252'] },
+      { name: '主题黄', base: '#ffc000', tones: ['#fff2cc', '#ffe699', '#ffd966', '#bf9000', '#806000'] },
+      { name: '主题青蓝', base: '#5b9bd5', tones: ['#ddebf7', '#bdd7ee', '#9dc3e6', '#2e75b6', '#1f4e79'] },
+      { name: '主题绿', base: '#70ad47', tones: ['#e2f0d9', '#c6e0b4', '#a9d18e', '#548235', '#375623'] }
+    ];
+    const standardColors = [
+      ['深红', '#c00000'], ['红', '#ff0000'], ['橙', '#ff7a00'], ['金黄', '#ffc000'], ['黄', '#fff200'],
+      ['浅绿', '#92d050'], ['绿', '#00b050'], ['青', '#00b0f0'], ['蓝', '#0070c0'], ['深蓝', '#002060'],
+      ['紫', '#7030a0'], ['洋红', '#c000c0'], ['棕', '#7f6000'], ['深灰', '#404040'], ['黑', '#000000']
+    ];
+    const nodeElement = id => Array.from(svg.querySelectorAll('[data-node-id]')).find(item => item.dataset.nodeId === id);
+    const groupElement = id => Array.from(svg.querySelectorAll('[data-group-id]')).find(item => item.dataset.groupId === id);
+    const edgeElement = id => Array.from(svg.querySelectorAll('[data-edge-id]')).find(item => item.dataset.edgeId === id);
+    const edgeWrapper = id => edgeElement(id)?.closest('.visual-edge');
+    const colorHex = value => {
+      const text = String(value || '').trim();
+      if (/^#[0-9a-f]{6}$/i.test(text)) return text.toLowerCase();
+      const match = text.match(/rgba?\(\s*(\d+)[, ]+\s*(\d+)[, ]+\s*(\d+)/i);
+      if (!match) return '#000000';
+      return '#' + match.slice(1, 4).map(item => Number(item).toString(16).padStart(2, '0')).join('');
+    };
+    const computedColor = (element, property, fallback) => colorHex(element ? getComputedStyle(element)[property] : fallback);
+    const defaultDash = element => {
+      const value = element ? getComputedStyle(element).strokeDasharray : 'none';
+      if (!value || value === 'none' || value === '0px') return 'solid';
+      const first = parseFloat(value);
+      return first <= 4 ? 'dotted' : 'dashed';
+    };
+    const initialState = {
+      title: sourcePlan.title || '',
+      subtitle: sourcePlan.subtitle || '',
+      preferences: { snapEnabled: true, snapThreshold: 14 },
+      nodes: Object.fromEntries(sourcePlan.nodes.map(node => {
+        const element = nodeElement(node.id);
+        const shape = element?.querySelector('.node-shape');
+        const title = element?.querySelector('.node-title');
+        return [node.id, {
+          x: node.x, y: node.y, label: node.label || '', detail: node.detail || '', tag: node.tag || '',
+          fill: colorHex(node.fill || computedColor(shape, 'fill', '#ffffff')),
+          stroke: colorHex(node.stroke || computedColor(shape, 'stroke', '#9aabc2')),
+          textColor: colorHex(node.text_color || computedColor(title, 'fill', '#162033'))
+        }];
+      })),
+      groups: Object.fromEntries(sourcePlan.groups.map(group => {
+        const element = groupElement(group.id);
+        const rect = element?.querySelector('rect');
+        const text = element?.querySelector('.group-label');
+        return [group.id, {
+          x: group.x, y: group.y, width: group.width, height: group.height, label: group.label || '',
+          fill: colorHex(group.fill || computedColor(rect, 'fill', '#f2f6fb')),
+          stroke: colorHex(group.stroke || computedColor(rect, 'stroke', '#9aabc2')),
+          textColor: colorHex(group.text_color || computedColor(text, 'fill', '#162033'))
+        }];
+      })),
+      edges: Object.fromEntries(sourcePlan.edges.map((edge, index) => {
+        const id = edge.id || edge.from + '->' + edge.to || 'E' + (index + 1);
+        const element = edgeElement(id);
+        return [id, {
+          from: edge.from, to: edge.to, route: clone(edge.route || []), label: edge.label || '',
+          color: colorHex(edge.color || computedColor(element, 'stroke', '#334155')),
+          width: Number(edge.width || parseFloat(element ? getComputedStyle(element).strokeWidth : '3') || 3),
+          dash: edge.dash || defaultDash(element),
+          startArrow: edge.start_arrow || 'none', endArrow: edge.end_arrow || 'triangle',
+          startAnchor: edge.start_anchor || 'auto', endAnchor: edge.end_anchor || 'auto',
+          labelPosition: edge.label_position ? clone(edge.label_position) : null
+        }];
+      }))
+    };
+    let state = clone(initialState);
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+      if (saved && saved.nodes && saved.groups && saved.edges) {
+        state = {
+          ...state, ...saved,
+          nodes: Object.fromEntries(Object.entries(state.nodes).map(([id, value]) => [id, { ...value, ...(saved.nodes[id] || {}) }])),
+          groups: Object.fromEntries(Object.entries(state.groups).map(([id, value]) => [id, { ...value, ...(saved.groups[id] || {}) }])),
+          edges: Object.fromEntries(Object.entries(state.edges).map(([id, value]) => [id, { ...value, ...(saved.edges[id] || {}) }]))
+        };
+      }
+    } catch (_) {}
+    let history = [clone(state)];
+    let historyIndex = 0;
+    let selection = { type: 'none', id: '' };
+    let drag = null;
+    let activeGuides = [];
+    const status = message => {
+      const element = document.querySelector('.editor-status');
+      if (element) element.textContent = message;
+    };
+    const colorPopover = document.querySelector('[data-color-popover]');
+    document.body.append(colorPopover);
+    let activeColorField = '';
+    const createPaletteSwatch = (color, label) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'editor-palette-swatch';
+      button.dataset.paletteColor = colorHex(color);
+      button.style.setProperty('--swatch', colorHex(color));
+      button.title = label + ' ' + colorHex(color).toUpperCase();
+      button.setAttribute('aria-label', button.title);
+      button.setAttribute('aria-pressed', 'false');
+      return button;
+    };
+    const buildColorPalette = () => {
+      const themeHost = colorPopover.querySelector('[data-theme-colors]');
+      for (const column of themeColorColumns) {
+        const columnElement = document.createElement('div');
+        columnElement.className = 'editor-theme-column';
+        [column.base, ...column.tones].forEach((color, index) => {
+          columnElement.append(createPaletteSwatch(color, index === 0 ? column.name : column.name + ' 明暗 ' + index));
+        });
+        themeHost.append(columnElement);
+      }
+      const standardHost = colorPopover.querySelector('[data-standard-colors]');
+      for (const [name, color] of standardColors) {
+        standardHost.append(createPaletteSwatch(color, name));
+      }
+    };
+    const syncPaletteSelection = value => {
+      const current = colorHex(value);
+      colorPopover.querySelectorAll('[data-palette-color]').forEach(button => {
+        const selected = button.dataset.paletteColor === current;
+        button.classList.toggle('is-current', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+    };
+    const syncColorControl = (name, value) => {
+      const color = colorHex(value);
+      const preview = document.querySelector('[data-color-preview="' + name + '"]');
+      const valueElement = document.querySelector('[data-color-value="' + name + '"]');
+      const trigger = document.querySelector('[data-color-trigger="' + name + '"]');
+      if (preview) preview.style.background = color;
+      if (valueElement) valueElement.textContent = color.toUpperCase();
+      if (trigger) trigger.title = '当前颜色 ' + color.toUpperCase() + '，点击选择颜色';
+      if (activeColorField === name) syncPaletteSelection(color);
+    };
+    const closeColorPopover = () => {
+      if (!colorPopover || colorPopover.hidden) return;
+      colorPopover.hidden = true;
+      document.querySelectorAll('[data-color-trigger][aria-expanded="true"]').forEach(trigger => trigger.setAttribute('aria-expanded', 'false'));
+      activeColorField = '';
+    };
+    const openColorPopover = (name, trigger) => {
+      if (!colorPopover) return;
+      if (!colorPopover.hidden && activeColorField === name) {
+        closeColorPopover();
+        return;
+      }
+      document.querySelectorAll('[data-color-trigger]').forEach(item => item.setAttribute('aria-expanded', 'false'));
+      activeColorField = name;
+      trigger.setAttribute('aria-expanded', 'true');
+      colorPopover.hidden = false;
+      syncPaletteSelection(field(name)?.value);
+      const triggerRect = trigger.getBoundingClientRect();
+      const popoverRect = colorPopover.getBoundingClientRect();
+      let left = Math.min(window.innerWidth - popoverRect.width - 12, Math.max(12, triggerRect.right - popoverRect.width));
+      let top = triggerRect.bottom + 8;
+      if (top + popoverRect.height > window.innerHeight - 12) {
+        top = Math.max(12, triggerRect.top - popoverRect.height - 8);
+      }
+      colorPopover.style.left = Math.round(left) + 'px';
+      colorPopover.style.top = Math.round(top) + 'px';
+    };
+    const applyPaletteColor = color => {
+      if (!activeColorField) return;
+      const input = field(activeColorField);
+      input.value = colorHex(color);
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      closeColorPopover();
+    };
+    buildColorPalette();
+    const svgPoint = event => {
+      const point = svg.createSVGPoint();
+      point.x = event.clientX;
+      point.y = event.clientY;
+      return point.matrixTransform(svg.getScreenCTM().inverse());
+    };
+    const nodeBox = id => {
+      const element = nodeElement(id);
+      const value = state.nodes[id];
+      return { x: value.x, y: value.y, width: +element.dataset.width, height: +element.dataset.height };
+    };
+    const canvasSize = {
+      width: Number(sourcePlan.canvas?.width || 1920),
+      height: Number(sourcePlan.canvas?.height || 1080)
+    };
+    const objectBoxes = (excludeType = '', excludeId = '') => {
+      const boxes = [];
+      for (const id of Object.keys(state.nodes)) {
+        if (excludeType === 'node' && excludeId === id) continue;
+        boxes.push(nodeBox(id));
+      }
+      for (const [id, value] of Object.entries(state.groups)) {
+        if (excludeType === 'group' && excludeId === id) continue;
+        boxes.push({ x: value.x, y: value.y, width: value.width, height: value.height });
+      }
+      return boxes;
+    };
+    const alignmentCandidates = (excludeType = '', excludeId = '') => {
+      const x = [0, canvasSize.width / 2, canvasSize.width];
+      const y = [0, canvasSize.height / 2, canvasSize.height];
+      for (const box of objectBoxes(excludeType, excludeId)) {
+        x.push(box.x, box.x + box.width / 2, box.x + box.width);
+        y.push(box.y, box.y + box.height / 2, box.y + box.height);
+      }
+      return { x, y };
+    };
+    const bestSnap = (movingValues, candidates, threshold) => {
+      let best = null;
+      for (const moving of movingValues) {
+        for (const candidate of candidates) {
+          const distance = Math.abs(moving.value - candidate);
+          if (distance <= threshold && (!best || distance < best.distance)) {
+            best = { distance, candidate, offset: moving.offset };
+          }
+        }
+      }
+      return best;
+    };
+    function snapBoxPosition(type, id, x, y, width, height, disabled = false) {
+      if (!state.preferences?.snapEnabled || disabled) return { x, y, guides: [] };
+      const threshold = Number(state.preferences.snapThreshold || 14);
+      const candidates = alignmentCandidates(type, id);
+      const xSnap = bestSnap([
+        { value: x, offset: 0 },
+        { value: x + width / 2, offset: width / 2 },
+        { value: x + width, offset: width }
+      ], candidates.x, threshold);
+      const ySnap = bestSnap([
+        { value: y, offset: 0 },
+        { value: y + height / 2, offset: height / 2 },
+        { value: y + height, offset: height }
+      ], candidates.y, threshold);
+      const guides = [];
+      if (xSnap) {
+        x = xSnap.candidate - xSnap.offset;
+        guides.push({ axis: 'x', value: xSnap.candidate });
+      }
+      if (ySnap) {
+        y = ySnap.candidate - ySnap.offset;
+        guides.push({ axis: 'y', value: ySnap.candidate });
+      }
+      return { x, y, guides };
+    }
+    function snapResizePosition(id, right, bottom, disabled = false) {
+      if (!state.preferences?.snapEnabled || disabled) return { right, bottom, guides: [] };
+      const threshold = Number(state.preferences.snapThreshold || 14);
+      const candidates = alignmentCandidates('group', id);
+      const xSnap = bestSnap([{ value: right, offset: 0 }], candidates.x, threshold);
+      const ySnap = bestSnap([{ value: bottom, offset: 0 }], candidates.y, threshold);
+      const guides = [];
+      if (xSnap) {
+        right = xSnap.candidate;
+        guides.push({ axis: 'x', value: right });
+      }
+      if (ySnap) {
+        bottom = ySnap.candidate;
+        guides.push({ axis: 'y', value: bottom });
+      }
+      return { right, bottom, guides };
+    }
+    const center = box => ({ x: box.x + box.width / 2, y: box.y + box.height / 2 });
+    const boundary = (box, toward) => {
+      const c = center(box), dx = toward.x - c.x, dy = toward.y - c.y;
+      const sx = dx ? box.width / 2 / Math.abs(dx) : 1e9;
+      const sy = dy ? box.height / 2 / Math.abs(dy) : 1e9;
+      const scale = Math.min(sx, sy);
+      return { x: c.x + dx * scale, y: c.y + dy * scale };
+    };
+    const anchorPoint = (box, side, toward) => {
+      const c = center(box);
+      if (side === 'top') return { x: c.x, y: box.y };
+      if (side === 'right') return { x: box.x + box.width, y: c.y };
+      if (side === 'bottom') return { x: c.x, y: box.y + box.height };
+      if (side === 'left') return { x: box.x, y: c.y };
+      return boundary(box, toward);
+    };
+    const wrap = (value, max) => {
+      const parts = String(value || '').trim().split(/\n|<br\s*\/?>/i).map(item => item.trim()).filter(Boolean);
+      const result = [];
+      for (const part of parts) {
+        const chars = Array.from(part);
+        for (let index = 0; index < chars.length; index += max) result.push(chars.slice(index, index + max).join(''));
+      }
+      return result.slice(0, 3);
+    };
+    const tspans = (element, textLines, x, y, lineHeight) => {
+      element.replaceChildren();
+      element.setAttribute('x', x);
+      element.setAttribute('y', y);
+      textLines.forEach((text, index) => {
+        const span = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        span.setAttribute('x', x);
+        span.setAttribute('dy', index ? lineHeight : 0);
+        span.textContent = text;
+        element.append(span);
+      });
+    };
+    function renderNode(element, value) {
+      const x = +element.dataset.originalX;
+      const y = +element.dataset.originalY;
+      const width = +element.dataset.width;
+      const height = +element.dataset.height;
+      const cx = x + width / 2;
+      const cy = y + height / 2;
+      const titleLines = wrap(value.label, +element.dataset.titleWrap || 10);
+      const detailLines = wrap(value.detail, +element.dataset.detailWrap || 14);
+      const titleHeight = titleLines.length * 38;
+      const detailHeight = detailLines.length * 31;
+      const gap = detailLines.length ? 13 : 0;
+      const total = titleHeight + gap + detailHeight;
+      const titleY = cy - total / 2 + 29;
+      const detailY = titleY + titleHeight + gap - 2;
+      element.dataset.x = value.x;
+      element.dataset.y = value.y;
+      element.setAttribute('transform', 'translate(' + (value.x - x) + ' ' + (value.y - y) + ')');
+      const shape = element.querySelector('.node-shape');
+      shape.style.fill = value.fill;
+      shape.style.stroke = value.stroke;
+      const title = element.querySelector('.node-title');
+      const detail = element.querySelector('.node-detail');
+      const tag = element.querySelector('.node-tag');
+      title.style.fill = value.textColor;
+      detail.style.fill = value.textColor;
+      tag.style.fill = value.textColor;
+      tspans(title, titleLines, cx, titleY, 38);
+      tspans(detail, detailLines, cx, detailY, 31);
+      tag.textContent = value.tag || '';
+      element.querySelector('desc').textContent = [value.label, value.detail].filter(Boolean).join('；');
+    }
+    function renderGroup(element, value) {
+      element.dataset.x = value.x;
+      element.dataset.y = value.y;
+      element.dataset.width = value.width;
+      element.dataset.height = value.height;
+      const rect = element.querySelector('rect');
+      rect.setAttribute('x', value.x);
+      rect.setAttribute('y', value.y);
+      rect.setAttribute('width', value.width);
+      rect.setAttribute('height', value.height);
+      rect.style.fill = value.fill;
+      rect.style.stroke = value.stroke;
+      const text = element.querySelector('.group-label');
+      text.setAttribute('x', value.x + 22);
+      text.setAttribute('y', value.y + 37);
+      text.style.fill = value.textColor;
+      text.querySelector('.group-index').style.fill = value.textColor;
+      text.querySelector('.group-name').textContent = value.label;
+    }
+    function edgeGeometry(id) {
+      const value = state.edges[id];
+      const from = nodeBox(value.from), to = nodeBox(value.to);
+      const mids = value.route.map(item => ({ x: +item[0], y: +item[1] }));
+      const start = anchorPoint(from, value.startAnchor, mids[0] || center(to));
+      const end = anchorPoint(to, value.endAnchor, mids[mids.length - 1] || center(from));
+      return { start, end, mids, points: [start, ...mids, end] };
+    }
+    function snapRoutePoint(id, index, point, forceOrthogonal = false, disabled = false) {
+      if (!state.preferences?.snapEnabled || disabled) return { x: point.x, y: point.y, guides: [] };
+      const geometry = edgeGeometry(id);
+      const route = state.edges[id].route;
+      const previous = index > 0
+        ? { x: route[index - 1][0], y: route[index - 1][1] }
+        : geometry.start;
+      const next = index < route.length - 1
+        ? { x: route[index + 1][0], y: route[index + 1][1] }
+        : geometry.end;
+      const threshold = Number(state.preferences.snapThreshold || 14);
+      let x = point.x;
+      let y = point.y;
+      const guides = [];
+      if (forceOrthogonal) {
+        const dx = Math.min(Math.abs(point.x - previous.x), Math.abs(point.x - next.x));
+        const dy = Math.min(Math.abs(point.y - previous.y), Math.abs(point.y - next.y));
+        if (dx <= dy) {
+          x = Math.abs(point.x - previous.x) <= Math.abs(point.x - next.x) ? previous.x : next.x;
+          guides.push({ axis: 'x', value: x });
+        } else {
+          y = Math.abs(point.y - previous.y) <= Math.abs(point.y - next.y) ? previous.y : next.y;
+          guides.push({ axis: 'y', value: y });
+        }
+        return { x, y, guides };
+      }
+      const xSnap = bestSnap([{ value: point.x, offset: 0 }], [previous.x, next.x], threshold);
+      const ySnap = bestSnap([{ value: point.y, offset: 0 }], [previous.y, next.y], threshold);
+      if (xSnap) {
+        x = xSnap.candidate;
+        guides.push({ axis: 'x', value: x });
+      }
+      if (ySnap) {
+        y = ySnap.candidate;
+        guides.push({ axis: 'y', value: y });
+      }
+      return { x, y, guides };
+    }
+    function renderEdge(id, value) {
+      const element = edgeElement(id);
+      if (!element || !state.nodes[value.from] || !state.nodes[value.to]) return;
+      const geometry = edgeGeometry(id);
+      element.setAttribute('d', geometry.points.map((point, index) => (index ? 'L' : 'M') + point.x.toFixed(1) + ',' + point.y.toFixed(1)).join(' '));
+      element.dataset.edgeFrom = value.from;
+      element.dataset.edgeTo = value.to;
+      element.dataset.startAnchor = value.startAnchor;
+      element.dataset.endAnchor = value.endAnchor;
+      element.dataset.edgeRoute = JSON.stringify(value.route);
+      element.style.stroke = value.color;
+      element.style.strokeWidth = value.width;
+      element.style.strokeDasharray = value.dash === 'dashed' ? '12 8' : value.dash === 'dotted' ? '3 8' : 'none';
+      if (value.startArrow === 'none') element.removeAttribute('marker-start');
+      else element.setAttribute('marker-start', 'url(#arrow-' + value.startArrow + ')');
+      if (value.endArrow === 'none') element.removeAttribute('marker-end');
+      else element.setAttribute('marker-end', 'url(#arrow-' + value.endArrow + ')');
+      const wrapper = edgeWrapper(id);
+      let labelWrap = wrapper.querySelector('.edge-label-wrap');
+      if (!labelWrap) {
+        labelWrap = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        labelWrap.setAttribute('class', 'edge-label-wrap');
+        const background = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        background.setAttribute('height', '42');
+        background.setAttribute('rx', '8');
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('class', 'edge-label');
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('data-edge-label-for', id);
+        labelWrap.append(background, text);
+        wrapper.append(labelWrap);
+      }
+      const label = labelWrap.querySelector('.edge-label');
+      const labelPoint = value.labelPosition
+        ? { x: value.labelPosition[0], y: value.labelPosition[1] }
+        : geometry.points[Math.floor((geometry.points.length - 1) / 2)];
+      const width = Math.max(84, Array.from(value.label || '').length * 30);
+      labelWrap.style.display = value.label ? '' : 'none';
+      labelWrap.querySelector('rect').setAttribute('x', labelPoint.x - width / 2);
+      labelWrap.querySelector('rect').setAttribute('y', labelPoint.y - 23);
+      labelWrap.querySelector('rect').setAttribute('width', width);
+      label.setAttribute('x', labelPoint.x);
+      label.setAttribute('y', labelPoint.y + 8);
+      label.textContent = value.label || '';
+      element.dataset.edgeLabel = value.label || '';
+    }
+    function renderOverlay() {
+      const guideLayer = svg.querySelector('[data-editor-overlay="snap-guides"]');
+      const outline = svg.querySelector('[data-editor-overlay="group-outline"]');
+      const resize = svg.querySelector('[data-editor-handle="group-resize"]');
+      const edgeHandles = svg.querySelector('[data-editor-overlay="edge-handles"]');
+      outline.setAttribute('visibility', 'hidden');
+      resize.setAttribute('visibility', 'hidden');
+      guideLayer.replaceChildren();
+      edgeHandles.replaceChildren();
+      for (const guide of activeGuides) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('class', 'editor-snap-guide');
+        if (guide.axis === 'x') {
+          line.setAttribute('x1', guide.value);
+          line.setAttribute('x2', guide.value);
+          line.setAttribute('y1', 0);
+          line.setAttribute('y2', canvasSize.height);
+        } else {
+          line.setAttribute('x1', 0);
+          line.setAttribute('x2', canvasSize.width);
+          line.setAttribute('y1', guide.value);
+          line.setAttribute('y2', guide.value);
+        }
+        guideLayer.append(line);
+      }
+      if (selection.type === 'group' && state.groups[selection.id]) {
+        const value = state.groups[selection.id];
+        outline.setAttribute('x', value.x);
+        outline.setAttribute('y', value.y);
+        outline.setAttribute('width', value.width);
+        outline.setAttribute('height', value.height);
+        outline.setAttribute('visibility', 'visible');
+        resize.setAttribute('x', value.x + value.width - 9);
+        resize.setAttribute('y', value.y + value.height - 9);
+        resize.setAttribute('data-group-id', selection.id);
+        resize.setAttribute('visibility', 'visible');
+      }
+      if (selection.type === 'edge' && state.edges[selection.id]) {
+        const geometry = edgeGeometry(selection.id);
+        const makeCircle = (className, x, y, attrs) => {
+          const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          circle.setAttribute('class', className);
+          circle.setAttribute('cx', x);
+          circle.setAttribute('cy', y);
+          circle.setAttribute('r', className.includes('endpoint') ? 10 : 9);
+          for (const [name, value] of Object.entries(attrs)) circle.setAttribute(name, value);
+          edgeHandles.append(circle);
+        };
+        makeCircle('editor-endpoint-handle', geometry.start.x, geometry.start.y, { 'data-edge-endpoint': 'from', 'data-edge-id': selection.id });
+        geometry.mids.forEach((point, index) => makeCircle('editor-route-handle', point.x, point.y, { 'data-route-index': index, 'data-edge-id': selection.id }));
+        if (!geometry.mids.length) {
+          const midpoint = { x: (geometry.start.x + geometry.end.x) / 2, y: (geometry.start.y + geometry.end.y) / 2 };
+          makeCircle('editor-route-handle', midpoint.x, midpoint.y, { 'data-route-index': 'new', 'data-edge-id': selection.id });
+        }
+        makeCircle('editor-endpoint-handle', geometry.end.x, geometry.end.y, { 'data-edge-endpoint': 'to', 'data-edge-id': selection.id });
+      }
+    }
+    function applyState() {
+      document.querySelector('#visual-title').textContent = state.title;
+      document.querySelector('#visual-subtitle').textContent = state.subtitle;
+      for (const [id, value] of Object.entries(state.groups)) {
+        const element = groupElement(id);
+        if (element) renderGroup(element, value);
+      }
+      for (const [id, value] of Object.entries(state.nodes)) {
+        const element = nodeElement(id);
+        if (element) renderNode(element, value);
+      }
+      for (const [id, value] of Object.entries(state.edges)) renderEdge(id, value);
+      renderOverlay();
+      refreshFields();
+    }
+    function persist() {
+      try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+    }
+    function commit(message = '修改已保存') {
+      const snapshot = JSON.stringify(state);
+      if (JSON.stringify(history[historyIndex]) !== snapshot) {
+        history = history.slice(0, historyIndex + 1);
+        history.push(clone(state));
+        historyIndex = history.length - 1;
+      }
+      persist();
+      status(message);
+    }
+    function selectObject(type, id) {
+      closeColorPopover();
+      selection = state[type + 's']?.[id] ? { type, id } : { type: 'none', id: '' };
+      if (!drag) activeGuides = [];
+      svg.querySelectorAll('.editor-selected').forEach(element => element.classList.remove('editor-selected'));
+      if (selection.type === 'node') nodeElement(id)?.classList.add('editor-selected');
+      if (selection.type === 'group') groupElement(id)?.classList.add('editor-selected');
+      if (selection.type === 'edge') edgeWrapper(id)?.classList.add('editor-selected');
+      applyState();
+      status(selection.type === 'none' ? '选择一个对象开始编辑' : '已选择' + ({ node: '节点', group: '分组框', edge: '连线' }[selection.type]) + '：' + id);
+    }
+    const setValue = (name, value) => {
+      const input = field(name);
+      if (input && document.activeElement !== input) input.value = value ?? '';
+      if (input?.matches('[data-color-native]')) syncColorControl(name, value);
+    };
+    function refreshFields() {
+      setValue('title', state.title);
+      setValue('subtitle', state.subtitle);
+      if (field('snap-enabled') && document.activeElement !== field('snap-enabled')) {
+        field('snap-enabled').checked = state.preferences?.snapEnabled !== false;
+      }
+      field('selected-type').textContent = { none: '未选择', node: '节点', group: '分组框', edge: '连线' }[selection.type];
+      field('selected-id').textContent = selection.id;
+      document.querySelectorAll('[data-object-panel]').forEach(panel => {
+        panel.hidden = panel.dataset.objectPanel !== selection.type;
+      });
+      if (selection.type === 'node') {
+        const value = state.nodes[selection.id];
+        setValue('node-label', value.label);
+        setValue('node-detail', value.detail);
+        setValue('node-tag', value.tag);
+        setValue('node-fill', value.fill);
+        setValue('node-stroke', value.stroke);
+        setValue('node-text-color', value.textColor);
+      }
+      if (selection.type === 'group') {
+        const value = state.groups[selection.id];
+        for (const key of ['label', 'fill', 'stroke', 'textColor', 'x', 'y', 'width', 'height']) {
+          setValue('group-' + key.replace(/[A-Z]/g, match => '-' + match.toLowerCase()), value[key]);
+        }
+      }
+      if (selection.type === 'edge') {
+        const value = state.edges[selection.id];
+        for (const [name, key] of Object.entries({
+          'edge-label': 'label', 'edge-from': 'from', 'edge-to': 'to',
+          'edge-start-anchor': 'startAnchor', 'edge-end-anchor': 'endAnchor',
+          'edge-start-arrow': 'startArrow', 'edge-end-arrow': 'endArrow',
+          'edge-dash': 'dash', 'edge-width': 'width', 'edge-color': 'color'
+        })) setValue(name, value[key]);
+      }
+    }
+    function undo() {
+      if (historyIndex <= 0) return status('没有更早的修改');
+      state = clone(history[--historyIndex]);
+      applyState();
+      persist();
+      status('已撤销');
+    }
+    function redo() {
+      if (historyIndex >= history.length - 1) return status('没有可重做的修改');
+      state = clone(history[++historyIndex]);
+      applyState();
+      persist();
+      status('已重做');
+    }
+    function reset() {
+      if (!window.confirm('恢复为最初生成的版本？浏览器内的编辑记录将被清除。')) return;
+      state = clone(initialState);
+      history = [clone(state)];
+      historyIndex = 0;
+      selection = { type: 'none', id: '' };
+      try { localStorage.removeItem(storageKey); } catch (_) {}
+      applyState();
+      status('已恢复初始版本');
+    }
+    function setEditMode(enabled) {
+      document.body.classList.toggle('is-authoring', Boolean(enabled));
+      if (enabled) status('编辑模式已开启');
+    }
+    function setSnapEnabled(enabled) {
+      state.preferences = { ...(state.preferences || {}), snapEnabled: Boolean(enabled), snapThreshold: Number(state.preferences?.snapThreshold || 14) };
+      activeGuides = [];
+      refreshFields();
+      persist();
+      status(enabled ? '智能吸附已开启' : '智能吸附已关闭');
+    }
+    function download(name, blob) {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = name;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    }
+    function serializedSvg() {
+      const exported = svg.cloneNode(true);
+      exported.querySelector('.editor-overlay')?.remove();
+      exported.querySelectorAll('.editor-selected').forEach(element => element.classList.remove('editor-selected'));
+      const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+      style.textContent = document.querySelector('head style').textContent;
+      exported.prepend(style);
+      exported.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      return '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(exported);
+    }
+    function exportSvg() {
+      download('diagram-edited.svg', new Blob([serializedSvg()], { type: 'image/svg+xml;charset=utf-8' }));
+      status('已导出 SVG');
+    }
+    function exportPng() {
+      const blob = new Blob([serializedSvg()], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const image = new Image();
+      image.onload = () => {
+        const viewBox = svg.viewBox.baseVal;
+        const canvas = document.createElement('canvas');
+        canvas.width = viewBox.width * 2;
+        canvas.height = viewBox.height * 2;
+        canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(output => {
+          if (output) download('diagram-edited@2x.png', output);
+          URL.revokeObjectURL(url);
+          status(output ? '已导出 2× PNG' : 'PNG 导出失败');
+        }, 'image/png');
+      };
+      image.onerror = () => {
+        URL.revokeObjectURL(url);
+        status('PNG 导出失败');
+      };
+      image.src = url;
+    }
+    function exportPlan() {
+      const output = clone(sourcePlan);
+      output.title = state.title;
+      output.subtitle = state.subtitle;
+      output.nodes = output.nodes.map(node => {
+        const value = state.nodes[node.id];
+        return { ...node, x: value.x, y: value.y, label: value.label, detail: value.detail, tag: value.tag, fill: value.fill, stroke: value.stroke, text_color: value.textColor };
+      });
+      output.groups = output.groups.map(group => {
+        const value = state.groups[group.id];
+        return { ...group, x: value.x, y: value.y, width: value.width, height: value.height, label: value.label, fill: value.fill, stroke: value.stroke, text_color: value.textColor };
+      });
+      output.edges = output.edges.map((edge, index) => {
+        const id = edge.id || edge.from + '->' + edge.to || 'E' + (index + 1);
+        const value = state.edges[id];
+        const result = {
+          ...edge, from: value.from, to: value.to, route: value.route, label: value.label,
+          color: value.color, width: value.width, dash: value.dash,
+          start_arrow: value.startArrow, end_arrow: value.endArrow,
+          start_anchor: value.startAnchor, end_anchor: value.endAnchor
+        };
+        if (value.labelPosition) result.label_position = value.labelPosition;
+        return result;
+      });
+      download('visual-plan-edited.json', new Blob([JSON.stringify(output, null, 2) + '\n'], { type: 'application/json;charset=utf-8' }));
+      status('已导出可继续生成的 JSON');
+    }
+    function addBend() {
+      if (selection.type !== 'edge') return;
+      const value = state.edges[selection.id];
+      const geometry = edgeGeometry(selection.id);
+      const previous = value.route.length ? value.route[value.route.length - 1] : [geometry.start.x, geometry.start.y];
+      value.route.push([(previous[0] + geometry.end.x) / 2, (previous[1] + geometry.end.y) / 2]);
+      applyState();
+      commit('已增加折点');
+    }
+    function clearBends() {
+      if (selection.type !== 'edge') return;
+      state.edges[selection.id].route = [];
+      applyState();
+      commit('已清除折点');
+    }
+    const nearestNode = point => {
+      let best = null;
+      for (const [id, value] of Object.entries(state.nodes)) {
+        const c = center(nodeBox(id));
+        const distance = Math.hypot(point.x - c.x, point.y - c.y);
+        if (!best || distance < best.distance) best = { id, distance };
+      }
+      return best && best.distance < 260 ? best.id : null;
+    };
+    svg.addEventListener('pointerdown', event => {
+      if (!document.body.classList.contains('is-authoring')) return;
+      activeGuides = [];
+      const point = svgPoint(event);
+      const resizeHandle = event.target.closest('[data-editor-handle="group-resize"]');
+      const routeHandle = event.target.closest('[data-route-index]');
+      const endpointHandle = event.target.closest('[data-edge-endpoint]');
+      if (resizeHandle) {
+        const id = resizeHandle.dataset.groupId;
+        selectObject('group', id);
+        const value = state.groups[id];
+        drag = { type: 'group-resize', id, start: point, width: value.width, height: value.height, before: JSON.stringify(state) };
+      } else if (routeHandle) {
+        const id = routeHandle.dataset.edgeId;
+        selectObject('edge', id);
+        const value = state.edges[id];
+        let index = routeHandle.dataset.routeIndex;
+        if (index === 'new') {
+          value.route = [[point.x, point.y]];
+          index = 0;
+        }
+        drag = { type: 'edge-route', id, index: +index, before: JSON.stringify(state) };
+      } else if (endpointHandle) {
+        const id = endpointHandle.dataset.edgeId;
+        selectObject('edge', id);
+        drag = { type: 'edge-endpoint', id, endpoint: endpointHandle.dataset.edgeEndpoint, handle: endpointHandle, point, before: JSON.stringify(state) };
+      } else {
+        const node = event.target.closest('[data-node-id]');
+        const edge = event.target.closest('[data-edge-id]');
+        const group = event.target.closest('[data-group-id]');
+        if (node) {
+          const id = node.dataset.nodeId;
+          selectObject('node', id);
+          const value = state.nodes[id];
+          drag = { type: 'node-move', id, start: point, x: value.x, y: value.y, before: JSON.stringify(state) };
+        } else if (edge) {
+          selectObject('edge', edge.dataset.edgeId);
+        } else if (group) {
+          const id = group.dataset.groupId;
+          selectObject('group', id);
+          const value = state.groups[id];
+          drag = { type: 'group-move', id, start: point, x: value.x, y: value.y, before: JSON.stringify(state) };
+        } else {
+          selectObject('none', '');
+        }
+      }
+      if (drag) {
+        event.target.setPointerCapture?.(event.pointerId);
+        event.preventDefault();
+      }
+    });
+    svg.addEventListener('pointermove', event => {
+      if (!drag) return;
+      const point = svgPoint(event);
+      if (drag.type === 'node-move') {
+        const value = state.nodes[drag.id];
+        const box = nodeBox(drag.id);
+        const snapped = snapBoxPosition(
+          'node',
+          drag.id,
+          drag.x + point.x - drag.start.x,
+          drag.y + point.y - drag.start.y,
+          box.width,
+          box.height,
+          event.altKey
+        );
+        value.x = Math.round(snapped.x * 10) / 10;
+        value.y = Math.round(snapped.y * 10) / 10;
+        activeGuides = snapped.guides;
+      }
+      if (drag.type === 'group-move') {
+        const value = state.groups[drag.id];
+        const snapped = snapBoxPosition(
+          'group',
+          drag.id,
+          drag.x + point.x - drag.start.x,
+          drag.y + point.y - drag.start.y,
+          value.width,
+          value.height,
+          event.altKey
+        );
+        value.x = Math.round(snapped.x * 10) / 10;
+        value.y = Math.round(snapped.y * 10) / 10;
+        activeGuides = snapped.guides;
+      }
+      if (drag.type === 'group-resize') {
+        const value = state.groups[drag.id];
+        const resized = snapResizePosition(
+          drag.id,
+          value.x + drag.width + point.x - drag.start.x,
+          value.y + drag.height + point.y - drag.start.y,
+          event.altKey
+        );
+        value.width = Math.max(180, Math.round((resized.right - value.x) * 10) / 10);
+        value.height = Math.max(120, Math.round((resized.bottom - value.y) * 10) / 10);
+        activeGuides = resized.guides;
+      }
+      if (drag.type === 'edge-route') {
+        const snapped = snapRoutePoint(drag.id, drag.index, point, event.shiftKey, event.altKey);
+        state.edges[drag.id].route[drag.index] = [Math.round(snapped.x * 10) / 10, Math.round(snapped.y * 10) / 10];
+        activeGuides = snapped.guides;
+      }
+      if (drag.type === 'edge-endpoint') {
+        drag.point = point;
+        drag.handle.setAttribute('cx', point.x);
+        drag.handle.setAttribute('cy', point.y);
+        return;
+      }
+      applyState();
+    });
+    const finishDrag = () => {
+      if (!drag) return;
+      if (drag.type === 'edge-endpoint') {
+        const target = nearestNode(drag.point);
+        if (target) state.edges[drag.id][drag.endpoint] = target;
+      }
+      const changed = drag.before !== JSON.stringify(state);
+      const message = {
+        'node-move': '节点位置已保存',
+        'group-move': '分组框位置已保存',
+        'group-resize': '分组框尺寸已保存',
+        'edge-route': '连线路径已保存',
+        'edge-endpoint': '连线端点已保存'
+      }[drag.type];
+      drag = null;
+      activeGuides = [];
+      applyState();
+      if (changed) commit(message);
+    };
+    svg.addEventListener('pointerup', finishDrag);
+    svg.addEventListener('pointercancel', finishDrag);
+    svg.addEventListener('dblclick', event => {
+      const node = event.target.closest('[data-node-id]');
+      const group = event.target.closest('[data-group-id]');
+      const edge = event.target.closest('[data-edge-id]');
+      if (node) {
+        selectObject('node', node.dataset.nodeId);
+        field('node-label').focus();
+        field('node-label').select();
+      } else if (group) {
+        selectObject('group', group.dataset.groupId);
+        field('group-label').focus();
+        field('group-label').select();
+      } else if (edge) {
+        selectObject('edge', edge.dataset.edgeId);
+        field('edge-label').focus();
+        field('edge-label').select();
+      }
+    });
+    const nodeOptions = sourcePlan.nodes.map(node => '<option value="' + String(node.id).replace(/"/g, '&quot;') + '">' + String(node.label || node.id).replace(/</g, '&lt;') + '</option>').join('');
+    field('edge-from').innerHTML = nodeOptions;
+    field('edge-to').innerHTML = nodeOptions;
+    const globalFields = { title: 'title', subtitle: 'subtitle' };
+    for (const [name, key] of Object.entries(globalFields)) {
+      field(name).addEventListener('input', event => {
+        state[key] = event.target.value;
+        applyState();
+        persist();
+      });
+      field(name).addEventListener('change', () => commit('标题已保存'));
+    }
+    field('snap-enabled').addEventListener('change', event => {
+      setSnapEnabled(event.target.checked);
+    });
+    document.querySelectorAll('[data-color-trigger]').forEach(trigger => {
+      trigger.addEventListener('click', () => openColorPopover(trigger.dataset.colorTrigger, trigger));
+    });
+    colorPopover.addEventListener('click', event => {
+      const swatch = event.target.closest('[data-palette-color]');
+      if (swatch) {
+        applyPaletteColor(swatch.dataset.paletteColor);
+        return;
+      }
+      if (event.target.closest('[data-color-more]')) {
+        field(activeColorField)?.click();
+      }
+    });
+    document.addEventListener('pointerdown', event => {
+      if (colorPopover.hidden) return;
+      if (colorPopover.contains(event.target) || event.target.closest('[data-color-trigger]')) return;
+      closeColorPopover();
+    });
+    window.addEventListener('resize', closeColorPopover);
+    const nodeFields = {
+      'node-label': 'label', 'node-detail': 'detail', 'node-tag': 'tag',
+      'node-fill': 'fill', 'node-stroke': 'stroke', 'node-text-color': 'textColor'
+    };
+    for (const [name, key] of Object.entries(nodeFields)) {
+      field(name).addEventListener('input', event => {
+        if (selection.type !== 'node') return;
+        state.nodes[selection.id][key] = event.target.value;
+        applyState();
+        persist();
+      });
+      field(name).addEventListener('change', () => commit('节点属性已保存'));
+    }
+    const groupFields = {
+      'group-label': 'label', 'group-fill': 'fill', 'group-stroke': 'stroke',
+      'group-text-color': 'textColor', 'group-x': 'x', 'group-y': 'y',
+      'group-width': 'width', 'group-height': 'height'
+    };
+    for (const [name, key] of Object.entries(groupFields)) {
+      field(name).addEventListener('input', event => {
+        if (selection.type !== 'group') return;
+        const numeric = ['x', 'y', 'width', 'height'].includes(key);
+        state.groups[selection.id][key] = numeric ? Number(event.target.value) : event.target.value;
+        if (key === 'width') state.groups[selection.id][key] = Math.max(180, state.groups[selection.id][key]);
+        if (key === 'height') state.groups[selection.id][key] = Math.max(120, state.groups[selection.id][key]);
+        applyState();
+        persist();
+      });
+      field(name).addEventListener('change', () => commit('分组框属性已保存'));
+    }
+    const edgeFields = {
+      'edge-label': 'label', 'edge-from': 'from', 'edge-to': 'to',
+      'edge-start-anchor': 'startAnchor', 'edge-end-anchor': 'endAnchor',
+      'edge-start-arrow': 'startArrow', 'edge-end-arrow': 'endArrow',
+      'edge-dash': 'dash', 'edge-width': 'width', 'edge-color': 'color'
+    };
+    for (const [name, key] of Object.entries(edgeFields)) {
+      field(name).addEventListener('input', event => {
+        if (selection.type !== 'edge') return;
+        state.edges[selection.id][key] = key === 'width' ? Number(event.target.value) : event.target.value;
+        applyState();
+        persist();
+      });
+      field(name).addEventListener('change', () => commit('连线属性已保存'));
+    }
+    action('close').addEventListener('click', () => setEditMode(false));
+    action('undo').addEventListener('click', undo);
+    action('redo').addEventListener('click', redo);
+    action('reset').addEventListener('click', reset);
+    action('add-bend').addEventListener('click', addBend);
+    action('clear-bends').addEventListener('click', clearBends);
+    action('export-svg').addEventListener('click', exportSvg);
+    action('export-png').addEventListener('click', exportPng);
+    action('export-plan').addEventListener('click', exportPlan);
+    window.addEventListener('keydown', event => {
+      const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || '');
+      if (!typing && event.key.toLowerCase() === 'e') setEditMode(!document.body.classList.contains('is-authoring'));
+      if (!typing && event.key === 'Escape') {
+        if (!colorPopover.hidden) closeColorPopover();
+        else selectObject('none', '');
+      }
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
+        event.preventDefault();
+        event.shiftKey ? redo() : undo();
+      }
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'y') {
+        event.preventDefault();
+        redo();
+      }
+    });
+    window.PaperVisual = {
+      update: applyState, setEditMode, setSnapEnabled, selectObject, undo, redo, reset,
+      addBend, clearBends, exportSvg, exportPng, exportPlan,
+      getState: () => clone(state),
+      testSnapBox: (type, id, x, y, width, height, disabled = false) => clone(snapBoxPosition(type, id, x, y, width, height, disabled)),
+      testSnapRoute: (id, index, x, y, force = false, disabled = false) => clone(snapRoutePoint(id, index, { x, y }, force, disabled)),
+      previewSnapBox: (type, id, x, y, width, height) => {
+        const result = snapBoxPosition(type, id, x, y, width, height, false);
+        activeGuides = result.guides;
+        renderOverlay();
+        return clone(result);
+      }
+    };
+    applyState();
+    if (new URLSearchParams(location.search).get('edit') === '1') setEditMode(true);
+  })();
+  </script></body></html>

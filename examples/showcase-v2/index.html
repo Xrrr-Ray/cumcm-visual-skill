@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HTML-PPT Skill · 论文可视化完整示例</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#172033;font-family:"Microsoft YaHei","PingFang SC",sans-serif}header{padding:64px max(32px,calc((100vw - 1240px)/2));background:linear-gradient(135deg,#152b4f,#2457a7);color:#fff}header .eyebrow{font-size:14px;letter-spacing:.16em;opacity:.72}h1{font:700 48px/1.18 "Songti SC","STSong",serif;margin:14px 0 12px}header p{max-width:850px;margin:0;color:#dce8fa;line-height:1.8}.stats{display:flex;gap:28px;margin-top:28px}.stat strong{display:block;font-size:28px}.stat span{font-size:13px;color:#c8d8ee}main{max-width:1240px;margin:0 auto;padding:44px 28px 80px}section{margin-bottom:50px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.section-head h2{font-size:28px;margin:0}.section-head p{margin:0;color:#6b7b91}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px}.card{overflow:hidden;background:#fff;border:1px solid #d9e3ef;border-radius:18px;box-shadow:0 8px 28px rgba(35,63,98,.07)}.thumb{aspect-ratio:16/9;background:#edf2f8;display:block;width:100%;object-fit:cover;border-bottom:1px solid #e1e8f1}.body{padding:20px}.meta{color:#6d7c91;font-size:12px;letter-spacing:.06em;text-transform:uppercase}.body h3{font-size:21px;margin:9px 0 8px}.body p{color:#5b6b80;line-height:1.65;margin:0 0 14px;min-height:52px}.links{display:flex;flex-wrap:wrap;gap:8px}.links a{padding:7px 10px;border-radius:8px;background:#edf3fb;color:#2457a7;font-size:13px;font-weight:700;text-decoration:none}.links a.pptx{background:#eaf5f0;color:#26735b}.links a.prompt{background:#f2eef8;color:#7047a0}.suite{padding:28px;background:#172b4d;color:#fff;border-radius:20px}.suite h3{font-size:26px;margin:0 0 10px}.suite p{color:#d4dfef;line-height:1.75}.suite a{display:inline-block;margin:8px 10px 0 0;padding:10px 14px;border-radius:9px;background:#fff;color:#214f98;text-decoration:none;font-weight:700}@media(max-width:700px){h1{font-size:36px}.stats{flex-wrap:wrap}.section-head{display:block}.section-head p{margin-top:6px}}
+    .hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.hero-links a{padding:10px 14px;border-radius:9px;background:#fff;color:#214f98;text-decoration:none;font-size:14px;font-weight:800}.hero-links a.secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">HTML-PPT SKILL · PAPER VISUALIZATION V2</div>
+    <h1>国赛论文可视化示例库</h1>
+    <p>本页集中展示第二阶段能力：7 类论文数据图、3 类公式模型关系图，以及读取论文规划后的一键连续生成套件。每个示例均保留 HTML、SVG、输入数据、提示词和可编辑 PPTX。</p>
+    <div class="hero-links"><a href="../student-guide/index.html">学生使用说明网站</a><a class="secondary" href="../../docs/HTML-PPT-Skill-Student-Guide-Codex-Kimi.md">Codex + Kimi Markdown 指南</a></div>
+    <div class="stats">
+      <div class="stat"><strong>7</strong><span>数据图类型</span></div>
+      <div class="stat"><strong>3</strong><span>模型图场景</span></div>
+      <div class="stat"><strong>11</strong><span>完整提示词</span></div>
+      <div class="stat"><strong>100%</strong><span>PPTX 重导入验证</span></div>
+    </div>
+  </header>
+  <main>
+    <section>
+      <div class="section-head"><h2>Paper Chart · 数据图</h2><p>原生图表或 PowerPoint 原生形状，可继续修改数据、颜色和标注。</p></div>
+      <div class="grid">
+        <article class="card"><img class="thumb" src="charts/line/pptx/chart-preview.png" alt="折线图"><div class="body"><div class="meta">LINE · NATIVE CHART</div><h3>算法收敛性能对比</h3><p>比较基线与改进算法的迭代收敛轨迹。</p><div class="links"><a href="charts/line/index.html">展示</a><a href="charts/line/edit.html">编辑</a><a href="charts/line/chart.svg">SVG</a><a class="pptx" href="charts/line/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-line.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="charts/bar/pptx/chart-preview.png" alt="柱状图"><div class="body"><div class="meta">BAR · NATIVE CHART</div><h3>不同模型预测性能对比</h3><p>以分组柱状图对比准确率和 F1 分数。</p><div class="links"><a href="charts/bar/index.html">展示</a><a href="charts/bar/edit.html">编辑</a><a href="charts/bar/chart.svg">SVG</a><a class="pptx" href="charts/bar/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-bar.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="charts/scatter/pptx/chart-preview.png" alt="散点图"><div class="body"><div class="meta">SCATTER · NATIVE CHART</div><h3>训练成本与模型性能关系</h3><p>分析性能收益、训练时长和模型复杂度之间的权衡。</p><div class="links"><a href="charts/scatter/index.html">展示</a><a href="charts/scatter/edit.html">编辑</a><a href="charts/scatter/chart.svg">SVG</a><a class="pptx" href="charts/scatter/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-scatter.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="charts/heatmap/pptx/chart-preview.png" alt="热力图"><div class="body"><div class="meta">HEATMAP · EDITABLE SHAPES</div><h3>配送系统变量相关性</h3><p>显示 Pearson 相关系数，并保留每个单元格为独立形状。</p><div class="links"><a href="charts/heatmap/index.html">展示</a><a href="charts/heatmap/edit.html">编辑</a><a href="charts/heatmap/chart.svg">SVG</a><a class="pptx" href="charts/heatmap/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-heatmap.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="charts/boxplot/pptx/chart-preview.png" alt="箱线图"><div class="body"><div class="meta">BOXPLOT · EDITABLE SHAPES</div><h3>交叉验证准确率分布</h3><p>显示中位数、四分位区间、须线和离群点。</p><div class="links"><a href="charts/boxplot/index.html">展示</a><a href="charts/boxplot/edit.html">编辑</a><a href="charts/boxplot/chart.svg">SVG</a><a class="pptx" href="charts/boxplot/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-boxplot.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="charts/radar/pptx/chart-preview.png" alt="雷达图"><div class="body"><div class="meta">RADAR · NATIVE CHART</div><h3>模型综合能力评估</h3><p>从六个维度比较基线模型与改进模型。</p><div class="links"><a href="charts/radar/index.html">展示</a><a href="charts/radar/edit.html">编辑</a><a href="charts/radar/chart.svg">SVG</a><a class="pptx" href="charts/radar/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-radar.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="charts/errorbar/pptx/chart-preview.png" alt="误差棒图"><div class="body"><div class="meta">ERROR BAR · EDITABLE SHAPES</div><h3>样本规模与预测性能</h3><p>以均值和标准差表达实验结果及其不确定性。</p><div class="links"><a href="charts/errorbar/index.html">展示</a><a href="charts/errorbar/edit.html">编辑</a><a href="charts/errorbar/chart.svg">SVG</a><a class="pptx" href="charts/errorbar/pptx/chart.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/paper-chart-errorbar.md">提示词</a></div></div></article>
+      </div>
+    </section>
+    <section>
+      <div class="section-head"><h2>Model Diagram · 公式与关系图</h2><p>常用 LaTeX 子集离线排版，原始公式保留；节点、分区和箭头均可编辑。</p></div>
+      <div class="grid">
+        <article class="card"><img class="thumb" src="model-diagrams/optimization/pptx/diagram-preview.png" alt="优化模型图"><div class="body"><div class="meta">OPTIMIZATION · ACADEMIC BLUE</div><h3>多目标配送路径优化模型</h3><p>决策变量、目标函数、四类约束、求解验证与输出。</p><div class="links"><a href="model-diagrams/optimization/index.html">展示</a><a href="model-diagrams/optimization/edit.html">编辑</a><a href="model-diagrams/optimization/diagram.svg">SVG</a><a class="pptx" href="model-diagrams/optimization/pptx/diagram.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/model-diagram-optimization.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="model-diagrams/prediction/pptx/diagram-preview.png" alt="预测模型图"><div class="body"><div class="meta">PREDICTION · ACADEMIC GREEN</div><h3>多源特征需求预测模型</h3><p>时序特征、正则化损失、数据约束、验证与解释输出。</p><div class="links"><a href="model-diagrams/prediction/index.html">展示</a><a href="model-diagrams/prediction/edit.html">编辑</a><a href="model-diagrams/prediction/diagram.svg">SVG</a><a class="pptx" href="model-diagrams/prediction/pptx/diagram.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/model-diagram-prediction.md">提示词</a></div></div></article>
+        <article class="card"><img class="thumb" src="model-diagrams/evaluation/pptx/diagram-preview.png" alt="评价模型图"><div class="body"><div class="meta">EVALUATION · MINIMAL GRAY</div><h3>区域韧性综合评价模型</h3><p>熵权法—TOPSIS 的指标、权重约束、测算和结果解释。</p><div class="links"><a href="model-diagrams/evaluation/index.html">展示</a><a href="model-diagrams/evaluation/edit.html">编辑</a><a href="model-diagrams/evaluation/diagram.svg">SVG</a><a class="pptx" href="model-diagrams/evaluation/pptx/diagram.pptx">PPTX</a><a class="prompt" href="../showcase-v2-prompts/model-diagram-evaluation.md">提示词</a></div></div></article>
+      </div>
+    </section>
+    <section class="suite">
+      <h3>Figure Suite · 全文插图连续生成</h3>
+      <p>示例从论文规划中连续生成一张收敛曲线和一张模型关系图，并分别产出 HTML、SVG、PPTX、校验报告和总目录。正式使用时可把计划扩展到更多章节和图表。</p>
+      <a href="figure-suite/index.html">打开套件总目录</a>
+      <a href="figure-suite/suite-execution-report.json">查看执行报告</a>
+      <a href="../showcase-v2-prompts/figure-suite.md">查看提示词</a>
+    </section>
+  </main>
+</body>
+</html>

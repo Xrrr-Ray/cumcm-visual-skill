@@ -1,0 +1,34 @@
+{
+  "title": "多源特征需求预测模型",
+  "subtitle": "特征输入—损失函数—约束—训练验证—预测输出",
+  "theme": "academic-green",
+  "variables": [
+    { "symbol": "x_t", "meaning": "时刻 t 的历史需求特征" },
+    { "symbol": "w_t", "meaning": "天气与节假日外生特征" }
+  ],
+  "parameters": [
+    { "symbol": "θ", "meaning": "模型可训练参数" },
+    { "symbol": "λ", "meaning": "正则化强度" }
+  ],
+  "objective": {
+    "sense": "min",
+    "latex": "\\min_{\\theta} \\frac{1}{n}\\sum_{t=1}^{n}(y_t-\\hat{y}_t)^2 + \\lambda ||\\theta||_2^2",
+    "meaning": "降低预测误差并抑制过拟合"
+  },
+  "constraints": [
+    { "name": "非负预测", "latex": "\\hat{y}_t \\geq 0", "meaning": "需求量不能为负" },
+    { "name": "容量上界", "latex": "\\hat{y}_t \\leq C_t", "meaning": "不超过系统最大承载量" },
+    { "name": "时序一致性", "expression": "训练集时间早于验证集", "meaning": "避免未来信息泄漏" },
+    { "name": "缺失率约束", "expression": "missing(x_j) ≤ 5%", "meaning": "保证输入特征质量" }
+  ],
+  "solver": {
+    "name": "时序交叉验证 + XGBoost",
+    "steps": ["滑动窗口构造样本", "贝叶斯参数搜索", "滚动验证", "最优模型重训"]
+  },
+  "validation": ["MAE / RMSE", "残差诊断", "消融实验"],
+  "outputs": [
+    { "name": "点预测", "meaning": "未来各时段需求量" },
+    { "name": "置信区间", "meaning": "预测上下界" },
+    { "name": "特征贡献", "meaning": "SHAP 重要性排序" }
+  ]
+}

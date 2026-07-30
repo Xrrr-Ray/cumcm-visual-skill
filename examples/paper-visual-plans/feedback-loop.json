@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "mode": "paper-visual",
+  "type": "feedback-loop",
+  "title": "产品批次质量检测与闭环处置流程",
+  "subtitle": "质量检测、分级处置与规则迭代",
+  "theme": "academic-blue",
+  "canvas": { "width": 1920, "height": 1080 },
+  "groups": [
+    { "id": "G1", "index": "01", "label": "检测判定", "x": 45, "y": 190, "width": 1055, "height": 720 },
+    { "id": "G2", "index": "02", "label": "处置决策", "x": 1125, "y": 190, "width": 465, "height": 720 },
+    { "id": "G3", "index": "03", "label": "反馈更新", "x": 1615, "y": 190, "width": 260, "height": 720 }
+  ],
+  "nodes": [
+    { "id": "N1", "group": "G1", "label": "待检批次", "detail": "新到货产品", "x": 85, "y": 300, "width": 180, "height": 125 },
+    { "id": "N2", "group": "G1", "label": "初次抽检", "detail": "按基础比例取样", "x": 315, "y": 300, "width": 220, "height": 125 },
+    { "id": "N3", "group": "G1", "shape": "decision", "label": "初检判定", "detail": "是否达到放行阈值", "x": 585, "y": 270, "width": 270, "height": 185 },
+    { "id": "N4", "group": "G1", "label": "扩大抽检", "detail": "增加样本确认风险", "detail_wrap": 6, "x": 870, "y": 455, "width": 205, "height": 145 },
+    { "id": "N5", "group": "G1", "shape": "decision", "label": "复检判定", "detail": "合格 / 可返工 / 不可返工", "detail_wrap": 10, "x": 790, "y": 660, "width": 270, "height": 190 },
+    { "id": "N6", "group": "G2", "label": "批次放行", "detail": "进入交付环节", "x": 1160, "y": 285, "width": 205, "height": 125 },
+    { "id": "N7", "group": "G2", "label": "返工处理", "detail": "纠正可修复缺陷", "x": 1160, "y": 540, "width": 205, "height": 125 },
+    { "id": "N8", "group": "G2", "label": "返工复检", "detail": "验证整改效果", "x": 1390, "y": 540, "width": 175, "height": 125 },
+    { "id": "N9", "group": "G2", "label": "报废隔离", "detail": "阻断不合格品", "x": 1160, "y": 755, "width": 205, "height": 115 },
+    { "id": "N10", "group": "G3", "label": "规则更新", "detail": "更新阈值与抽检比例", "detail_wrap": 8, "x": 1645, "y": 510, "width": 200, "height": 160 }
+  ],
+  "edges": [
+    { "id": "E01", "from": "N1", "to": "N2", "kind": "flow" },
+    { "id": "E02", "from": "N2", "to": "N3", "kind": "flow" },
+    { "id": "E03", "from": "N3", "to": "N6", "kind": "pass", "label": "合格", "route": [[720, 225], [1110, 225], [1110, 347]], "label_position": [955, 225] },
+    { "id": "E04", "from": "N3", "to": "N4", "kind": "reject", "label": "不合格", "route": [[845, 365], [845, 527]], "label_position": [810, 490] },
+    { "id": "E05", "from": "N4", "to": "N5", "kind": "flow", "route": [[972, 625], [925, 625]] },
+    { "id": "E06", "from": "N5", "to": "N6", "kind": "pass", "label": "合格", "route": [[1110, 755], [1110, 347]], "label_position": [1120, 450] },
+    { "id": "E07", "from": "N5", "to": "N7", "kind": "reject", "label": "可返工", "route": [[1110, 720], [1110, 602]], "label_position": [1115, 650] },
+    { "id": "E08", "from": "N5", "to": "N9", "kind": "reject", "label": "不可返工", "route": [[925, 880], [1110, 880], [1110, 812]], "label_position": [1030, 880] },
+    { "id": "E09", "from": "N7", "to": "N8", "kind": "flow" },
+    { "id": "E10", "from": "N8", "to": "N5", "kind": "feedback", "label": "返工后复检", "route": [[1478, 485], [1478, 168], [760, 168], [760, 755]], "label_position": [1285, 168] },
+    { "id": "E11", "from": "N6", "to": "N10", "kind": "flow", "label": "结果归档", "route": [[1545, 347], [1545, 555]], "label_position": [1545, 445] },
+    { "id": "E12", "from": "N9", "to": "N10", "kind": "flow", "label": "缺陷归档", "route": [[1545, 812], [1545, 625]], "label_position": [1545, 730] },
+    { "id": "E13", "from": "N10", "to": "N2", "kind": "feedback", "label": "阈值更新", "route": [[1745, 990], [425, 990], [425, 465]], "label_position": [1030, 990] }
+  ]
+}

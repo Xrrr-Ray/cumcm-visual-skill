@@ -1,0 +1,23 @@
+{
+  "row_count": 24,
+  "column_count": 2,
+  "columns": [
+    {
+      "name": "算法",
+      "type": "category",
+      "count": 24,
+      "missing": 0,
+      "unique": 3
+    },
+    {
+      "name": "准确率",
+      "type": "number",
+      "count": 24,
+      "missing": 0,
+      "unique": 24,
+      "min": 0.791,
+      "max": 0.914,
+      "mean": 0.8601250000000001
+    }
+  ]
+}

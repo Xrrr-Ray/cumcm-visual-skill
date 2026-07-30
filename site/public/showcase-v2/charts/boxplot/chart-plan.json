@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "mode": "paper-chart",
+  "type": "boxplot",
+  "title": "不同算法交叉验证准确率分布",
+  "subtitle": "中位数、四分位区间与离群点",
+  "theme": "academic-blue",
+  "canvas": {
+    "width": 1600,
+    "height": 1000
+  },
+  "data": {
+    "source": "paper-chart-boxplot.csv",
+    "sheet": "",
+    "row_count": 24,
+    "columns": [
+      {
+        "name": "算法",
+        "type": "category",
+        "count": 24,
+        "missing": 0,
+        "unique": 3
+      },
+      {
+        "name": "准确率",
+        "type": "number",
+        "count": 24,
+        "missing": 0,
+        "unique": 24,
+        "min": 0.791,
+        "max": 0.914,
+        "mean": 0.8601250000000001
+      }
+    ]
+  },
+  "encoding": {
+    "x": "算法",
+    "y": [
+      "准确率"
+    ],
+    "error": "",
+    "series": "",
+    "x_title": "算法",
+    "y_title": "准确率"
+  },
+  "options": {
+    "show_grid": true,
+    "show_legend": true,
+    "y_zero": false,
+    "accent": "",
+    "note": ""
+  }
+}

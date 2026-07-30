@@ -1,0 +1,36 @@
+{
+  "row_count": 6,
+  "column_count": 3,
+  "columns": [
+    {
+      "name": "样本规模",
+      "type": "number",
+      "count": 6,
+      "missing": 0,
+      "unique": 6,
+      "min": 100,
+      "max": 1600,
+      "mean": 716.6666666666666
+    },
+    {
+      "name": "平均准确率",
+      "type": "number",
+      "count": 6,
+      "missing": 0,
+      "unique": 6,
+      "min": 0.782,
+      "max": 0.899,
+      "mean": 0.8553333333333334
+    },
+    {
+      "name": "标准差",
+      "type": "number",
+      "count": 6,
+      "missing": 0,
+      "unique": 6,
+      "min": 0.009,
+      "max": 0.032,
+      "mean": 0.01833333333333333
+    }
+  ]
+}

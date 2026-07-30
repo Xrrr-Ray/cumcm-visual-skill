@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "started_at": "2026-07-24T09:58:14.081Z",
+  "ended_at": "2026-07-24T09:58:14.135Z",
+  "input": {
+    "file": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\html-ppt-skill-dev-staging\\examples\\showcase-v2\\figure-suite\\figures\\F01\\paper-chart-convergence.csv",
+    "format": "csv",
+    "sheet": null,
+    "rows": 6
+  },
+  "plan": {
+    "type": "line",
+    "title": "算法收敛曲线",
+    "theme": "academic-blue"
+  },
+  "checks": [
+    {
+      "id": "plan_validation",
+      "pass": true,
+      "details": {
+        "status": "PASS",
+        "errors": [],
+        "rows": 6,
+        "type": "line"
+      }
+    },
+    {
+      "id": "svg_signature",
+      "pass": true
+    },
+    {
+      "id": "svg_finite",
+      "pass": true
+    },
+    {
+      "id": "self_contained_html",
+      "pass": true
+    },
+    {
+      "id": "editable_html",
+      "pass": true
+    }
+  ],
+  "chart-plan.json": {
+    "bytes": 1270,
+    "sha256": "0d828c2d3f7e325fc0896150dffa184800234b324185b3e82f6c63802784a15d"
+  },
+  "data-profile.json": {
+    "bytes": 615,
+    "sha256": "29c2a1f15d57b272fc669251bc97ea49916ed8cbcb8d810ea2ffab93f5af39a5"
+  },
+  "chart.svg": {
+    "bytes": 5329,
+    "sha256": "570d14b7db203d7aa4538546244ff1afe1fa7ddd559bc2e48bf4decc4b61407d"
+  },
+  "index.html": {
+    "bytes": 6396,
+    "sha256": "f649c319af1bb5638ece07114323cff566369fe363816f6b5c5f582d4ca0f6a2"
+  },
+  "edit.html": {
+    "bytes": 10295,
+    "sha256": "08d47fb2ea35e5f7521fc1c111a6c73848fde99df91ef138a20590a6986a7114"
+  }
+}

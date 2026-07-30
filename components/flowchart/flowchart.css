@@ -1,0 +1,7 @@
+.flowchart{position:relative;flex:1;min-height:620px;border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong);overflow:hidden;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px}
+.flowchart-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.flow-edge{fill:none;stroke:var(--text-2);stroke-width:2.2;marker-end:url(#flow-arrow)}.flow-edge-label{position:absolute;transform:translate(-50%,-50%);font:700 12px var(--font-mono);color:var(--accent);background:var(--bg);padding:3px 7px;border:1px solid var(--border)}
+.flow-node{position:absolute;left:calc(var(--x)*1%);top:calc(var(--y)*1%);transform:translate(-50%,-50%);width:min(230px,18%);min-height:106px;padding:18px 20px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--surface);border:2px solid var(--text-1);font-size:18px;font-weight:650;line-height:1.42;box-shadow:6px 6px 0 color-mix(in srgb,var(--accent) 18%,transparent);z-index:2;overflow-wrap:anywhere;user-select:none}
+.is-editing .flow-node{border-color:var(--accent);cursor:move}.flow-node.is-dragging{box-shadow:9px 9px 0 color-mix(in srgb,var(--accent) 28%,transparent)}
+body[data-exporting="true"] .flow-node,body[data-preview="1"] .flow-node{box-shadow:none}
+body[data-exporting="true"] .flow-edge-label{display:none}
+@media(max-height:900px){.flowchart{min-height:0}}
