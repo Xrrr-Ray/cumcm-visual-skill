@@ -119,8 +119,8 @@ export default function Home() {
             <span>节点 · 分区 · 箭头</span>
           </div>
           <div className="floating-card card-export">
-            <strong>原生 PPTX</strong>
-            <span>每个元素都能继续修改</span>
+            <strong>矢量 SVG</strong>
+            <span>适合直接插入论文</span>
           </div>
         </div>
       </section>
