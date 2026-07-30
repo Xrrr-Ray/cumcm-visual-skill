@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://xrrr-ray.github.io/cumcm-visual-skill/og.png",
         width: 1200,
         height: 630,
-        alt: "CUMCM Visual Skill：把国赛论文内容变成真正能修改的图",
+        alt: "CUMCM Visual Skill：面向数模国赛的论文可视化工具",
       },
     ],
   },

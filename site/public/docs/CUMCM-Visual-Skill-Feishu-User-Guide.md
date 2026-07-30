@@ -55,10 +55,10 @@ CUMCM Visual Skill 是一套面向论文的可编辑可视化工具。它不只�
 - 在线示例地址：[CUMCM Visual Skill 公开网站](https://xrrr-ray.github.io/cumcm-visual-skill)
 - 完整示例库：[查看全部真实示例、提示词与可编辑 PPTX](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/index.html)
 
-建议把项目解压到纯英文、路径较短的目录，例如：
+项目可以解压到任意磁盘。建议使用纯英文、路径较短的目录；后续命令中的路径应替换为你电脑上的真实解压位置，例如：
 
 ```text
-D:\cumcm-visual-skill
+{实际解压目录}\cumcm-visual-skill
 ```
 
 ### 2. 基础环境

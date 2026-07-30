@@ -253,34 +253,24 @@ HTML + SVG + PNG + JSON + 可编辑 PPTX
 
 ---
 
-## 3. 当前效果和验证情况
+## 3. 当前可用效果
 
 当前完整示例库：
 
 ```text
-D:\cumcm-visual-skill\examples\showcase-v2\index.html
+{实际解压目录}\cumcm-visual-skill\examples\showcase-v2\index.html
 ```
 
 示例库包含：
 
+- 1 类论文流程图；
 - 7 类数据图；
 - 3 类数学模型关系图；
 - 1 套全文插图连续生成示例；
-- 11 份完整提示词；
+- 12 份完整提示词；
 - HTML、SVG、输入文件、编辑页和 PPTX。
 
-当前验证结果：
-
-| 检查项 | 结果 |
-| --- | --- |
-| 编辑器回归检查 | 87 项通过 |
-| 示例 PPTX | 12 个通过 |
-| PPTX 重新导入 | 全部通过 |
-| PPTX 画布越界 | 未发现 |
-| 生成与导出报告 | 25 份全部 `PASS` |
-| 示例库资源链接 | 63 个全部有效 |
-
-这些验证说明已有示例和核心生成链路可以交付，但不代表大模型面对任何不完整论文时都能自动猜出正确内容。论文事实、公式、单位和数据仍应由学生负责确认。
+公开示例在发布前经过 HTML/SVG 格式检查、PPTX 重导入和画布越界检查。具体工程记录保留在项目验证报告中，不作为学生使用时需要理解的首页指标。论文事实、公式、单位和数据仍应由学生负责确认。
 
 ---
 
@@ -318,17 +308,17 @@ D:\cumcm-visual-skill\examples\showcase-v2\index.html
 - Python 3，仅在读取 Excel 时需要；
 - Python 安装 `openpyxl`，用于读取 XLSX/XLSM。
 
-进入项目目录：
+项目可以解压到任意磁盘。进入项目目录时，把下面的占位内容替换为你电脑上的真实路径：
 
 ```powershell
-cd D:\cumcm-visual-skill
+Set-Location "{实际解压目录}\cumcm-visual-skill"
 ```
 
 所有输出目录必须是新的空目录。生成器默认拒绝覆盖非空目录。
 
 ### 5.2 使用 Codex
 
-1. 在 Codex 中打开 `D:\cumcm-visual-skill`。
+1. 在 Codex 中打开解压后的 `cumcm-visual-skill` 文件夹。
 2. 在请求开头写明：
 
 ```text
@@ -761,7 +751,7 @@ PPTX 使用 `@oai/artifact-tool` 生成。Codex 环境已经提供该依赖。�
 先执行：
 
 ```powershell
-cd D:\cumcm-visual-skill
+Set-Location "{实际解压目录}\cumcm-visual-skill"
 ```
 
 再运行脚本。
@@ -904,31 +894,31 @@ python -m pip install openpyxl
 项目目录：
 
 ```text
-D:\cumcm-visual-skill
+{实际解压目录}\cumcm-visual-skill
 ```
 
 Skill 主说明：
 
 ```text
-D:\cumcm-visual-skill\SKILL.md
+{实际解压目录}\cumcm-visual-skill\SKILL.md
 ```
 
 完整示例库：
 
 ```text
-D:\cumcm-visual-skill\examples\showcase-v2\index.html
+{实际解压目录}\cumcm-visual-skill\examples\showcase-v2\index.html
 ```
 
 示例提示词：
 
 ```text
-D:\cumcm-visual-skill\examples\showcase-v2-prompts
+{实际解压目录}\cumcm-visual-skill\examples\showcase-v2-prompts
 ```
 
 最终示例验证报告：
 
 ```text
-D:\cumcm-visual-skill\examples\showcase-v2\showcase-validation-report.json
+{实际解压目录}\cumcm-visual-skill\examples\showcase-v2\showcase-validation-report.json
 ```
 
 ---

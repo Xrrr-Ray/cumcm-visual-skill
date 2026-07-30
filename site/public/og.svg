@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfcff"/>
+      <stop offset="1" stop-color="#edf4ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#18345f" flood-opacity=".14"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#2b62b4"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1085" cy="80" r="170" fill="#dce9ff" opacity=".7"/>
+  <circle cx="1110" cy="560" r="220" fill="#e7f4ef" opacity=".75"/>
+
+  <g transform="translate(72 72)">
+    <rect width="54" height="54" rx="14" fill="#2457a7"/>
+    <text x="27" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="31" font-weight="800" fill="#fff">C</text>
+    <text x="72" y="24" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="24" font-weight="800" fill="#172b4d">CUMCM Visual Skill</text>
+    <text x="72" y="52" font-family="'Microsoft YaHei',sans-serif" font-size="17" fill="#64748b">Codex · Kimi K3</text>
+  </g>
+
+  <g transform="translate(72 190)">
+    <text x="0" y="0" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="28" font-weight="700" fill="#2460bf">面向 CUMCM 数学建模国赛</text>
+    <text x="0" y="82" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="62" font-weight="900" fill="#12243e">数模国赛</text>
+    <text x="0" y="158" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="62" font-weight="900" fill="#12243e">论文<tspan fill="#2468df">可视化</tspan></text>
+    <rect x="0" y="184" width="390" height="7" rx="3.5" fill="#f4bd33"/>
+    <text x="0" y="240" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="22" fill="#53657c">流程图 · 数据图 · 模型图 · 全文插图套件</text>
+    <g transform="translate(0 282)" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="16" font-weight="700">
+      <rect width="82" height="42" rx="10" fill="#fff" stroke="#c9d7ea"/>
+      <text x="41" y="27" text-anchor="middle" fill="#2457a7">HTML</text>
+      <rect x="96" width="72" height="42" rx="10" fill="#fff" stroke="#c9d7ea"/>
+      <text x="132" y="27" text-anchor="middle" fill="#2457a7">SVG</text>
+      <rect x="182" width="72" height="42" rx="10" fill="#fff" stroke="#c9d7ea"/>
+      <text x="218" y="27" text-anchor="middle" fill="#2457a7">PNG</text>
+      <rect x="268" width="80" height="42" rx="10" fill="#fff" stroke="#c9d7ea"/>
+      <text x="308" y="27" text-anchor="middle" fill="#2457a7">JSON</text>
+      <rect x="362" width="82" height="42" rx="10" fill="#fff" stroke="#c9d7ea"/>
+      <text x="403" y="27" text-anchor="middle" fill="#2457a7">PPTX</text>
+    </g>
+  </g>
+
+  <g transform="translate(620 105)" filter="url(#shadow)">
+    <rect width="500" height="420" rx="26" fill="#fff" stroke="#d2deed" stroke-width="2"/>
+    <rect width="500" height="55" rx="26" fill="#f7f9fc"/>
+    <path d="M0 55H500" stroke="#dce5f0"/>
+    <circle cx="27" cy="28" r="7" fill="#f2665e"/>
+    <circle cx="50" cy="28" r="7" fill="#f5bf41"/>
+    <circle cx="73" cy="28" r="7" fill="#32b56a"/>
+    <rect x="116" y="16" width="304" height="24" rx="12" fill="#fff" stroke="#e0e7ef"/>
+
+    <g transform="translate(28 83)" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+      <text x="0" y="0" font-size="20" font-weight="800" fill="#172b4d">国赛论文研究流程</text>
+      <text x="0" y="27" font-size="13" fill="#718096">从问题分析到模型检验与结论输出</text>
+
+      <rect x="0" y="58" width="132" height="238" rx="14" fill="#f4f7fb" stroke="#b8c9df"/>
+      <rect x="150" y="58" width="132" height="238" rx="14" fill="#f4f7fb" stroke="#b8c9df"/>
+      <rect x="300" y="58" width="144" height="238" rx="14" fill="#f4f7fb" stroke="#b8c9df"/>
+      <text x="16" y="84" font-size="14" font-weight="800" fill="#2457a7">01 问题分析</text>
+      <text x="166" y="84" font-size="14" font-weight="800" fill="#2457a7">02 建模求解</text>
+      <text x="316" y="84" font-size="14" font-weight="800" fill="#2457a7">03 检验输出</text>
+
+      <rect x="17" y="108" width="98" height="48" rx="9" fill="#fff" stroke="#9eb3cd"/>
+      <text x="66" y="138" text-anchor="middle" font-size="15" font-weight="700" fill="#172b4d">数据准备</text>
+      <rect x="17" y="188" width="98" height="48" rx="9" fill="#fff" stroke="#9eb3cd"/>
+      <text x="66" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#172b4d">关系提炼</text>
+      <path d="M66 156V184" stroke="#2b62b4" stroke-width="2.4" marker-end="url(#arrow)"/>
+
+      <rect x="167" y="108" width="98" height="48" rx="9" fill="#eaf2ff" stroke="#5d8fd2"/>
+      <text x="216" y="138" text-anchor="middle" font-size="15" font-weight="700" fill="#173f7a">模型构建</text>
+      <path d="M132 132H163" stroke="#2b62b4" stroke-width="2.4" marker-end="url(#arrow)"/>
+      <path d="M132 212H148V132H163" fill="none" stroke="#2b62b4" stroke-width="2.4" marker-end="url(#arrow)"/>
+      <polygon points="216,184 262,216 216,248 170,216" fill="#fff" stroke="#2b62b4" stroke-width="2"/>
+      <text x="216" y="221" text-anchor="middle" font-size="14" font-weight="700" fill="#172b4d">结果检验</text>
+      <path d="M216 156V180" stroke="#2b62b4" stroke-width="2.4" marker-end="url(#arrow)"/>
+
+      <rect x="318" y="108" width="108" height="48" rx="9" fill="#eaf6f1" stroke="#4c9d7e"/>
+      <text x="372" y="138" text-anchor="middle" font-size="15" font-weight="700" fill="#24684e">图表输出</text>
+      <rect x="318" y="188" width="108" height="48" rx="9" fill="#fff" stroke="#9eb3cd"/>
+      <text x="372" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#172b4d">结论解释</text>
+      <path d="M262 216H299V132H314" fill="none" stroke="#2b62b4" stroke-width="2.4" marker-end="url(#arrow)"/>
+      <path d="M372 156V184" stroke="#2b62b4" stroke-width="2.4" marker-end="url(#arrow)"/>
+    </g>
+  </g>
+</svg>

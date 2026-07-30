@@ -78,11 +78,11 @@ export default function Home() {
             <span />
             2026.07 公开版 · Codex / Kimi K3
           </div>
-          <p className="kicker">为论文而生的可编辑可视化系统</p>
+          <p className="kicker">CUMCM 数模国赛论文可视化 Skill</p>
           <h1>
-            把论文内容，
+            国赛论文可视化，
             <br />
-            变成真正<span>能修改</span>的图。
+            一套 <span>Skill</span> 就够了。
           </h1>
           <p className="hero-description">
             从研究流程、数学模型到实验数据，一次生成适合论文正文的矢量图、浏览器编辑页与
@@ -125,22 +125,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="验证结果">
+      <section className="proof-strip" aria-label="核心能力">
+        <div>
+          <strong>4</strong>
+          <span>类核心可视化能力</span>
+        </div>
         <div>
           <strong>7</strong>
           <span>类论文数据图</span>
         </div>
         <div>
-          <strong>12</strong>
-          <span>个可编辑 PPTX</span>
+          <strong>5</strong>
+          <span>种常用交付格式</span>
         </div>
         <div>
-          <strong>25</strong>
-          <span>份报告全部 PASS</span>
-        </div>
-        <div>
-          <strong>87</strong>
-          <span>项编辑器回归检查</span>
+          <strong>2</strong>
+          <span>种模型使用入口</span>
         </div>
       </section>
 
