@@ -1,8 +1,8 @@
-# CUMCM Visual Skill｜论文可视化使用手册
+# CUMCM Visual Skill｜数模国赛论文可视化使用手册
 
 > 面向数学建模竞赛、国赛论文、课程论文、毕业论文与答辩展示。  
 > 当前推荐使用入口：Codex、Kimi K3。  
-> 公开网站与下载包已于 2026-07-30 通过 GitHub Pages 上线。
+> 当前公开版已于 2026-07-31 更新并通过 GitHub Pages 上线。
 
 > 说明：本项目是面向 CUMCM 参赛学生的社区增强版，不是全国大学生数学建模竞赛组委会的官方工具。
 
@@ -53,7 +53,10 @@ CUMCM Visual Skill 是一套面向论文的可编辑可视化工具。它不只�
 
 - Skill 下载地址：[下载 CUMCM Visual Skill 公开版 ZIP](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-2026-07-30.zip)
 - 在线示例地址：[CUMCM Visual Skill 公开网站](https://xrrr-ray.github.io/cumcm-visual-skill)
+- 学生上手指南：[Codex / Kimi 使用说明](https://xrrr-ray.github.io/cumcm-visual-skill/student-guide/index.html)
 - 完整示例库：[查看全部真实示例、提示词与可编辑 PPTX](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/index.html)
+- 精选流程图：[产品批次质量检测与闭环处置流程](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/flowcharts/quality-loop/index.html)
+- GitHub 仓库：[Xrrr-Ray/cumcm-visual-skill](https://github.com/Xrrr-Ray/cumcm-visual-skill)
 
 项目可以解压到任意磁盘。建议使用纯英文、路径较短的目录；后续命令中的路径应替换为你电脑上的真实解压位置，例如：
 
@@ -96,7 +99,7 @@ python -m pip install openpyxl
 
 ## 四、方式一：使用 Codex（推荐）
 
-Codex 可以读取 Skill、理解材料、运行本地生成器、检查结果并完成导出，适合希望直接用自然语言完成全流程的同学。
+Codex 不是只负责理解论文内容。它在读取 `SKILL.md` 后，会作为上层 Agent 自动选择功能、创建规划文件、调用本地脚本、检查输出并完成导出。学生使用 Codex 时通常不需要手动复制 Node.js 命令，适合希望直接用自然语言完成全流程的同学。
 
 ### 第一步：打开项目
 
@@ -110,7 +113,39 @@ Codex 可以读取 Skill、理解材料、运行本地生成器、检查结果�
 请先阅读当前项目的 SKILL.md，并使用 cumcm-visual-skill 完成下面的任务。
 ```
 
-### 第三步：查看结果
+### 第三步：Codex 自动执行本地工作流
+
+Codex 会根据任务自动完成下面的过程：
+
+```text
+自然语言请求
+→ 读取 SKILL.md
+→ 判断图型与生成模式
+→ 创建 visual-plan.json 或 chart-plan.json
+→ 调用生成、导出和验证脚本
+→ 交付 HTML、SVG、PNG、JSON，以及按需生成的 PPTX
+```
+
+以论文单图为例，Codex 会在后台自动组织并执行类似命令，学生不需要手动输入：
+
+```powershell
+node scripts/generate-paper-visual.mjs `
+  --plan visual-plan.json `
+  --source input.md `
+  --prompt prompt.md `
+  --output output\visual
+
+node exporters/export-paper-visual.mjs `
+  --html output\visual\index.html `
+  --output output\visual\exports `
+  --scale 2
+```
+
+需要 PowerPoint 可编辑文件时，Codex 还会继续调用 PPTX 导出器并进行重导入检查。
+
+项目中没有 `--provider codex`，因为 Codex 不是被某个规划脚本调用的模型接口，而是负责执行整个 Skill 的上层 Agent。
+
+### 第四步：查看结果
 
 Codex 完成后，优先查看：
 
@@ -183,6 +218,8 @@ Kimi 当前正式接入的是“论文单图的语义规划”，适合生成流
 
 Kimi 负责理解论文内容并生成统一语义规划；最终布局、HTML、SVG 和编辑器仍由本地脚本确定性生成。因此，Codex 与 Kimi 的最终文件格式和编辑能力保持一致。
 
+与 Codex 不同，当前 Kimi 接入使用的是 provider 模式：项目脚本主动调用 `kimi-cli` 或 Moonshot API，所以需要学生先在终端运行入口命令。这个差异来自接入方式，而不是 Kimi 只能理解、不能生成。
+
 ### 1. Kimi Code 会员方式（推荐）
 
 Kimi 网页会员、Kimi Code CLI 登录和 Moonshot API Key 是不同通道，不能混用。已有 Kimi Code 会员的同学，推荐使用官方 CLI 登录。
@@ -198,8 +235,11 @@ kimi --version
 登录成功后，进入 Skill 根目录：
 
 ```powershell
-cd <你的 cumcm-visual-skill 目录>
+# 将下一行替换为 Skill 实际解压后的文件夹路径
+Set-Location "{实际解压目录}\cumcm-visual-skill"
 ```
+
+路径不要求在 D 盘。可以在资源管理器中打开解压后的 `cumcm-visual-skill` 文件夹，复制地址栏中的完整路径并替换占位内容。
 
 准备两个文件：
 
@@ -364,7 +404,7 @@ edit.html
 通常是当前目录不对。先进入 Skill 根目录，再运行脚本：
 
 ```powershell
-cd <你的 cumcm-visual-skill 目录>
+Set-Location "{实际解压目录}\cumcm-visual-skill"
 ```
 
 ### 3. 报错“输出目录非空，拒绝覆盖”
@@ -410,19 +450,21 @@ python -m pip install openpyxl
 - 是否存在过长连线、交叉线或内容过密；
 - 图号、标题和正文引用是否一致。
 
-## 十、当前已验证范围
+## 十、当前公开交付范围
 
-当前示例库已经验证：
+当前公开版面向学生展示：
 
-- 7 类论文数据图；
-- 3 类数学模型关系图；
-- 1 套全文插图连续生成示例；
-- 11 份完整提示词；
-- 12 个可编辑 PPTX；
-- 25 份生成与导出报告均为 `PASS`；
-- 示例库本地资源链接检查通过。
+- 4 类核心能力：论文结构图、论文数据图、数学模型图、全文插图套件；
+- 7 类论文数据图：折线、柱状、散点、热力、箱线、雷达和误差棒图；
+- 论文流程图、思维导图、技术路线、架构图、层次图、反馈回路和时间线；
+- 3 类数学模型关系图场景：优化、预测和评价；
+- 12 份完整提示词；
+- 5 种常用交付格式：HTML、SVG、PNG、JSON、PPTX；
+- 2 种模型入口：Codex 端到端执行、Kimi K3 语义规划。
 
-已稳定支持论文单图、数据图、模型关系图、全文插图套件、浏览器高级编辑和可编辑 PPTX。复杂 LaTeX 矩阵、超长中文标签、特殊统计图和地理空间图仍需要人工处理或后续扩展。
+公开示例在发布前经过格式、浏览器渲染、PPTX 重导入和资源链接检查。具体工程测试数字保留在项目验证报告中，不作为学生首页指标。
+
+当前已稳定支持论文单图、数据图、模型关系图、全文插图套件、浏览器高级编辑和可编辑 PPTX。复杂 LaTeX 矩阵、超长中文标签、特殊统计图和地理空间图仍需要人工处理或后续扩展。
 
 ## 十一、给第一次使用者的最短流程
 
@@ -432,9 +474,10 @@ python -m pip install openpyxl
 2. 在 Codex 中打开项目目录；
 3. 上传论文或数据；
 4. 发送“请先阅读 `SKILL.md` 并使用 cumcm-visual-skill”；
-5. 查看 `index.html`；
-6. 打开 `edit.html` 调整；
-7. 使用 SVG 插入论文，或打开 PPTX 精修。
+5. Codex 自动调用生成、导出和验证脚本；
+6. 查看 `index.html`；
+7. 打开 `edit.html` 调整；
+8. 使用 SVG 插入论文，或打开 PPTX 精修。
 
 ### 使用 Kimi 会员
 
@@ -450,4 +493,4 @@ python -m pip install openpyxl
 
 对外介绍可使用下面这段话：
 
-> CUMCM Visual Skill 是一套面向论文和数学建模竞赛的可编辑可视化系统。它支持使用 Codex 或 Kimi K3 理解论文内容，并通过统一生成器输出流程图、思维导图、模型关系图、数据图表、全文插图套件和多页 HTML 演示。生成结果可以在浏览器中拖动编辑，也可导出 SVG、PNG、JSON，并在支持的环境中导出 PowerPoint 可编辑 PPTX。
+> CUMCM Visual Skill 是一套面向 CUMCM 数模国赛和论文写作的可编辑可视化系统。Codex 可以读取 Skill 后自动调用本地生成、导出和验证脚本；Kimi K3 可以通过会员 CLI 或开放平台完成论文单图的语义规划。系统支持流程图、思维导图、模型关系图、论文数据图和全文插图套件，结果可在浏览器中拖动编辑，并导出 HTML、SVG、PNG、JSON 和 PowerPoint 可编辑 PPTX。
