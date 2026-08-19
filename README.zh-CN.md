@@ -1,4 +1,4 @@
-# CUMCM Visual Skill · 数模国赛论文可视化 Skill
+# CUMCM Editable Visual Skill · 数模国赛论文可编辑可视化 Skill
 
 > 面向 CUMCM（全国大学生数学建模竞赛）与一般学术论文的可编辑可视化增强版。
 
@@ -76,18 +76,20 @@ idx:N})` 通知 iframe，iframe 只是切换 `.is-active` class —— **不重�
 请使用 $skill-installer，从 GitHub 安装下面的 Skill：
 仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
 Skill 路径：仓库根目录（.）
-安装名称：cumcm-visual-skill
+安装名称：cumcm-editable-visual-skill
 ```
 
-Codex 会从 GitHub 下载并安装标准 Skill。安装完成后，在下一条消息或新任务中直接点名 `$cumcm-visual-skill`；若 Skill 列表没有刷新，重新打开 Codex。
+Codex 会从 GitHub 下载并安装标准 Skill。安装完成后，在下一条消息或新任务中直接点名 `$cumcm-editable-visual-skill`；若 Skill 列表没有刷新，重新打开 Codex。这个调用名与协会成员的 `$cumcm-visual-skill` 不同，两套可视化 Skill 可以同时安装。
+
+如果电脑中仍有本项目 `v1.1.1` 或更早版本，它可能仍以 `cumcm-visual-skill` 安装。先完成新版安装并确认 `$cumcm-editable-visual-skill` 可用，再移除旧副本，随后即可把 `cumcm-visual-skill` 这个名称留给协会成员版本。
 
 安装后可直接对 Codex 说：
 
-> 使用 `$cumcm-visual-skill`，根据我提供的论文方法部分生成一张适合国赛正文的技术路线图。不要生成完整 PPT；输出可编辑 HTML、SVG、2× PNG 和 PPTX，不得补造原文没有的数据、公式或结论。
+> 使用 `$cumcm-editable-visual-skill`，根据我提供的论文方法部分生成一张适合国赛正文的技术路线图。不要生成完整 PPT；输出可编辑 HTML、SVG、2× PNG 和 PPTX，不得补造原文没有的数据、公式或结论。
 
 ### 下载 ZIP 后安装（Windows 备用方式）
 
-如果无法让 Codex联网访问 GitHub，可以下载并解压[一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)，再双击 `安装数模Skill.cmd`。安装器会识别当前用户，不要求项目位于 D 盘；重复运行可更新，旧版本会自动备份。
+如果无法让 Codex 联网访问 GitHub，可以下载并解压[一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-editable-visual-skill-one-click.zip)，再双击 `安装数模Skill.cmd`。安装器会识别当前用户，不要求项目位于 D 盘；重复运行可更新，旧版本会自动备份。
 
 ### 本地命令行安装（可选）
 
@@ -237,7 +239,7 @@ A                               在当前 slide 循环演示一个动画
 ## 项目结构
 
 ```
-cumcm-visual-skill/
+cumcm-editable-visual-skill/
 ├── SKILL.md                      agent 入口
 ├── README.md                     英文 README
 ├── README.zh-CN.md               本文件

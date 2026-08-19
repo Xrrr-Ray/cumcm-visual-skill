@@ -1,8 +1,8 @@
 interface:
-  display_name: "CUMCM 数模论文可视化"
-  short_description: "生成可编辑的数模论文流程图、数据图和模型关系图"
+  display_name: "CUMCM Editable Visual Skill"
+  short_description: "生成并编辑数模论文流程图、数据图和模型关系图"
   brand_color: "#1F63D7"
-  default_prompt: "使用 $cumcm-visual-skill 将我的数模论文内容生成可编辑的学术可视化图。"
+  default_prompt: "使用 $cumcm-editable-visual-skill 将我的数模论文内容生成可编辑的学术可视化图。"
 
 policy:
   allow_implicit_invocation: true

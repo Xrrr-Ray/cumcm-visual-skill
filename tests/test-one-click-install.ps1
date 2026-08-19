@@ -26,7 +26,7 @@ try {
     throw "Install 返回退出码 $LASTEXITCODE"
   }
 
-  $installedPath = Join-Path $destinationRoot "cumcm-visual-skill"
+  $installedPath = Join-Path $destinationRoot "cumcm-editable-visual-skill"
   foreach ($item in @("SKILL.md", "VERSION", "agents\openai.yaml", "install-manifest.json")) {
     if (-not (Test-Path -LiteralPath (Join-Path $installedPath $item))) {
       throw "安装结果缺少：$item"
@@ -43,7 +43,7 @@ try {
     throw "Force reinstall 返回退出码 $LASTEXITCODE"
   }
 
-  $backupRoot = Join-Path $destinationRoot ".cumcm-visual-skill-backups"
+  $backupRoot = Join-Path $destinationRoot ".cumcm-editable-visual-skill-backups"
   if (-not (Test-Path -LiteralPath $backupRoot -PathType Container)) {
     throw "覆盖安装后没有生成备份目录。"
   }
