@@ -1,6 +1,7 @@
 const basePath = "/cumcm-visual-skill";
 const asset = (path: string) => `${basePath}${path}`;
 const downloadPath = asset("/downloads/cumcm-visual-skill-one-click.zip");
+const githubPath = "https://github.com/Xrrr-Ray/cumcm-visual-skill";
 
 const capabilities = [
   {
@@ -67,8 +68,8 @@ export default function Home() {
           <a href="#capabilities">功能</a>
           <a href="#examples">示例</a>
           <a href={asset("/student-guide/index.html")}>使用说明</a>
-          <a className="nav-download" href={downloadPath} download>
-            一键安装
+          <a className="nav-download" href="#install">
+            GitHub 安装
           </a>
         </nav>
       </header>
@@ -77,7 +78,7 @@ export default function Home() {
         <div className="hero-copy">
           <div className="release-pill">
             <span />
-            v1.1.0 一键安装版 · Codex / Kimi K3
+            v1.1.1 GitHub 直装版 · Codex / Kimi K3
           </div>
           <p className="kicker">CUMCM 数模国赛论文可视化 Skill</p>
           <h1>
@@ -90,15 +91,15 @@ export default function Home() {
             PowerPoint 可编辑文件。大模型负责理解，确定性生成器负责布局与交付。
           </p>
           <div className="hero-actions">
-            <a className="button primary" href={downloadPath} download>
-              下载一键安装包
+            <a className="button primary" href="#install">
+              从 GitHub 安装
             </a>
             <a className="button secondary" href={asset("/showcase-v2/index.html")}>
               查看完整示例库
             </a>
           </div>
           <p className="download-note">
-            解压后双击“安装数模Skill.cmd”，自动安装到当前用户的 Skill 目录。
+            把 GitHub 地址交给 Codex，它会安装为可直接调用的标准 Skill。
           </p>
         </div>
 
@@ -148,41 +149,45 @@ export default function Home() {
       <section className="section install" id="install">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">ONE-CLICK INSTALL</p>
-            <h2>下载、解压、双击，三步装好</h2>
+            <p className="eyebrow">INSTALL FROM GITHUB</p>
+            <h2>把仓库链接交给 Codex，直接安装</h2>
           </div>
           <p>
-            安装器自动识别当前 Windows 用户，不要求放在 D 盘，也不需要手动复制 Skill 文件夹。
+            不需要自己下载或复制文件。Codex 内置的 Skill Installer 会从 GitHub 获取、校验并安装。
           </p>
         </div>
         <div className="install-grid">
           <article>
             <span>01</span>
-            <h3>下载并解压</h3>
-            <p>获取公开 ZIP，解压到任意磁盘的普通文件夹。</p>
+            <h3>复制安装提示词</h3>
+            <p>把下面的仓库、根目录路径和 Skill 名称一起交给 Codex。</p>
           </article>
           <article>
             <span>02</span>
-            <h3>双击安装</h3>
-            <p>运行 <code>安装数模Skill.cmd</code>，看到“安装成功”即可。</p>
+            <h3>Codex 自动安装</h3>
+            <p><code>$skill-installer</code> 从 GitHub 下载并校验标准 Skill。</p>
           </article>
           <article>
             <span>03</span>
-            <h3>直接告诉 Codex</h3>
+            <h3>下一条消息直接调用</h3>
             <p>说“使用 $cumcm-visual-skill”，然后附上论文或数据。</p>
           </article>
         </div>
+        <pre className="install-prompt">{`请使用 $skill-installer，从 GitHub 安装下面的 Skill：
+仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
+Skill 路径：仓库根目录（.）
+安装名称：cumcm-visual-skill`}</pre>
         <div className="install-path">
           <div>
-            <span>自动安装位置</span>
-            <code>%USERPROFILE%\.agents\skills\cumcm-visual-skill</code>
+            <span>安装完成后的调用方式</span>
+            <code>$cumcm-visual-skill</code>
           </div>
-          <a className="button primary" href={downloadPath} download>
-            下载一键安装包
+          <a className="button primary" href={githubPath}>
+            打开 GitHub 仓库
           </a>
         </div>
         <p className="install-help">
-          重复运行可安全更新，旧版本会先备份；包内还提供“检查安装状态”和“可恢复卸载”。
+          无法联网安装时，可 <a href={downloadPath} download>下载 Windows 一键安装包</a> 作为备用方式。
         </p>
       </section>
 
@@ -293,11 +298,11 @@ export default function Home() {
         <div>
           <p className="eyebrow">START CREATING</p>
           <h2>先看示例，再用你的论文试一次。</h2>
-          <p>一键安装包已包含安装器、完整生成器、使用文档、精选示例和 Codex / Kimi 提示词。</p>
+          <p>公开 GitHub 仓库已经过 Codex 官方 Skill Installer 的真实安装验证。</p>
         </div>
         <div className="final-actions">
-          <a className="button primary" href={downloadPath} download>
-            下载一键安装包
+          <a className="button primary" href="#install">
+            查看 GitHub 安装提示词
           </a>
           <a className="button secondary" href={asset("/student-guide/index.html")}>
             阅读学生使用说明

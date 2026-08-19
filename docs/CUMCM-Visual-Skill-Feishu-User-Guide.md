@@ -2,7 +2,7 @@
 
 > 面向数学建模竞赛、国赛论文、课程论文、毕业论文与答辩展示。  
 > 当前推荐使用入口：Codex、Kimi K3。  
-> 当前一键安装版为 v1.1.0，已通过 GitHub Pages 上线。
+> 当前 GitHub 直装版为 v1.1.1，已通过 GitHub Pages 上线。
 
 > 说明：本项目是面向 CUMCM 参赛学生的社区增强版，不是全国大学生数学建模竞赛组委会的官方工具。
 
@@ -49,7 +49,18 @@ CUMCM Visual Skill 是一套面向论文的可编辑可视化工具。它不只�
 
 ### 1. 获取项目
 
-Windows 学生推荐使用一键安装包：
+推荐直接让 Codex 从 GitHub 安装，无须手动下载：
+
+```text
+请使用 $skill-installer，从 GitHub 安装下面的 Skill：
+仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
+Skill 路径：仓库根目录（.）
+安装名称：cumcm-visual-skill
+```
+
+Codex 安装完成后，在下一条消息或新任务中直接使用 `$cumcm-visual-skill`。若列表没有立即刷新，重新打开 Codex。
+
+相关地址：
 
 - Skill 下载地址：[下载 CUMCM Visual Skill 一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)
 - 在线示例地址：[CUMCM Visual Skill 公开网站](https://xrrr-ray.github.io/cumcm-visual-skill)
@@ -58,11 +69,11 @@ Windows 学生推荐使用一键安装包：
 - 精选流程图：[产品批次质量检测与闭环处置流程](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/flowcharts/quality-loop/index.html)
 - GitHub 仓库：[Xrrr-Ray/cumcm-visual-skill](https://github.com/Xrrr-Ray/cumcm-visual-skill)
 
-下载后按下面三步操作：
+如果 Codex 无法联网访问 GitHub，再使用 Windows 备用方式：
 
-1. 解压 ZIP；
+1. 下载并解压一键安装包；
 2. 双击根目录中的 `安装数模Skill.cmd`；
-3. 看到“安装成功”后打开 Codex。若 Skill 列表没有立即刷新，重新打开 Codex 即可。
+3. 看到“安装成功”后打开 Codex。
 
 安装器会自动安装到当前用户的 Skill 目录：
 
@@ -117,7 +128,7 @@ Codex 不是只负责理解论文内容。它在读取 `SKILL.md` 后，会作�
 
 ### 第一步：确认安装并打开材料目录
 
-双击发布包中的 `检查安装状态.cmd`。显示“已安装且结构有效”后，在 Codex 中打开存放论文、数据和输出结果的工作目录即可，不必一直打开 Skill 源码目录。
+在 Codex 中运行 `/skills`，或输入 `$cumcm-visual-skill` 查看是否出现。确认后打开存放论文、数据和输出结果的工作目录即可，不必打开 Skill 源码目录。
 
 ### 第二步：上传材料并发送请求
 
@@ -484,8 +495,8 @@ python -m pip install openpyxl
 
 ### 使用 Codex
 
-1. 下载、解压并双击 `安装数模Skill.cmd`；
-2. 在 Codex 中打开论文材料所在目录；
+1. 把 GitHub 安装提示词发送给 Codex；
+2. 等待 `$skill-installer` 完成安装；
 3. 上传论文或数据；
 4. 发送“请使用 `$cumcm-visual-skill`”；
 5. Codex 自动调用生成、导出和验证脚本；

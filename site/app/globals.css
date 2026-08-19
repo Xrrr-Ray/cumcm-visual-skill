@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -430,6 +431,21 @@ nav .nav-download:hover {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
+.install-prompt {
+  margin: 16px 0 0;
+  padding: 24px 26px;
+  overflow-x: auto;
+  border: 1px solid #243d60;
+  border-radius: 17px;
+  background: var(--ink);
+  color: #e8f2ff;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.85;
+  box-shadow: 0 16px 38px rgba(16, 36, 56, 0.14);
+}
+
 .install-path {
   margin-top: 16px;
   padding: 20px 22px;
@@ -470,6 +486,11 @@ nav .nav-download:hover {
   margin: 13px 2px 0;
   color: var(--muted);
   font-size: 11px;
+}
+
+.install-help a {
+  color: var(--blue);
+  font-weight: 800;
 }
 
 .section-heading {

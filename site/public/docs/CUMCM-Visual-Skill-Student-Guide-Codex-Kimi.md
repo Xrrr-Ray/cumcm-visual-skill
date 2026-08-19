@@ -2,7 +2,7 @@
 
 > 面向数学建模竞赛、国赛论文、课程论文、毕业论文和答辩展示。  
 > 当前推荐入口：Codex 与 Kimi K3。  
-> 文档对应版本：v1.1.0（一键安装版）。
+> 文档对应版本：v1.1.1（GitHub 直装版）。
 
 ## 1. 这是什么
 
@@ -297,19 +297,24 @@ HTML + SVG + PNG + JSON + 可编辑 PPTX
 
 ## 5. 开始前准备
 
-### 5.1 一键安装（Windows 推荐）
+### 5.1 从 GitHub 安装到 Codex（推荐）
 
-1. 下载并解压[一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)；
-2. 双击 `安装数模Skill.cmd`；
-3. 安装成功后打开 Codex。若 Skill 列表尚未刷新，重新打开 Codex。
-
-安装位置会根据当前 Windows 用户自动确定：
+无需先下载文件。在 Codex 中直接发送：
 
 ```text
-%USERPROFILE%\.agents\skills\cumcm-visual-skill
+请使用 $skill-installer，从 GitHub 安装下面的 Skill：
+仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
+Skill 路径：仓库根目录（.）
+安装名称：cumcm-visual-skill
 ```
 
-项目无须放在 D 盘。再次运行安装器即可更新，旧版本会先备份。双击 `检查安装状态.cmd` 可以验证；双击 `卸载数模Skill.cmd` 会把当前版本移入备份目录，不会直接删除。
+安装完成后，在下一条消息或新任务中输入：
+
+```text
+请使用 $cumcm-visual-skill 完成下面的任务。
+```
+
+若 Codex 无法联网访问 GitHub，再下载并解压[Windows 一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)，双击 `安装数模Skill.cmd`。项目无须放在 D 盘；再次运行可更新并备份旧版本。
 
 ### 5.2 基础环境
 
@@ -875,7 +880,7 @@ python -m pip install openpyxl
 
 ### 普通学生
 
-1. 双击 `安装数模Skill.cmd` 完成安装；
+1. 使用 `$skill-installer` 从 GitHub 安装；
 2. 在 Codex 打开论文材料所在目录；
 3. 上传论文或数据；
 4. 使用自然语言说明需要的图；
@@ -905,7 +910,7 @@ python -m pip install openpyxl
 
 ## 15. 项目入口
 
-安装后的 Skill 目录：
+推荐通过 Codex 的 `/skills` 或 Skills 侧边栏确认安装。Windows ZIP 备用安装方式的默认目录是：
 
 ```text
 %USERPROFILE%\.agents\skills\cumcm-visual-skill

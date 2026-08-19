@@ -39,7 +39,7 @@ node exporters/export-deck.mjs --html output/deck/index.html --output output/dec
 
 ![cumcm-visual-skill 封面 · 实时预览](docs/readme/hero.gif)
 
-> Windows 一键安装包同时包含数模论文图生成器、**36 主题 × 20 Canvas FX × 31 布局 × 15 完整 deck + 演讲者模式**。
+> GitHub 仓库可由 Codex 直接安装为 Skill，同时包含数模论文图生成器、**36 主题 × 20 Canvas FX × 31 布局 × 15 完整 deck + 演讲者模式**。
 > 上图里的每一个预览都是真实的 iframe 加载真实模板文件 —— 不是截图，不是色卡。
 
 ## 🎤 演讲者模式（全新）
@@ -68,25 +68,28 @@ idx:N})` 通知 iframe，iframe 只是切换 `.is-active` class —— **不重�
 `templates/full-decks/presenter-mode-reveal/` 这个现成模板 —— 每一页都带完整
 150–300 字的示例逐字稿。
 
-## 一键安装（Windows 推荐）
+## 在 Codex 中从 GitHub 安装（推荐）
 
-1. 下载并解压[一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)；
-2. 双击根目录中的 `安装数模Skill.cmd`；
-3. 看到“安装成功”后即可在 Codex 中直接使用。若 Skill 列表没有立即刷新，重新打开 Codex 即可。
-
-安装器会自动识别当前用户目录，并安装到：
+不需要先下载 ZIP，也不需要打开终端。在 Codex 中直接粘贴：
 
 ```text
-%USERPROFILE%\.agents\skills\cumcm-visual-skill
+请使用 $skill-installer，从 GitHub 安装下面的 Skill：
+仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
+Skill 路径：仓库根目录（.）
+安装名称：cumcm-visual-skill
 ```
 
-因此不要求项目位于 D 盘，也不需要学生手动复制文件或记忆安装命令。重复运行安装器即可更新；更新前会自动备份旧版本。包内还提供 `检查安装状态.cmd` 和 `卸载数模Skill.cmd`，卸载时原文件会移入备份目录，不会直接删除。
+Codex 会从 GitHub 下载并安装标准 Skill。安装完成后，在下一条消息或新任务中直接点名 `$cumcm-visual-skill`；若 Skill 列表没有刷新，重新打开 Codex。
 
 安装后可直接对 Codex 说：
 
 > 使用 `$cumcm-visual-skill`，根据我提供的论文方法部分生成一张适合国赛正文的技术路线图。不要生成完整 PPT；输出可编辑 HTML、SVG、2× PNG 和 PPTX，不得补造原文没有的数据、公式或结论。
 
-### 命令行安装（可选）
+### 下载 ZIP 后安装（Windows 备用方式）
+
+如果无法让 Codex联网访问 GitHub，可以下载并解压[一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)，再双击 `安装数模Skill.cmd`。安装器会识别当前用户，不要求项目位于 D 盘；重复运行可更新，旧版本会自动备份。
+
+### 本地命令行安装（可选）
 
 需要自定义安装位置或自动化部署时，可运行：
 

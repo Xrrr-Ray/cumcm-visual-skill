@@ -22,7 +22,7 @@ This is an independent community project. It is not an official tool of, endorse
 
 ![cumcm-visual-skill — cover with live previews](docs/readme/hero.gif)
 
-> The Windows one-click package includes the CUMCM paper-figure generators, **36 themes × 20 canvas FX × 31 layouts × 15 full decks + presenter mode**. Every preview above is a live iframe of a real template file rendering inside the deck — no screenshots, no mock-ups.
+> Codex can install this GitHub repository directly as a Skill. It includes the CUMCM paper-figure generators, **36 themes × 20 canvas FX × 31 layouts × 15 full decks + presenter mode**. Every preview above is a live iframe of a real template file rendering inside the deck — no screenshots, no mock-ups.
 
 ## 🎤 Presenter Mode (new!)
 
@@ -54,23 +54,26 @@ full authoring guide, or copy the ready-made template at
 `templates/full-decks/presenter-mode-reveal/` which ships with full 150-300
 word speaker scripts on every slide.
 
-## One-click install (Windows)
+## Install directly from GitHub in Codex (recommended)
 
-1. Download and extract the [one-click package](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip).
-2. Double-click `安装数模Skill.cmd` in the package root.
-3. Start using the skill in Codex. Restart Codex only if its skill list has not refreshed yet.
-
-The installer detects the current Windows user and installs the package at:
+Paste this into Codex; no manual download or terminal command is required:
 
 ```text
-%USERPROFILE%\.agents\skills\cumcm-visual-skill
+Use $skill-installer to install this Skill from GitHub:
+Repository: https://github.com/Xrrr-Ray/cumcm-visual-skill
+Skill path: repository root (.)
+Install name: cumcm-visual-skill
 ```
 
-Running the installer again updates the skill after preserving the previous version in a backup folder. The package also provides `检查安装状态.cmd` and `卸载数模Skill.cmd`; uninstall is recoverable and does not immediately delete the installed files.
+After Codex completes the installation, invoke `$cumcm-visual-skill` in your next message or task. Restart Codex only if the skill list has not refreshed.
 
 After installation, ask Codex:
 
 > Use `$cumcm-visual-skill` to turn the supplied CUMCM paper method into one editable academic workflow figure. Do not create a full deck or invent missing facts.
+
+### Windows ZIP fallback
+
+If Codex cannot access GitHub, download and extract the [one-click package](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip), then double-click `安装数模Skill.cmd`. It detects the current Windows user, preserves the previous version during updates, and does not require a D: drive location.
 
 For scripted installation, run:
 
