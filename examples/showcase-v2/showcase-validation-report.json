@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
   "status": "PASS",
-  "checked_at": "2026-07-25T15:17:19.927Z",
-  "root": "D:\\html-ppt-skill-dev\\examples\\showcase-v2",
+  "checked_at": "2026-08-19T07:02:44.169Z",
+  "root": "C:\\Users\\Xrrr\\.codex\\visualizations\\2026\\07\\21\\019f8272-2adc-71a0-8a6a-19b3c2dcfb5d\\cumcm-visual-skill-release\\examples\\showcase-v2",
   "checks": [
     {
       "id": "gallery_links",
       "pass": true,
-      "total": 65,
+      "total": 70,
       "missing": []
     },
     {
       "id": "reports_pass",
       "pass": true,
-      "total": 25,
+      "total": 26,
       "failed": []
     },
     {
@@ -120,6 +120,11 @@
     },
     {
       "path": "figure-suite/suite-execution-report.json",
+      "status": "PASS",
+      "pass": true
+    },
+    {
+      "path": "flowcharts/quality-loop/validation-report.json",
       "status": "PASS",
       "pass": true
     },

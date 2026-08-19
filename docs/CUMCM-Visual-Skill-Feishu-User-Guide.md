@@ -2,7 +2,7 @@
 
 > 面向数学建模竞赛、国赛论文、课程论文、毕业论文与答辩展示。  
 > 当前推荐使用入口：Codex、Kimi K3。  
-> 当前公开版已于 2026-07-31 更新并通过 GitHub Pages 上线。
+> 当前一键安装版为 v1.1.0，已通过 GitHub Pages 上线。
 
 > 说明：本项目是面向 CUMCM 参赛学生的社区增强版，不是全国大学生数学建模竞赛组委会的官方工具。
 
@@ -49,16 +49,30 @@ CUMCM Visual Skill 是一套面向论文的可编辑可视化工具。它不只�
 
 ### 1. 获取项目
 
-下载并解压发布包：
+Windows 学生推荐使用一键安装包：
 
-- Skill 下载地址：[下载 CUMCM Visual Skill 公开版 ZIP](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-2026-07-30.zip)
+- Skill 下载地址：[下载 CUMCM Visual Skill 一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)
 - 在线示例地址：[CUMCM Visual Skill 公开网站](https://xrrr-ray.github.io/cumcm-visual-skill)
 - 学生上手指南：[Codex / Kimi 使用说明](https://xrrr-ray.github.io/cumcm-visual-skill/student-guide/index.html)
 - 完整示例库：[查看全部真实示例、提示词与可编辑 PPTX](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/index.html)
 - 精选流程图：[产品批次质量检测与闭环处置流程](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/flowcharts/quality-loop/index.html)
 - GitHub 仓库：[Xrrr-Ray/cumcm-visual-skill](https://github.com/Xrrr-Ray/cumcm-visual-skill)
 
-项目可以解压到任意磁盘。建议使用纯英文、路径较短的目录；后续命令中的路径应替换为你电脑上的真实解压位置，例如：
+下载后按下面三步操作：
+
+1. 解压 ZIP；
+2. 双击根目录中的 `安装数模Skill.cmd`；
+3. 看到“安装成功”后打开 Codex。若 Skill 列表没有立即刷新，重新打开 Codex 即可。
+
+安装器会自动安装到当前用户的 Skill 目录：
+
+```text
+%USERPROFILE%\.agents\skills\cumcm-visual-skill
+```
+
+它不要求文件在 D 盘，也不需要手动复制目录。重复双击安装器会检查版本并完成更新，旧版本自动保留在 `.cumcm-visual-skill-backups` 中。包内的 `检查安装状态.cmd` 可验证安装，`卸载数模Skill.cmd` 会把当前安装移到备份区，便于恢复。
+
+发布包本身仍可解压到任意磁盘。只有在 Kimi CLI 中手动运行项目脚本时，才需要进入解压目录；将命令中的路径替换为电脑上的真实位置，例如：
 
 ```text
 {实际解压目录}\cumcm-visual-skill
@@ -101,16 +115,16 @@ python -m pip install openpyxl
 
 Codex 不是只负责理解论文内容。它在读取 `SKILL.md` 后，会作为上层 Agent 自动选择功能、创建规划文件、调用本地脚本、检查输出并完成导出。学生使用 Codex 时通常不需要手动复制 Node.js 命令，适合希望直接用自然语言完成全流程的同学。
 
-### 第一步：打开项目
+### 第一步：确认安装并打开材料目录
 
-在 Codex 中打开解压后的 `cumcm-visual-skill` 项目目录。
+双击发布包中的 `检查安装状态.cmd`。显示“已安装且结构有效”后，在 Codex 中打开存放论文、数据和输出结果的工作目录即可，不必一直打开 Skill 源码目录。
 
 ### 第二步：上传材料并发送请求
 
 建议每次请求都以这句话开头：
 
 ```text
-请先阅读当前项目的 SKILL.md，并使用 cumcm-visual-skill 完成下面的任务。
+请使用 $cumcm-visual-skill 完成下面的任务。
 ```
 
 ### 第三步：Codex 自动执行本地工作流
@@ -162,7 +176,7 @@ Codex 完成后，优先查看：
 #### 1. 论文技术路线图
 
 ```text
-请先阅读当前项目的 SKILL.md，并使用 cumcm-visual-skill。
+请使用 $cumcm-visual-skill。
 
 根据附件中的论文方法部分，生成一张适合国赛论文正文的技术路线图，不要生成完整 PPT。
 
@@ -470,10 +484,10 @@ python -m pip install openpyxl
 
 ### 使用 Codex
 
-1. 下载并解压项目；
-2. 在 Codex 中打开项目目录；
+1. 下载、解压并双击 `安装数模Skill.cmd`；
+2. 在 Codex 中打开论文材料所在目录；
 3. 上传论文或数据；
-4. 发送“请先阅读 `SKILL.md` 并使用 cumcm-visual-skill”；
+4. 发送“请使用 `$cumcm-visual-skill`”；
 5. Codex 自动调用生成、导出和验证脚本；
 6. 查看 `index.html`；
 7. 打开 `edit.html` 调整；

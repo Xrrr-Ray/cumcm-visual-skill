@@ -2,7 +2,7 @@
 
 > 面向数学建模竞赛、国赛论文、课程论文、毕业论文和答辩展示。  
 > 当前推荐入口：Codex 与 Kimi K3。  
-> 文档对应版本验证日期：2026-07-25。
+> 文档对应版本：v1.1.0（一键安装版）。
 
 ## 1. 这是什么
 
@@ -297,7 +297,21 @@ HTML + SVG + PNG + JSON + 可编辑 PPTX
 
 ## 5. 开始前准备
 
-### 5.1 基础环境
+### 5.1 一键安装（Windows 推荐）
+
+1. 下载并解压[一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip)；
+2. 双击 `安装数模Skill.cmd`；
+3. 安装成功后打开 Codex。若 Skill 列表尚未刷新，重新打开 Codex。
+
+安装位置会根据当前 Windows 用户自动确定：
+
+```text
+%USERPROFILE%\.agents\skills\cumcm-visual-skill
+```
+
+项目无须放在 D 盘。再次运行安装器即可更新，旧版本会先备份。双击 `检查安装状态.cmd` 可以验证；双击 `卸载数模Skill.cmd` 会把当前版本移入备份目录，不会直接删除。
+
+### 5.2 基础环境
 
 建议：
 
@@ -316,13 +330,13 @@ Set-Location "{实际解压目录}\cumcm-visual-skill"
 
 所有输出目录必须是新的空目录。生成器默认拒绝覆盖非空目录。
 
-### 5.2 使用 Codex
+### 5.3 使用 Codex
 
-1. 在 Codex 中打开解压后的 `cumcm-visual-skill` 文件夹。
+1. 安装完成后，在 Codex 中打开存放论文、数据和结果的工作目录。
 2. 在请求开头写明：
 
 ```text
-请先阅读当前项目的 SKILL.md，并使用 cumcm-visual-skill 完成下面的任务。
+请使用 $cumcm-visual-skill 完成下面的任务。
 ```
 
 3. 附上论文、CSV、Excel、JSON 或具体文字要求。
@@ -330,7 +344,7 @@ Set-Location "{实际解压目录}\cumcm-visual-skill"
 
 Codex 模式通常不需要学生手动输入脚本命令。
 
-### 5.3 使用 Kimi Code 会员
+### 5.4 使用 Kimi Code 会员
 
 Kimi 网页会员与 Moonshot API 是两个不同通道。已有 Kimi Code 会员时，推荐使用官方 CLI 登录。
 
@@ -344,7 +358,7 @@ kimi --version
 
 登录后不需要设置 `MOONSHOT_API_KEY`。
 
-### 5.4 使用 Kimi 开放平台 API
+### 5.5 使用 Kimi 开放平台 API
 
 只有拥有 Moonshot 开放平台 API Key 时才使用此方式。
 
@@ -366,7 +380,7 @@ $env:MOONSHOT_API_KEY = [Net.NetworkCredential]::new("", $secureKey).Password.Tr
 可以直接复制：
 
 ```text
-请先阅读当前项目的 SKILL.md，并使用 cumcm-visual-skill。
+请使用 $cumcm-visual-skill。
 根据我提供的论文方法部分生成一张技术路线图，不要生成完整 PPT。
 要求输出干净展示版 HTML、可拖动编辑版 HTML、SVG、2× PNG 和可编辑 PPTX。
 所有事实必须来自原文，不要补造模型或结论。
@@ -861,13 +875,13 @@ python -m pip install openpyxl
 
 ### 普通学生
 
-1. 在 Codex 打开项目；
-2. 上传论文或数据；
-3. 使用自然语言说明需要的图；
-4. 先查看 `index.html`；
-5. 在 `edit.html` 调整；
-6. 导出 SVG 插入论文；
-7. 需要时打开 PPTX 精修。
+1. 双击 `安装数模Skill.cmd` 完成安装；
+2. 在 Codex 打开论文材料所在目录；
+3. 上传论文或数据；
+4. 使用自然语言说明需要的图；
+5. 先查看 `index.html`；
+6. 在 `edit.html` 调整；
+7. 导出 SVG 插入论文，需要时打开 PPTX 精修。
 
 ### Kimi 会员学生
 
@@ -891,22 +905,22 @@ python -m pip install openpyxl
 
 ## 15. 项目入口
 
-项目目录：
+安装后的 Skill 目录：
 
 ```text
-{实际解压目录}\cumcm-visual-skill
+%USERPROFILE%\.agents\skills\cumcm-visual-skill
 ```
 
 Skill 主说明：
 
 ```text
-{实际解压目录}\cumcm-visual-skill\SKILL.md
+%USERPROFILE%\.agents\skills\cumcm-visual-skill\SKILL.md
 ```
 
 完整示例库：
 
 ```text
-{实际解压目录}\cumcm-visual-skill\examples\showcase-v2\index.html
+%USERPROFILE%\.agents\skills\cumcm-visual-skill\examples\showcase-v2\index.html
 ```
 
 示例提示词：

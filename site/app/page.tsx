@@ -1,6 +1,6 @@
 const basePath = "/cumcm-visual-skill";
 const asset = (path: string) => `${basePath}${path}`;
-const downloadPath = asset("/downloads/cumcm-visual-skill-2026-07-30.zip");
+const downloadPath = asset("/downloads/cumcm-visual-skill-one-click.zip");
 
 const capabilities = [
   {
@@ -63,11 +63,12 @@ export default function Home() {
           </span>
         </a>
         <nav aria-label="主导航">
+          <a href="#install">安装</a>
           <a href="#capabilities">功能</a>
           <a href="#examples">示例</a>
           <a href={asset("/student-guide/index.html")}>使用说明</a>
           <a className="nav-download" href={downloadPath} download>
-            下载 Skill
+            一键安装
           </a>
         </nav>
       </header>
@@ -76,7 +77,7 @@ export default function Home() {
         <div className="hero-copy">
           <div className="release-pill">
             <span />
-            2026.07 公开版 · Codex / Kimi K3
+            v1.1.0 一键安装版 · Codex / Kimi K3
           </div>
           <p className="kicker">CUMCM 数模国赛论文可视化 Skill</p>
           <h1>
@@ -90,14 +91,14 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button primary" href={downloadPath} download>
-              下载 Skill
+              下载一键安装包
             </a>
             <a className="button secondary" href={asset("/showcase-v2/index.html")}>
               查看完整示例库
             </a>
           </div>
           <p className="download-note">
-            下载包包含生成器、编辑器、导出器、使用文档与精选验证示例。
+            解压后双击“安装数模Skill.cmd”，自动安装到当前用户的 Skill 目录。
           </p>
         </div>
 
@@ -142,6 +143,47 @@ export default function Home() {
           <strong>2</strong>
           <span>种模型使用入口</span>
         </div>
+      </section>
+
+      <section className="section install" id="install">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">ONE-CLICK INSTALL</p>
+            <h2>下载、解压、双击，三步装好</h2>
+          </div>
+          <p>
+            安装器自动识别当前 Windows 用户，不要求放在 D 盘，也不需要手动复制 Skill 文件夹。
+          </p>
+        </div>
+        <div className="install-grid">
+          <article>
+            <span>01</span>
+            <h3>下载并解压</h3>
+            <p>获取公开 ZIP，解压到任意磁盘的普通文件夹。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>双击安装</h3>
+            <p>运行 <code>安装数模Skill.cmd</code>，看到“安装成功”即可。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>直接告诉 Codex</h3>
+            <p>说“使用 $cumcm-visual-skill”，然后附上论文或数据。</p>
+          </article>
+        </div>
+        <div className="install-path">
+          <div>
+            <span>自动安装位置</span>
+            <code>%USERPROFILE%\.agents\skills\cumcm-visual-skill</code>
+          </div>
+          <a className="button primary" href={downloadPath} download>
+            下载一键安装包
+          </a>
+        </div>
+        <p className="install-help">
+          重复运行可安全更新，旧版本会先备份；包内还提供“检查安装状态”和“可恢复卸载”。
+        </p>
       </section>
 
       <section className="section capabilities" id="capabilities">
@@ -251,11 +293,11 @@ export default function Home() {
         <div>
           <p className="eyebrow">START CREATING</p>
           <h2>先看示例，再用你的论文试一次。</h2>
-          <p>公开版下载包已包含完整使用文档、精选示例和 Codex / Kimi 提示词。</p>
+          <p>一键安装包已包含安装器、完整生成器、使用文档、精选示例和 Codex / Kimi 提示词。</p>
         </div>
         <div className="final-actions">
           <a className="button primary" href={downloadPath} download>
-            下载 CUMCM Visual Skill
+            下载一键安装包
           </a>
           <a className="button secondary" href={asset("/student-guide/index.html")}>
             阅读学生使用说明

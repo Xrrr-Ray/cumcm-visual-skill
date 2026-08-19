@@ -22,7 +22,7 @@ This is an independent community project. It is not an official tool of, endorse
 
 ![cumcm-visual-skill — cover with live previews](docs/readme/hero.gif)
 
-> One command installs **36 themes × 20 canvas FX × 31 layouts × 15 full decks + presenter mode**. Every preview above is a live iframe of a real template file rendering inside the deck — no screenshots, no mock-ups.
+> The Windows one-click package includes the CUMCM paper-figure generators, **36 themes × 20 canvas FX × 31 layouts × 15 full decks + presenter mode**. Every preview above is a live iframe of a real template file rendering inside the deck — no screenshots, no mock-ups.
 
 ## 🎤 Presenter Mode (new!)
 
@@ -54,18 +54,29 @@ full authoring guide, or copy the ready-made template at
 `templates/full-decks/presenter-mode-reveal/` which ships with full 150-300
 word speaker scripts on every slide.
 
-## Install (one command)
+## One-click install (Windows)
 
-```bash
-npx skills add https://github.com/Xrrr-Ray/cumcm-visual-skill
+1. Download and extract the [one-click package](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-visual-skill-one-click.zip).
+2. Double-click `安装数模Skill.cmd` in the package root.
+3. Start using the skill in Codex. Restart Codex only if its skill list has not refreshed yet.
+
+The installer detects the current Windows user and installs the package at:
+
+```text
+%USERPROFILE%\.agents\skills\cumcm-visual-skill
 ```
 
-That registers the skill with your agent runtime. After install, any agent
-that supports AgentSkills can author presentations by asking things like:
+Running the installer again updates the skill after preserving the previous version in a backup folder. The package also provides `检查安装状态.cmd` and `卸载数模Skill.cmd`; uninstall is recoverable and does not immediately delete the installed files.
 
-> "做一份 8 页的技术分享 slides，用 cyberpunk 主题"
-> "turn this outline into a pitch deck"
-> "做一个小红书图文，9 张，白底柔和风"
+After installation, ask Codex:
+
+> Use `$cumcm-visual-skill` to turn the supplied CUMCM paper method into one editable academic workflow figure. Do not create a full deck or invent missing facts.
+
+For scripted installation, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-cumcm-visual-skill.ps1 -Action Install
+```
 
 ## What's in the box
 
