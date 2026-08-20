@@ -1,4 +1,4 @@
-# CUMCM Editable Visual Skill
+# CUMCM Figure Skill
 
 > An editable visualization skill for papers submitted to CUMCM (Contemporary Undergraduate Mathematical Contest in Modeling) and for general academic writing.
 
@@ -62,20 +62,20 @@ Paste this into Codex; no manual download or terminal command is required:
 Use $skill-installer to install this Skill from GitHub:
 Repository: https://github.com/Xrrr-Ray/cumcm-visual-skill
 Skill path: repository root (.)
-Install name: cumcm-editable-visual-skill
+Install name: cumcm-figure-skill
 ```
 
-After Codex completes the installation, invoke `$cumcm-editable-visual-skill` in your next message or task. Restart Codex only if the skill list has not refreshed. This installation name is intentionally different from `$cumcm-visual-skill`, so both community skills can coexist.
+After Codex completes the installation, invoke `$cumcm-figure-skill` in your next message or task. Restart Codex only if the skill list has not refreshed. This installation name is intentionally different from `$cumcm-visual-skill`, so both community skills can coexist.
 
-If this project's v1.1.1 or earlier is still installed as `cumcm-visual-skill`, first install and verify the renamed skill, then remove the legacy copy before installing the association member's skill under the original name.
+If this project's v1.2.0 or earlier is still installed as `cumcm-editable-visual-skill` or `cumcm-visual-skill`, first install and verify the renamed skill, then remove the legacy copy before installing the association member's skill under the original name.
 
 After installation, ask Codex:
 
-> Use `$cumcm-editable-visual-skill` to turn the supplied CUMCM paper method into one editable academic workflow figure. Do not create a full deck or invent missing facts.
+> Use `$cumcm-figure-skill` to turn the supplied CUMCM paper method into one editable academic workflow figure. Do not create a full deck or invent missing facts.
 
 ### Windows ZIP fallback
 
-If Codex cannot access GitHub, download and extract the [one-click package](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-editable-visual-skill-one-click.zip), then double-click `安装数模Skill.cmd`. It detects the current Windows user, preserves the previous version during updates, and does not require a D: drive location.
+If Codex cannot access GitHub, download and extract the [one-click package](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-figure-skill-one-click.zip), then double-click `安装数模Skill.cmd`. It detects the current Windows user, preserves the previous version during updates, and does not require a D: drive location.
 
 For scripted installation, run:
 
@@ -209,7 +209,7 @@ A                               cycle a demo animation on current slide
 ## Project structure
 
 ```
-cumcm-editable-visual-skill/
+cumcm-figure-skill/
 ├── SKILL.md                      agent-facing dispatcher
 ├── README.md                     this file
 ├── references/                   detailed catalogs

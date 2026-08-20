@@ -1,6 +1,6 @@
 const basePath = "/cumcm-visual-skill";
 const asset = (path: string) => `${basePath}${path}`;
-const downloadPath = asset("/downloads/cumcm-editable-visual-skill-one-click.zip");
+const downloadPath = asset("/downloads/cumcm-figure-skill-one-click.zip");
 const githubPath = "https://github.com/Xrrr-Ray/cumcm-visual-skill";
 
 const capabilities = [
@@ -56,11 +56,11 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="CUMCM Editable Visual Skill 首页">
+        <a className="wordmark" href="#top" aria-label="CUMCM Figure Skill 首页">
           <span className="wordmark-mark">C</span>
           <span>
-            CUMCM Editable Visual
-            <small>数模国赛论文可编辑可视化 Skill</small>
+            CUMCM Figure
+            <small>数模国赛论文配图 Skill</small>
           </span>
         </a>
         <nav aria-label="主导航">
@@ -78,7 +78,7 @@ export default function Home() {
         <div className="hero-copy">
           <div className="release-pill">
             <span />
-            v1.2.0 GitHub 直装版 · Codex / Kimi K3
+            v1.3.0 GitHub 直装版 · Codex / Kimi K3
           </div>
           <p className="kicker">CUMCM 数模国赛论文可视化 Skill</p>
           <h1>
@@ -170,17 +170,17 @@ export default function Home() {
           <article>
             <span>03</span>
             <h3>下一条消息直接调用</h3>
-            <p>说“使用 $cumcm-editable-visual-skill”，然后附上论文或数据。</p>
+            <p>说“使用 $cumcm-figure-skill”，然后附上论文或数据。</p>
           </article>
         </div>
         <pre className="install-prompt">{`请使用 $skill-installer，从 GitHub 安装下面的 Skill：
 仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
 Skill 路径：仓库根目录（.）
-安装名称：cumcm-editable-visual-skill`}</pre>
+安装名称：cumcm-figure-skill`}</pre>
         <div className="install-path">
           <div>
             <span>安装完成后的调用方式</span>
-            <code>$cumcm-editable-visual-skill</code>
+            <code>$cumcm-figure-skill</code>
           </div>
           <a className="button primary" href={githubPath}>
             打开 GitHub 仓库
@@ -313,7 +313,7 @@ Skill 路径：仓库根目录（.）
       <footer>
         <a className="wordmark footer-mark" href="#top">
           <span className="wordmark-mark">C</span>
-          <span>CUMCM Editable Visual</span>
+          <span>CUMCM Figure</span>
         </a>
         <p>面向数学建模竞赛、国赛论文、课程论文与毕业论文。</p>
         <div>

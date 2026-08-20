@@ -1,14 +1,14 @@
-# CUMCM Editable Visual Skill｜数模国赛论文可编辑可视化使用手册
+# CUMCM Figure Skill｜数模国赛论文配图使用手册
 
 > 面向数学建模竞赛、国赛论文、课程论文、毕业论文与答辩展示。  
 > 当前推荐使用入口：Codex、Kimi K3。  
-> 当前 GitHub 直装版为 v1.1.1，已通过 GitHub Pages 上线。
+> 当前 GitHub 直装版为 v1.3.0，已通过 GitHub Pages 上线。
 
 > 说明：本项目是面向 CUMCM 参赛学生的社区增强版，不是全国大学生数学建模竞赛组委会的官方工具。
 
 ## 一、它能做什么
 
-CUMCM Editable Visual Skill 是一套面向论文的可编辑可视化工具。它不只是制作完整 PPT，更主要的用途是把论文文字、模型公式和实验数据转换为可直接插入论文的图。它使用独立调用名 `$cumcm-editable-visual-skill`，可与协会成员的 `$cumcm-visual-skill` 同时安装和使用。
+CUMCM Figure Skill 是一套面向论文的可编辑可视化工具。它不只是制作完整 PPT，更主要的用途是把论文文字、模型公式和实验数据转换为可直接插入论文的图。它使用独立调用名 `$cumcm-figure-skill`，可与协会成员的 `$cumcm-visual-skill` 同时安装和使用。
 
 目前支持：
 
@@ -55,17 +55,17 @@ CUMCM Editable Visual Skill 是一套面向论文的可编辑可视化工具。�
 请使用 $skill-installer，从 GitHub 安装下面的 Skill：
 仓库：https://github.com/Xrrr-Ray/cumcm-visual-skill
 Skill 路径：仓库根目录（.）
-安装名称：cumcm-editable-visual-skill
+安装名称：cumcm-figure-skill
 ```
 
-Codex 安装完成后，在下一条消息或新任务中直接使用 `$cumcm-editable-visual-skill`。若列表没有立即刷新，重新打开 Codex。
+Codex 安装完成后，在下一条消息或新任务中直接使用 `$cumcm-figure-skill`。若列表没有立即刷新，重新打开 Codex。
 
-旧版本迁移：如果本项目 `v1.1.1` 或更早版本仍以 `cumcm-visual-skill` 安装，请先安装并确认新版 `$cumcm-editable-visual-skill` 可用，再移除旧副本。之后可将 `cumcm-visual-skill` 这个名称留给协会成员版本，两套工具即可并存。
+旧版本迁移：如果本项目 `v1.2.0` 或更早版本仍以 `cumcm-editable-visual-skill` 或 `cumcm-visual-skill` 安装，请先安装并确认新版 `$cumcm-figure-skill` 可用，再移除旧副本。之后可将 `cumcm-visual-skill` 这个名称留给协会成员版本，两套工具即可并存。
 
 相关地址：
 
-- Skill 下载地址：[下载 CUMCM Editable Visual Skill 一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-editable-visual-skill-one-click.zip)
-- 在线示例地址：[CUMCM Editable Visual Skill 公开网站](https://xrrr-ray.github.io/cumcm-visual-skill)
+- Skill 下载地址：[下载 CUMCM Figure Skill 一键安装包](https://xrrr-ray.github.io/cumcm-visual-skill/downloads/cumcm-figure-skill-one-click.zip)
+- 在线示例地址：[CUMCM Figure Skill 公开网站](https://xrrr-ray.github.io/cumcm-visual-skill)
 - 学生上手指南：[Codex / Kimi 使用说明](https://xrrr-ray.github.io/cumcm-visual-skill/student-guide/index.html)
 - 完整示例库：[查看全部真实示例、提示词与可编辑 PPTX](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/index.html)
 - 精选流程图：[产品批次质量检测与闭环处置流程](https://xrrr-ray.github.io/cumcm-visual-skill/showcase-v2/flowcharts/quality-loop/index.html)
@@ -80,15 +80,15 @@ Codex 安装完成后，在下一条消息或新任务中直接使用 `$cumcm-ed
 安装器会自动安装到当前用户的 Skill 目录：
 
 ```text
-%USERPROFILE%\.agents\skills\cumcm-editable-visual-skill
+%USERPROFILE%\.agents\skills\cumcm-figure-skill
 ```
 
-它不要求文件在 D 盘，也不需要手动复制目录。重复双击安装器会检查版本并完成更新，旧版本自动保留在 `.cumcm-editable-visual-skill-backups` 中。包内的 `检查安装状态.cmd` 可验证安装，`卸载数模Skill.cmd` 会把当前安装移到备份区，便于恢复。
+它不要求文件在 D 盘，也不需要手动复制目录。重复双击安装器会检查版本并完成更新，旧版本自动保留在 `.cumcm-figure-skill-backups` 中。包内的 `检查安装状态.cmd` 可验证安装，`卸载数模Skill.cmd` 会把当前安装移到备份区，便于恢复。
 
 发布包本身仍可解压到任意磁盘。只有在 Kimi CLI 中手动运行项目脚本时，才需要进入解压目录；将命令中的路径替换为电脑上的真实位置，例如：
 
 ```text
-{实际解压目录}\cumcm-editable-visual-skill
+{实际解压目录}\cumcm-figure-skill
 ```
 
 ### 2. 基础环境
@@ -130,14 +130,14 @@ Codex 不是只负责理解论文内容。它在读取 `SKILL.md` 后，会作�
 
 ### 第一步：确认安装并打开材料目录
 
-在 Codex 中运行 `/skills`，或输入 `$cumcm-editable-visual-skill` 查看是否出现。确认后打开存放论文、数据和输出结果的工作目录即可，不必打开 Skill 源码目录。
+在 Codex 中运行 `/skills`，或输入 `$cumcm-figure-skill` 查看是否出现。确认后打开存放论文、数据和输出结果的工作目录即可，不必打开 Skill 源码目录。
 
 ### 第二步：上传材料并发送请求
 
 建议每次请求都以这句话开头：
 
 ```text
-请使用 $cumcm-editable-visual-skill 完成下面的任务。
+请使用 $cumcm-figure-skill 完成下面的任务。
 ```
 
 ### 第三步：Codex 自动执行本地工作流
@@ -189,7 +189,7 @@ Codex 完成后，优先查看：
 #### 1. 论文技术路线图
 
 ```text
-请使用 $cumcm-editable-visual-skill。
+请使用 $cumcm-figure-skill。
 
 根据附件中的论文方法部分，生成一张适合国赛论文正文的技术路线图，不要生成完整 PPT。
 
@@ -206,7 +206,7 @@ Codex 完成后，优先查看：
 #### 2. 思维导图
 
 ```text
-请使用 cumcm-editable-visual-skill，把附件中的研究内容生成一张思维导图。
+请使用 cumcm-figure-skill，把附件中的研究内容生成一张思维导图。
 采用“模型基础—研究主线—任务分解”的结构，不要生成完整 PPT。
 节点、背景分区和箭头都要可编辑，并输出 SVG、edit.html 和 PPTX。
 不得添加原文没有的研究任务。
@@ -215,7 +215,7 @@ Codex 完成后，优先查看：
 #### 3. 从 Excel 生成论文数据图
 
 ```text
-请使用 cumcm-editable-visual-skill 读取附件中的 Excel。
+请使用 cumcm-figure-skill 读取附件中的 Excel。
 先检查字段类型、缺失值、数值范围和工作表，再根据数据关系选择合适的论文图表。
 不要修改或补造数据，不要自行添加显著性结论。
 输出论文版 SVG、可编辑 HTML、2× PNG 和 PowerPoint 可编辑 PPTX。
@@ -224,7 +224,7 @@ Codex 完成后，优先查看：
 #### 4. 数学模型关系图
 
 ```text
-请使用 cumcm-editable-visual-skill，根据附件中的模型 JSON 生成
+请使用 cumcm-figure-skill，根据附件中的模型 JSON 生成
 “变量—目标函数—约束—求解与检验—模型输出”关系图。
 保留原始 LaTeX，变量和约束不得根据常识补充。
 输出 HTML、SVG、PNG 和全元素可编辑 PPTX。
@@ -233,7 +233,7 @@ Codex 完成后，优先查看：
 #### 5. 整篇论文插图套件
 
 ```text
-请使用 cumcm-editable-visual-skill 读取附件中的 Markdown 论文。
+请使用 cumcm-figure-skill 读取附件中的 Markdown 论文。
 先规划整篇论文需要的插图，为每张图记录来源章节、用途、图型和必需输入。
 对输入完整的图连续生成 HTML、SVG 和可编辑 PPTX，并生成统一风格的插图总目录。
 缺少数据或公式的部分只标记缺口，不得伪造。
@@ -263,10 +263,10 @@ kimi --version
 
 ```powershell
 # 将下一行替换为 Skill 实际解压后的文件夹路径
-Set-Location "{实际解压目录}\cumcm-editable-visual-skill"
+Set-Location "{实际解压目录}\cumcm-figure-skill"
 ```
 
-路径不要求在 D 盘。可以在资源管理器中打开解压后的 `cumcm-editable-visual-skill` 文件夹，复制地址栏中的完整路径并替换占位内容。
+路径不要求在 D 盘。可以在资源管理器中打开解压后的 `cumcm-figure-skill` 文件夹，复制地址栏中的完整路径并替换占位内容。
 
 准备两个文件：
 
@@ -390,7 +390,7 @@ edit.html
 ## 八、推荐的通用提示词模板
 
 ```text
-请使用 cumcm-editable-visual-skill，根据【输入材料】生成一张【图型】。
+请使用 cumcm-figure-skill，根据【输入材料】生成一张【图型】。
 
 核心内容：
 - 【内容 1】
@@ -431,7 +431,7 @@ edit.html
 通常是当前目录不对。先进入 Skill 根目录，再运行脚本：
 
 ```powershell
-Set-Location "{实际解压目录}\cumcm-editable-visual-skill"
+Set-Location "{实际解压目录}\cumcm-figure-skill"
 ```
 
 ### 3. 报错“输出目录非空，拒绝覆盖”
@@ -500,7 +500,7 @@ python -m pip install openpyxl
 1. 把 GitHub 安装提示词发送给 Codex；
 2. 等待 `$skill-installer` 完成安装；
 3. 上传论文或数据；
-4. 发送“请使用 `$cumcm-editable-visual-skill`”；
+4. 发送“请使用 `$cumcm-figure-skill`”；
 5. Codex 自动调用生成、导出和验证脚本；
 6. 查看 `index.html`；
 7. 打开 `edit.html` 调整；
@@ -520,4 +520,4 @@ python -m pip install openpyxl
 
 对外介绍可使用下面这段话：
 
-> CUMCM Editable Visual Skill 是一套面向 CUMCM 数模国赛和论文写作的可编辑可视化系统。Codex 可以读取 Skill 后自动调用本地生成、导出和验证脚本；Kimi K3 可以通过会员 CLI 或开放平台完成论文单图的语义规划。系统支持流程图、思维导图、模型关系图、论文数据图和全文插图套件，结果可在浏览器中拖动编辑，并导出 HTML、SVG、PNG、JSON 和 PowerPoint 可编辑 PPTX。
+> CUMCM Figure Skill 是一套面向 CUMCM 数模国赛和论文写作的可编辑可视化系统。Codex 可以读取 Skill 后自动调用本地生成、导出和验证脚本；Kimi K3 可以通过会员 CLI 或开放平台完成论文单图的语义规划。系统支持流程图、思维导图、模型关系图、论文数据图和全文插图套件，结果可在浏览器中拖动编辑，并导出 HTML、SVG、PNG、JSON 和 PowerPoint 可编辑 PPTX。

@@ -18,7 +18,7 @@ try {
   # 某些旧版 PowerShell 主机不允许修改控制台编码，不影响安装。
 }
 
-$skillName = "cumcm-editable-visual-skill"
+$skillName = "cumcm-figure-skill"
 $sourceRoot = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 
 function Get-FullPath {
@@ -74,8 +74,8 @@ function Test-SkillPackage {
   }
 
   $skillText = Get-Content -LiteralPath (Join-Path $Root "SKILL.md") -Raw -Encoding UTF8
-  if ($skillText -notmatch "(?m)^name:\s*cumcm-editable-visual-skill\s*$") {
-    throw "SKILL.md 中的 name 不是 cumcm-editable-visual-skill。"
+  if ($skillText -notmatch "(?m)^name:\s*cumcm-figure-skill\s*$") {
+    throw "SKILL.md 中的 name 不是 cumcm-figure-skill。"
   }
 
   [void](Get-PackageVersion -Root $Root)
@@ -127,14 +127,14 @@ if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
 
 $destinationRootFull = Get-FullPath $DestinationRoot
 $destinationPath = Join-Path $destinationRootFull $skillName
-$backupRoot = Join-Path $destinationRootFull ".cumcm-editable-visual-skill-backups"
+$backupRoot = Join-Path $destinationRootFull ".cumcm-figure-skill-backups"
 $stagePath = $null
 Assert-ChildPath -Parent $destinationRootFull -Child $destinationPath
 Assert-ChildPath -Parent $destinationRootFull -Child $backupRoot
 
 try {
   if ($Action -eq "Status") {
-    Write-Host "CUMCM Editable Visual Skill 安装状态" -ForegroundColor Cyan
+    Write-Host "CUMCM Figure Skill 安装状态" -ForegroundColor Cyan
     Write-Host "  目标目录：$destinationPath"
     if (-not (Test-Path -LiteralPath $destinationPath -PathType Container)) {
       Write-Host "  状态：尚未安装" -ForegroundColor DarkYellow
@@ -148,7 +148,7 @@ try {
 
   if ($Action -eq "Uninstall") {
     if (-not (Test-Path -LiteralPath $destinationPath -PathType Container)) {
-      Write-Host "未找到已安装的 CUMCM Editable Visual Skill，无需卸载。" -ForegroundColor DarkYellow
+      Write-Host "未找到已安装的 CUMCM Figure Skill，无需卸载。" -ForegroundColor DarkYellow
       exit 0
     }
 
@@ -159,7 +159,7 @@ try {
     $backupPath = Join-Path $backupRoot "$skillName-$safeInstalledVersion-uninstalled-$stamp"
     Assert-ChildPath -Parent $backupRoot -Child $backupPath
     Move-Item -LiteralPath $destinationPath -Destination $backupPath
-    Write-Host "已卸载 CUMCM Editable Visual Skill。" -ForegroundColor Green
+    Write-Host "已卸载 CUMCM Figure Skill。" -ForegroundColor Green
     Write-Host "原文件已保留在：$backupPath"
     Write-Host "重新打开 Codex 后，Skill 将不再出现在可用列表中。"
     exit 0
@@ -174,7 +174,7 @@ try {
   }
 
   if (($null -ne $installedVersion) -and ($installedVersion -eq $packageVersion) -and (-not $Force)) {
-    Write-Host "CUMCM Editable Visual Skill v$packageVersion 已安装，无需重复安装。" -ForegroundColor Green
+    Write-Host "CUMCM Figure Skill v$packageVersion 已安装，无需重复安装。" -ForegroundColor Green
     Write-Host "安装位置：$destinationPath"
     Write-Host "如需覆盖重装，请运行脚本并增加 -Force。"
     Show-EnvironmentSummary
@@ -265,12 +265,12 @@ try {
   }
 
   $verb = if ($null -eq $installedVersion) { "安装" } else { "更新" }
-  Write-Host "CUMCM Editable Visual Skill v$packageVersion ${verb}成功。" -ForegroundColor Green
+  Write-Host "CUMCM Figure Skill v$packageVersion ${verb}成功。" -ForegroundColor Green
   Write-Host "安装位置：$destinationPath"
   if ($null -ne $backupPath) {
     Write-Host "旧版本备份：$backupPath"
   }
-  Write-Host "现在可在 Codex 中直接说：使用 `$cumcm-editable-visual-skill 生成一张数模论文技术路线图。"
+  Write-Host "现在可在 Codex 中直接说：使用 `$cumcm-figure-skill 生成一张数模论文技术路线图。"
   Write-Host "Codex 通常会自动发现新 Skill；若列表尚未刷新，请重新打开 Codex。"
   Show-EnvironmentSummary
   exit 0
