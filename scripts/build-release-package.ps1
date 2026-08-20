@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
   [string]$Output = ""
 )
@@ -8,7 +8,7 @@ $ErrorActionPreference = "Stop"
 
 $sourceRoot = [System.IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 if ([string]::IsNullOrWhiteSpace($Output)) {
-  $Output = Join-Path $sourceRoot "site\public\downloads\cumcm-figure-skill-one-click.zip"
+  $Output = Join-Path $sourceRoot "site\public\downloads\cumcm-visual-skill-one-click.zip"
 } elseif (-not [System.IO.Path]::IsPathRooted($Output)) {
   $Output = Join-Path $sourceRoot $Output
 }
@@ -16,7 +16,7 @@ $outputFull = [System.IO.Path]::GetFullPath($Output)
 $outputDirectory = Split-Path -Parent $outputFull
 
 $stagingRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("cumcm-release-" + [guid]::NewGuid().ToString("N"))
-$packageRoot = Join-Path $stagingRoot "cumcm-figure-skill"
+$packageRoot = Join-Path $stagingRoot "cumcm-visual-skill"
 $temporaryZip = Join-Path ([System.IO.Path]::GetTempPath()) ("cumcm-release-" + [guid]::NewGuid().ToString("N") + ".zip")
 
 $rootFiles = @(
@@ -85,16 +85,16 @@ try {
   try {
     $entryNames = @($archive.Entries | ForEach-Object { $_.FullName.Replace("/", "\") })
     foreach ($requiredEntry in @(
-      "cumcm-figure-skill\SKILL.md",
-      "cumcm-figure-skill\VERSION",
-      "cumcm-figure-skill\agents\openai.yaml",
-      "cumcm-figure-skill\scripts\install-cumcm-visual-skill.ps1"
+      "cumcm-visual-skill\SKILL.md",
+      "cumcm-visual-skill\VERSION",
+      "cumcm-visual-skill\agents\openai.yaml",
+      "cumcm-visual-skill\scripts\install-cumcm-visual-skill.ps1"
     )) {
       if ($entryNames -notcontains $requiredEntry) {
         throw "Release archive validation failed: $requiredEntry"
       }
     }
-    if (@($entryNames | Where-Object { $_ -like "cumcm-figure-skill\.git\*" -or $_ -like "cumcm-figure-skill\site\*" }).Count -gt 0) {
+    if (@($entryNames | Where-Object { $_ -like "cumcm-visual-skill\.git\*" -or $_ -like "cumcm-visual-skill\site\*" }).Count -gt 0) {
       throw "Release archive contains excluded repository files."
     }
   } finally {

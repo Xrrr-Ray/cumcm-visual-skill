@@ -1,11 +1,11 @@
 ---
-name: cumcm-figure-skill
+name: cumcm-visual-skill
 description: 面向 CUMCM（全国大学生数学建模竞赛）论文与一般学术论文的可编辑可视化 Skill。用户提到国赛论文配图、数学建模论文、Excel/CSV 数据可视化、折线图、柱状图、散点图、相关性热力图、收敛曲线、流程图、思维导图、技术路线图、研究框架图、系统架构图、因果关系图、反馈回路、决策树、层次结构图或可视化图片时，默认只生成一张可插入论文的 SVG/PNG，并附自包含可编辑 HTML；用户要求在 PowerPoint 中继续编辑时，为同一张图额外生成由原生形状、文本框和连接符组成的 PPTX；只有用户明确要求完整 PPT、slides、deck、幻灯片、答辩稿、演讲稿或多页汇报时才生成多页演示文稿。
 ---
 
-# CUMCM Figure Skill
+# CUMCM Visual Skill
 
-本 Skill 是基于开源 HTML-PPT Studio 扩展的数模国赛论文配图增强版，不是全国大学生数学建模竞赛组委会的官方工具。它的调用名是 `$cumcm-figure-skill`，可与其他名为 `$cumcm-visual-skill` 的可视化 Skill 同时安装和使用。
+本 Skill 是基于开源 HTML-PPT Studio 扩展的数模国赛论文配图增强版，不是全国大学生数学建模竞赛组委会的官方工具。它的调用名是 `$cumcm-visual-skill`，可与协会成员维护的 `$cumcm-figure-skill` 同时安装和使用。
 
 先判断用户要“论文单图”还是“多页演示”。不要因为 Skill 名称含 PPT 就自动制作完整 PPT。
 
